@@ -1,0 +1,1479 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oposita Smart | Prepara tu Oposición con Inteligencia - App de Test Oposiciones 2026</title>
+    <meta name="description" content="Prepara tus oposiciones de Auxiliar Administrativo del Estado con preguntas calibradas al examen real, repetición espaciada y gamificación inteligente. Lanzamiento 2026.">
+    <meta name="keywords" content="oposiciones auxiliar administrativo 2026, test oposiciones AGE, preparar oposiciones online, app oposiciones, oposiciones estado 2026, temario auxiliar administrativo">
+    <link rel="canonical" href="https://opositasmart.com">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%238B5CF6'/><text x='50' y='68' font-size='50' text-anchor='middle' fill='white' font-family='system-ui' font-weight='bold'>OS</text></svg>">
+    <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%238B5CF6'/><text x='50' y='68' font-size='50' text-anchor='middle' fill='white' font-family='system-ui' font-weight='bold'>OS</text></svg>">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://opositasmart.com">
+    <meta property="og:title" content="Oposita Smart | Aprueba tu Oposición Estudiando Menos">
+    <meta property="og:description" content="App de preparación de oposiciones con ciencia cognitiva y repetición espaciada. Únete a la beta.">
+    <meta property="og:image" content="https://opositasmart.com/og-image.png">
+    <meta property="og:locale" content="es_ES">
+    <meta property="og:site_name" content="Oposita Smart">
+    
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://opositasmart.com">
+    <meta name="twitter:title" content="Oposita Smart | Aprueba tu Oposición Estudiando Menos">
+    <meta property="twitter:description" content="App de preparación de oposiciones con ciencia cognitiva y repetición espaciada. Únete a la beta.">
+    <meta name="twitter:image" content="https://opositasmart.com/og-image.png">
+    
+    <!-- Schema.org JSON-LD -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Oposita Smart",
+        "description": "App de preparación de oposiciones de Auxiliar Administrativo del Estado con ciencia cognitiva, repetición espaciada y preguntas calibradas al examen real.",
+        "url": "https://opositasmart.com",
+        "applicationCategory": "EducationalApplication",
+        "operatingSystem": "Web, iOS, Android",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "EUR",
+            "description": "Lista de espera gratuita con precio fundador garantizado"
+        },
+        "author": {
+            "@type": "Organization",
+            "name": "Oposita Smart"
+        },
+        "audience": {
+            "@type": "Audience",
+            "audienceType": "Opositores españoles preparando Auxiliar Administrativo del Estado"
+        }
+    }
+    </script>
+    
+    <!-- Preconnect for performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    
+    <style>
+        :root {
+            /* Colores de la app */
+            --purple-primary: #8B5CF6;
+            --purple-dark: #7C3AED;
+            --purple-light: #A78BFA;
+            --purple-bg: #FAF5FF;
+            --green-solid: #10B981;
+            --green-bg: #D1FAE5;
+            --yellow-warning: #F59E0B;
+            --yellow-bg: #FEF3C7;
+            --red-critical: #EF4444;
+            --teal-accent: #06B6D4;
+            
+            /* Neutros - Mejorados para contraste WCAG */
+            --bg-main: #FAFAFA;
+            --bg-white: #FFFFFF;
+            --text-dark: #1F2937;
+            --text-medium: #4B5563;
+            --text-light: #6B7280;
+            --text-muted: #6B7280; /* Mejorado de #9CA3AF para mejor contraste */
+            --border-light: #E5E7EB;
+            --border-lighter: #F3F4F6;
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: var(--bg-main);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+        
+        /* Accesibilidad: Focus states visibles */
+        *:focus {
+            outline: 2px solid var(--purple-primary);
+            outline-offset: 2px;
+        }
+        *:focus:not(:focus-visible) {
+            outline: none;
+        }
+        *:focus-visible {
+            outline: 2px solid var(--purple-primary);
+            outline-offset: 2px;
+        }
+        
+        /* Skip link para accesibilidad */
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: var(--purple-primary);
+            color: white;
+            padding: 8px 16px;
+            z-index: 10000;
+            transition: top 0.3s;
+        }
+        .skip-link:focus {
+            top: 0;
+        }
+        
+        /* Visually hidden pero accesible para screen readers */
+        .visually-hidden {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+        
+        .container { max-width: 1140px; margin: 0 auto; padding: 0 20px; }
+        
+        /* ========== NAV ========== */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 12px 0;
+            background: rgba(250, 250, 250, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-lighter);
+        }
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+        }
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--purple-primary) 0%, var(--teal-accent) 100%);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .logo-text {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+        .logo-text span { color: var(--purple-primary); }
+        
+        .nav-cta {
+            background: var(--purple-primary);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.2s;
+        }
+        .nav-cta:hover {
+            background: #7C3AED;
+            transform: translateY(-1px);
+        }
+        
+        /* ========== HERO ========== */
+        .hero {
+            padding: 120px 0 80px;
+            background: var(--bg-white);
+        }
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--purple-bg);
+            border: 1px solid var(--purple-light);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--purple-primary);
+            margin-bottom: 20px;
+        }
+        .hero-badge::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: var(--green-solid);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.6; transform: scale(1.3); }
+        }
+        .hero-title {
+            font-size: clamp(32px, 4vw, 48px);
+            font-weight: 700;
+            line-height: 1.15;
+            margin-bottom: 20px;
+            color: var(--text-dark);
+        }
+        .hero-title .highlight {
+            color: var(--purple-primary);
+        }
+        .hero-subtitle {
+            font-size: 17px;
+            color: var(--text-medium);
+            margin-bottom: 32px;
+            max-width: 440px;
+        }
+        .hero-form {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 16px;
+        }
+        .hero-input {
+            flex: 1;
+            padding: 14px 18px;
+            border: 2px solid var(--border-light);
+            border-radius: 10px;
+            font-size: 15px;
+            transition: all 0.2s;
+        }
+        .hero-input:focus {
+            outline: none;
+            border-color: var(--purple-primary);
+            box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1);
+        }
+        .hero-button {
+            background: var(--purple-primary);
+            color: white;
+            padding: 14px 28px;
+            border: none;
+            border-radius: 10px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            white-space: nowrap;
+        }
+        .hero-button:hover {
+            background: #7C3AED;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(139, 92, 246, 0.25);
+        }
+        .hero-trust {
+            display: flex;
+            gap: 16px;
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+        .hero-trust-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .hero-trust-item svg { color: var(--green-solid); }
+        
+        /* Phone Mockup - Proporciones iPhone */
+        .hero-visual { position: relative; }
+        .phone-mockup { width: 280px; margin: 0 auto; }
+        .phone-frame {
+            background: linear-gradient(145deg, #1f2937 0%, #374151 100%);
+            border-radius: 44px;
+            padding: 8px;
+            box-shadow: 0 25px 60px rgba(0,0,0,0.2);
+        }
+        .phone-screen {
+            background: linear-gradient(to bottom right, #f8fafc, #faf5ff, #eef2ff);
+            border-radius: 38px;
+            overflow: hidden;
+            height: 580px;
+            position: relative;
+        }
+        
+        /* TopBar */
+        .app-topbar {
+            background: rgba(255,255,255,0.98);
+            backdrop-filter: blur(10px);
+            padding: 0 12px;
+            height: 48px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+        .app-progress-ring {
+            position: relative;
+            width: 34px;
+            height: 34px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .app-progress-ring svg { transform: rotate(-90deg); }
+        .ring-bg { fill: none; stroke: #F3E8FF; stroke-width: 3; }
+        .ring-progress { fill: none; stroke: #8B5CF6; stroke-width: 3; stroke-linecap: round; }
+        .ring-text {
+            position: absolute;
+            font-size: 9px;
+            font-weight: 700;
+            color: #8B5CF6;
+        }
+        .app-logo {
+            font-weight: 600;
+            font-size: 13px;
+            color: #1f2937;
+            letter-spacing: -0.3px;
+        }
+        .app-settings { 
+            width: 34px;
+            height: 34px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 15px;
+            color: #6b7280;
+        }
+        
+        /* App Content */
+        .app-content { 
+            padding: 12px; 
+            padding-bottom: 70px;
+            overflow-y: auto;
+            height: calc(100% - 48px);
+        }
+        
+        /* Date & Title Section */
+        .app-date {
+            font-size: 11px;
+            font-weight: 500;
+            color: #8B5CF6;
+            margin-bottom: 2px;
+        }
+        .app-title {
+            font-size: 17px;
+            font-weight: 700;
+            color: #111827;
+            margin-bottom: 2px;
+        }
+        .app-subtitle {
+            font-size: 11px;
+            color: #9ca3af;
+            margin-bottom: 12px;
+        }
+        
+        /* Cards Base */
+        .app-card {
+            background: white;
+            border-radius: 16px;
+            border: 1px solid #f3f4f6;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+            margin-bottom: 10px;
+            overflow: hidden;
+        }
+        
+        /* Fortaleza Card */
+        .fortaleza-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 12px;
+            border-bottom: 1px solid #f3f4f6;
+        }
+        .fortaleza-title {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 13px;
+            font-weight: 600;
+            color: #111827;
+        }
+        .fortaleza-title span { font-size: 15px; }
+        .fortaleza-link {
+            display: flex;
+            align-items: center;
+            gap: 2px;
+            font-size: 11px;
+            color: #8B5CF6;
+            font-weight: 500;
+        }
+        .fortaleza-content { padding: 6px 12px; }
+        
+        /* Tema Row */
+        .tema-row {
+            display: flex;
+            align-items: center;
+            padding: 8px 0;
+            border-bottom: 1px solid #f3f4f6;
+        }
+        .tema-row:last-child { border-bottom: none; }
+        .tema-id {
+            font-size: 10px;
+            color: #9ca3af;
+            margin-right: 4px;
+            flex-shrink: 0;
+        }
+        .tema-name {
+            font-size: 11px;
+            font-weight: 500;
+            color: #1f2937;
+            flex: 1;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            margin-right: 8px;
+        }
+        .dots {
+            display: flex;
+            gap: 4px;
+            margin-right: 8px;
+            flex-shrink: 0;
+        }
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #e5e7eb;
+        }
+        .dot.purple { background: #8B5CF6; }
+        .dot.green { background: #10B981; }
+        .dot.amber { background: #F59E0B; animation: pulse-dot 1.5s infinite; }
+        .dot.red { background: #EF4444; animation: pulse-dot 1s infinite; }
+        @keyframes pulse-dot {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        .tema-status {
+            font-size: 10px;
+            font-weight: 500;
+            flex-shrink: 0;
+            text-align: right;
+            min-width: 60px;
+        }
+        .tema-status.purple { color: #8B5CF6; }
+        .tema-status.green { color: #10B981; }
+        .tema-status.amber { color: #F59E0B; }
+        .tema-status.gray { color: #6b7280; }
+        
+        .fortaleza-more {
+            padding: 8px 12px;
+            border-top: 1px solid #f3f4f6;
+            text-align: center;
+            font-size: 11px;
+            color: #6b7280;
+        }
+        
+        /* Session Card */
+        .session-card {
+            background: white;
+            border-radius: 16px;
+            border: 1px solid #f3f4f6;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+            padding: 12px;
+            margin-bottom: 10px;
+        }
+        .session-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .session-title {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 13px;
+            font-weight: 600;
+            color: #1f2937;
+        }
+        .session-badge {
+            font-size: 10px;
+            background: #F3E8FF;
+            color: #8B5CF6;
+            padding: 3px 8px;
+            border-radius: 10px;
+            font-weight: 500;
+        }
+        
+        /* Session Items */
+        .session-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px;
+            background: #f9fafb;
+            border-radius: 12px;
+            margin-bottom: 8px;
+        }
+        .session-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            flex-shrink: 0;
+        }
+        .session-icon.green { background: #D1FAE5; }
+        .session-icon.orange { background: #FED7AA; }
+        .session-item-info { flex: 1; min-width: 0; }
+        .session-item-title {
+            font-size: 12px;
+            font-weight: 500;
+            color: #1f2937;
+            margin-bottom: 1px;
+        }
+        .session-item-sub {
+            font-size: 10px;
+            color: #6b7280;
+        }
+        
+        /* Primary Button */
+        .app-btn-primary {
+            width: 100%;
+            background: linear-gradient(135deg, #8B5CF6 0%, #7C3AED 100%);
+            color: white;
+            border: none;
+            padding: 11px;
+            border-radius: 12px;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+        
+        /* Ver más link */
+        .app-link {
+            display: block;
+            text-align: center;
+            font-size: 12px;
+            color: #8B5CF6;
+            font-weight: 500;
+            padding: 6px 0;
+            margin-bottom: 8px;
+        }
+        
+        /* Reto Card */
+        .reto-card {
+            background: white;
+            border-radius: 16px;
+            border: 1px solid #f3f4f6;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+            padding: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .reto-icon {
+            width: 36px;
+            height: 36px;
+            background: #FEF3C7;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            flex-shrink: 0;
+        }
+        .reto-info { flex: 1; }
+        .reto-title {
+            font-size: 12px;
+            font-weight: 600;
+            color: #1f2937;
+        }
+        .reto-sub {
+            font-size: 10px;
+            color: #6b7280;
+        }
+        .reto-btn {
+            font-size: 11px;
+            color: #8B5CF6;
+            font-weight: 600;
+        }
+        
+        /* Bottom Tab Bar */
+        .app-tabbar {
+            position: absolute;
+            bottom: 8px;
+            left: 8px;
+            right: 8px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 2px 24px rgba(0,0,0,0.12);
+            height: 52px;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            padding: 0 8px;
+        }
+        .tab-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2px;
+            padding: 6px 12px;
+        }
+        .tab-icon { font-size: 18px; }
+        .tab-label { font-size: 9px; color: #6b7280; font-weight: 500; }
+        .tab-item.active .tab-icon { color: #8B5CF6; }
+        .tab-item.active .tab-label { color: #8B5CF6; }
+        
+        /* Floating badges */
+        .floating-badge {
+            position: absolute;
+            background: var(--bg-white);
+            border-radius: 10px;
+            padding: 10px 14px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            animation: float 3s ease-in-out infinite;
+        }
+        .floating-badge-1 { top: 5%; left: -15%; }
+        .floating-badge-2 { bottom: 25%; right: -10%; animation-delay: 1s; }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+        .fb-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+        }
+        .fb-icon.green { background: var(--green-bg); }
+        .fb-icon.yellow { background: var(--yellow-bg); }
+        .fb-text { font-size: 12px; }
+        .fb-text strong { display: block; font-weight: 600; color: var(--text-dark); }
+        .fb-text span { font-size: 10px; color: var(--text-muted); }
+        
+        /* ========== SECTIONS ========== */
+        .section { padding: 80px 0; }
+        .section-alt { background: var(--bg-white); }
+        .section-dark { background: var(--text-dark); color: white; }
+        
+        .section-label {
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--purple-primary);
+            margin-bottom: 12px;
+        }
+        .section-dark .section-label { color: var(--purple-light); }
+        
+        .section-title {
+            font-size: clamp(26px, 3.5vw, 38px);
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 16px;
+            max-width: 600px;
+        }
+        .section-subtitle {
+            font-size: 16px;
+            color: var(--text-medium);
+            max-width: 540px;
+            margin-bottom: 48px;
+        }
+        .section-dark .section-subtitle { color: rgba(255,255,255,0.7); }
+        
+        /* Problem Cards */
+        .problem-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+        .problem-card {
+            background: var(--bg-white);
+            border-radius: 16px;
+            padding: 28px;
+            border: 1px solid var(--border-lighter);
+            transition: all 0.2s;
+        }
+        .problem-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+        }
+        .problem-icon {
+            width: 48px;
+            height: 48px;
+            background: #FEE2E2;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            margin-bottom: 16px;
+        }
+        .problem-card h3 {
+            font-size: 17px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        .problem-card p {
+            font-size: 14px;
+            color: var(--text-medium);
+            line-height: 1.6;
+        }
+        .problem-stat {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--red-critical);
+            margin-top: 16px;
+        }
+        .problem-stat-label {
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+        
+        /* Solution Cards */
+        .solution-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+        .solution-card {
+            background: var(--bg-main);
+            border-radius: 16px;
+            padding: 32px 24px;
+            text-align: center;
+            transition: all 0.2s;
+        }
+        .solution-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(139, 92, 246, 0.1);
+        }
+        .solution-icon {
+            width: 64px;
+            height: 64px;
+            margin: 0 auto 20px;
+            background: linear-gradient(135deg, var(--purple-primary), var(--teal-accent));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            box-shadow: 0 8px 20px rgba(139, 92, 246, 0.25);
+        }
+        .solution-card h3 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        .solution-card p {
+            font-size: 14px;
+            color: var(--text-medium);
+            line-height: 1.6;
+        }
+        
+        /* Steps */
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+        }
+        .step { text-align: center; }
+        .step-number {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 16px;
+            background: linear-gradient(135deg, var(--purple-primary), var(--teal-accent));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: 700;
+            color: white;
+        }
+        .step h3 {
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+        .step p {
+            font-size: 13px;
+            color: rgba(255,255,255,0.6);
+        }
+        
+        /* Stats Bar */
+        .stats-bar {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            background: var(--bg-main);
+            border-radius: 16px;
+            padding: 40px;
+        }
+        .stat-item { text-align: center; }
+        .stat-value {
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--purple-primary);
+        }
+        .stat-label {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-top: 4px;
+        }
+        
+        /* Beta Benefits */
+        .beta-benefits {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-bottom: 48px;
+        }
+        .beta-card {
+            background: var(--bg-white);
+            border-radius: 16px;
+            padding: 28px;
+            text-align: center;
+            border: 1px solid var(--border-lighter);
+            transition: all 0.2s;
+        }
+        .beta-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(139, 92, 246, 0.1);
+            border-color: var(--purple-light);
+        }
+        .beta-icon {
+            font-size: 40px;
+            margin-bottom: 16px;
+        }
+        .beta-card h3 {
+            font-size: 17px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--text-dark);
+        }
+        .beta-card p {
+            font-size: 14px;
+            color: var(--text-medium);
+            line-height: 1.6;
+        }
+        
+        /* CTA */
+        .cta {
+            padding: 80px 0;
+            background: linear-gradient(135deg, var(--purple-primary) 0%, #7C3AED 100%);
+            text-align: center;
+        }
+        .cta-title {
+            font-size: clamp(28px, 4vw, 42px);
+            font-weight: 700;
+            color: white;
+            margin-bottom: 12px;
+        }
+        .cta-subtitle {
+            font-size: 17px;
+            color: rgba(255,255,255,0.9);
+            margin-bottom: 32px;
+            max-width: 460px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .cta-form {
+            display: flex;
+            gap: 10px;
+            max-width: 440px;
+            margin: 0 auto 20px;
+        }
+        .cta-input {
+            flex: 1;
+            padding: 14px 18px;
+            border: none;
+            border-radius: 10px;
+            font-size: 15px;
+        }
+        .cta-input:focus { outline: none; box-shadow: 0 0 0 3px rgba(255,255,255,0.3); }
+        .cta-button {
+            background: var(--text-dark);
+            color: white;
+            padding: 14px 28px;
+            border: none;
+            border-radius: 10px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            white-space: nowrap;
+        }
+        .cta-button:hover { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(0,0,0,0.2); }
+        .cta-note { font-size: 13px; color: rgba(255,255,255,0.8); }
+        
+        /* FAQ */
+        .faq-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            max-width: 860px;
+            margin: 0 auto;
+        }
+        .faq-item {
+            background: var(--bg-white);
+            border-radius: 12px;
+            padding: 20px;
+            border: 1px solid var(--border-lighter);
+        }
+        .faq-question {
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--text-dark);
+        }
+        .faq-answer {
+            font-size: 14px;
+            color: var(--text-medium);
+            line-height: 1.6;
+        }
+        
+        /* Footer - Mejorado contraste */
+        .footer {
+            padding: 48px 0 24px;
+            background: var(--text-dark);
+            color: rgba(255,255,255,0.8);
+        }
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 32px;
+        }
+        .footer .logo-text { color: white; }
+        .footer-links { display: flex; gap: 24px; }
+        .footer-links a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            font-size: 13px;
+            transition: color 0.2s;
+        }
+        .footer-links a:hover { color: white; }
+        .footer-links a:focus { color: white; outline-color: white; }
+        .footer-bottom {
+            text-align: center;
+            padding-top: 24px;
+            border-top: 1px solid rgba(255,255,255,0.15);
+            font-size: 12px;
+            color: rgba(255,255,255,0.7);
+        }
+        
+        /* Form success */
+        .form-success {
+            display: none;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 16px;
+            background: var(--green-bg);
+            border-radius: 10px;
+            color: var(--green-solid);
+            font-weight: 500;
+        }
+        .form-success.show { display: flex; }
+        
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .hero-content { grid-template-columns: 1fr; text-align: center; gap: 48px; }
+            .hero-subtitle { margin: 0 auto 32px; }
+            .hero-form { flex-direction: column; max-width: 360px; margin: 0 auto 16px; }
+            .hero-trust { justify-content: center; flex-wrap: wrap; }
+            .hero-visual { order: -1; }
+            .floating-badge { display: none; }
+            .problem-grid, .solution-grid, .beta-benefits { grid-template-columns: 1fr; }
+            .steps { grid-template-columns: repeat(2, 1fr); }
+            .stats-bar { grid-template-columns: repeat(2, 1fr); }
+            .faq-grid { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 640px) {
+            .nav-cta { display: none; }
+            .steps { grid-template-columns: 1fr; }
+            .stats-bar { grid-template-columns: 1fr; padding: 24px; }
+            .cta-form { flex-direction: column; }
+            .footer-content { flex-direction: column; gap: 20px; text-align: center; }
+            .footer-links { flex-wrap: wrap; justify-content: center; }
+            
+            /* Espacio extra en el bottom para el sticky CTA */
+            .footer { padding-bottom: 100px; }
+        }
+        
+        /* Sticky CTA Mobile */
+        .sticky-cta {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 999;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(12px);
+            padding: 12px 16px;
+            box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.1);
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+            border-top: 1px solid var(--border-lighter);
+        }
+        .sticky-cta.visible {
+            transform: translateY(0);
+        }
+        .sticky-cta-content {
+            display: flex;
+            gap: 10px;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        .sticky-cta-input {
+            flex: 1;
+            padding: 12px 14px;
+            border: 1px solid var(--border-light);
+            border-radius: 10px;
+            font-size: 14px;
+            min-width: 0;
+        }
+        .sticky-cta-input:focus {
+            border-color: var(--purple-primary);
+            outline: none;
+        }
+        .sticky-cta-button {
+            background: linear-gradient(135deg, var(--purple-primary) 0%, var(--purple-dark) 100%);
+            color: white;
+            border: none;
+            padding: 12px 18px;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .sticky-cta-button:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3);
+        }
+        .sticky-cta-success {
+            display: none;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 12px;
+            color: var(--green-solid);
+            font-weight: 500;
+        }
+        .sticky-cta-success.show {
+            display: flex;
+        }
+        .sticky-cta-form.hidden {
+            display: none;
+        }
+        
+        @media (max-width: 640px) {
+            .sticky-cta {
+                display: block;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Skip link para accesibilidad -->
+    <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
+    
+    <nav class="nav" role="navigation" aria-label="Navegación principal">
+        <div class="container">
+            <div class="nav-content">
+                <a href="#" class="logo" aria-label="Oposita Smart - Inicio">
+                    <div class="logo-icon" aria-hidden="true">OS</div>
+                    <div class="logo-text">Oposita<span>Smart</span></div>
+                </a>
+                <a href="#waitlist" class="nav-cta">Unirme a la lista</a>
+            </div>
+        </div>
+    </nav>
+    
+    <main id="main-content">
+    <section class="hero" aria-labelledby="hero-title">
+        <div class="container">
+            <div class="hero-content">
+                <div>
+                    <div class="hero-badge" role="status">🚀 Lanzamiento 2026</div>
+                    <h1 id="hero-title" class="hero-title">Aprueba tu oposición <span class="highlight">estudiando menos</span></h1>
+                    <p class="hero-subtitle">El 58% abandona por burnout, no por falta de capacidad. Oposita Smart usa ciencia cognitiva para que recuerdes más en menos tiempo. Preguntas calibradas al examen real.</p>
+                    <form class="hero-form" id="hero-form" aria-label="Formulario de lista de espera">
+                        <label for="hero-email" class="visually-hidden">Tu email</label>
+                        <input type="email" id="hero-email" class="hero-input" placeholder="Tu email..." required aria-required="true">
+                        <button type="submit" class="hero-button">Quiero acceso</button>
+                    </form>
+                    <div class="form-success" id="hero-success" role="alert">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                        <span>¡Genial! Te avisaremos cuando lancemos.</span>
+                    </div>
+                    <div class="hero-trust" role="list" aria-label="Beneficios">
+                        <div class="hero-trust-item" role="listitem"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span>Sin spam</span></div>
+                        <div class="hero-trust-item" role="listitem"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span>Precio fundador</span></div>
+                        <div class="hero-trust-item" role="listitem"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span>Acceso anticipado</span></div>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <div class="phone-mockup">
+                        <div class="phone-frame">
+                            <div class="phone-screen">
+                                <!-- TopBar -->
+                                <div class="app-topbar">
+                                    <div class="app-progress-ring">
+                                        <svg width="34" height="34" viewBox="0 0 36 36">
+                                            <circle class="ring-bg" cx="18" cy="18" r="14"/>
+                                            <circle class="ring-progress" cx="18" cy="18" r="14" stroke-dasharray="66 88"/>
+                                        </svg>
+                                        <span class="ring-text">75</span>
+                                    </div>
+                                    <div class="app-logo">Oposita Smart</div>
+                                    <div class="app-settings">⚙️</div>
+                                </div>
+                                
+                                <!-- Content -->
+                                <div class="app-content">
+                                    <!-- Date & Title -->
+                                    <div class="app-date">Sábado, 21 de diciembre</div>
+                                    <div class="app-title">Tu progreso de hoy</div>
+                                    <div class="app-subtitle">Continúa donde lo dejaste</div>
+                                    
+                                    <!-- Fortaleza Card -->
+                                    <div class="app-card">
+                                        <div class="fortaleza-header">
+                                            <div class="fortaleza-title"><span>🏰</span> Tu Fortaleza</div>
+                                            <div class="fortaleza-link">Ver todo ›</div>
+                                        </div>
+                                        <div class="fortaleza-content">
+                                            <div class="tema-row">
+                                                <span class="tema-id">T4</span>
+                                                <span class="tema-name">Administración Pub...</span>
+                                                <div class="dots">
+                                                    <div class="dot amber"></div>
+                                                    <div class="dot"></div>
+                                                    <div class="dot"></div>
+                                                    <div class="dot"></div>
+                                                    <div class="dot"></div>
+                                                    <div class="dot"></div>
+                                                </div>
+                                                <span class="tema-status amber">Repasar</span>
+                                            </div>
+                                            <div class="tema-row">
+                                                <span class="tema-id">T1</span>
+                                                <span class="tema-name">Constitución Espan...</span>
+                                                <div class="dots">
+                                                    <div class="dot purple"></div>
+                                                    <div class="dot purple"></div>
+                                                    <div class="dot purple"></div>
+                                                    <div class="dot purple"></div>
+                                                    <div class="dot"></div>
+                                                    <div class="dot"></div>
+                                                </div>
+                                                <span class="tema-status purple">Progresando</span>
+                                            </div>
+                                            <div class="tema-row">
+                                                <span class="tema-id">T2</span>
+                                                <span class="tema-name">Organización del E...</span>
+                                                <div class="dots">
+                                                    <div class="dot purple"></div>
+                                                    <div class="dot purple"></div>
+                                                    <div class="dot"></div>
+                                                    <div class="dot"></div>
+                                                    <div class="dot"></div>
+                                                    <div class="dot"></div>
+                                                </div>
+                                                <span class="tema-status gray">Nuevo</span>
+                                            </div>
+                                        </div>
+                                        <div class="fortaleza-more">+1 tema más</div>
+                                    </div>
+                                    
+                                    <!-- Session Card -->
+                                    <div class="session-card">
+                                        <div class="session-header">
+                                            <div class="session-title">🎯 Tu Sesión de Hoy</div>
+                                            <div class="session-badge">~20 min</div>
+                                        </div>
+                                        <div class="session-item">
+                                            <div class="session-icon green">📗</div>
+                                            <div class="session-item-info">
+                                                <div class="session-item-title">Tema 8 - AGE Central</div>
+                                                <div class="session-item-sub">Tema nuevo · 15 preguntas</div>
+                                            </div>
+                                        </div>
+                                        <div class="session-item">
+                                            <div class="session-icon orange">🔄</div>
+                                            <div class="session-item-info">
+                                                <div class="session-item-title">Tema 4 - La Corona</div>
+                                                <div class="session-item-sub">Repaso · Art. 57 débil</div>
+                                            </div>
+                                        </div>
+                                        <button class="app-btn-primary">Empezar sesión →</button>
+                                    </div>
+                                    
+                                    <!-- Ver más link -->
+                                    <a class="app-link">Ver más opciones →</a>
+                                    
+                                    <!-- Reto del día -->
+                                    <div class="reto-card">
+                                        <div class="reto-icon">⚡</div>
+                                        <div class="reto-info">
+                                            <div class="reto-title">Reto del día</div>
+                                            <div class="reto-sub">10 preguntas seguidas</div>
+                                        </div>
+                                        <div class="reto-btn">Intentar</div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Bottom Tab Bar -->
+                                <div class="app-tabbar">
+                                    <div class="tab-item active">
+                                        <span class="tab-icon">🏠</span>
+                                        <span class="tab-label">Inicio</span>
+                                    </div>
+                                    <div class="tab-item">
+                                        <span class="tab-icon">📊</span>
+                                        <span class="tab-label">Actividad</span>
+                                    </div>
+                                    <div class="tab-item">
+                                        <span class="tab-icon">📖</span>
+                                        <span class="tab-label">Temas</span>
+                                    </div>
+                                    <div class="tab-item">
+                                        <span class="tab-icon">🎓</span>
+                                        <span class="tab-label">Recursos</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="floating-badge floating-badge-1"><div class="fb-icon green">✓</div><div class="fb-text"><strong>+15 correctas</strong><span>Esta sesión</span></div></div>
+                    <div class="floating-badge floating-badge-2"><div class="fb-icon yellow">🔥</div><div class="fb-text"><strong>Racha activa</strong><span>12 días seguidos</span></div></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="section" aria-labelledby="problem-title">
+        <div class="container">
+            <div class="section-label">El problema</div>
+            <h2 id="problem-title" class="section-title">Preparar oposiciones no debería destrozarte</h2>
+            <p class="section-subtitle">Los métodos actuales están rotos. Preguntas artificialmente difíciles, sistemas anticuados y una tasa de abandono alarmante.</p>
+            <div class="problem-grid" role="list">
+                <article class="problem-card" role="listitem"><div class="problem-icon" aria-hidden="true">😰</div><h3>Preguntas irreales</h3><p>Las apps de la competencia usan preguntas mucho más difíciles que el examen real. Te frustras sin motivo.</p><div class="problem-stat" aria-label="87 por ciento">87%</div><div class="problem-stat-label">reporta frustración</div></article>
+                <article class="problem-card" role="listitem"><div class="problem-icon" aria-hidden="true">🔄</div><h3>Estudias sin retener</h3><p>Lees, relees, subrayas... pero a la semana no recuerdas nada. El método tradicional no funciona.</p><div class="problem-stat" aria-label="73 por ciento">73%</div><div class="problem-stat-label">olvida en 7 días</div></article>
+                <article class="problem-card" role="listitem"><div class="problem-icon" aria-hidden="true">💔</div><h3>Abandono masivo</h3><p>Más de la mitad abandonan antes de presentarse. No por capacidad, sino por burnout.</p><div class="problem-stat" aria-label="58 por ciento">58%</div><div class="problem-stat-label">tasa de abandono</div></article>
+            </div>
+        </div>
+    </section>
+    
+    <section class="section section-alt">
+        <div class="container">
+            <div class="section-label">La solución</div>
+            <h2 class="section-title">Un sistema que sí funciona</h2>
+            <p class="section-subtitle">Oposita Smart combina ciencia cognitiva, gamificación inteligente y preguntas calibradas al examen real.</p>
+            <div class="solution-grid">
+                <div class="solution-card"><div class="solution-icon">🎯</div><h3>Preguntas reales</h3><p>Nivel de dificultad calibrado a exámenes oficiales AGE. Sin trucos. Sabrás exactamente cómo vas.</p></div>
+                <div class="solution-card"><div class="solution-icon">🧠</div><h3>Repetición espaciada</h3><p>Algoritmo científico que te muestra cada pregunta en el momento óptimo. Estudia menos, recuerda más.</p></div>
+                <div class="solution-card"><div class="solution-icon">🏰</div><h3>Tu Fortaleza</h3><p>Visualiza tu conocimiento como una fortaleza de puntos. Cada tema consolidado es un muro más fuerte.</p></div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="section section-dark">
+        <div class="container">
+            <div class="section-label">Cómo funciona</div>
+            <h2 class="section-title">Simple, pero potente</h2>
+            <p class="section-subtitle">4 pasos para transformar tu preparación</p>
+            <div class="steps">
+                <div class="step"><div class="step-number">1</div><h3>Elige tu oposición</h3><p>Empezamos con Auxiliar AGE (C2)</p></div>
+                <div class="step"><div class="step-number">2</div><h3>Practica a diario</h3><p>Sesiones de 10-15 min optimizadas</p></div>
+                <div class="step"><div class="step-number">3</div><h3>Construye tu Fortaleza</h3><p>Visualiza progreso tema por tema</p></div>
+                <div class="step"><div class="step-number">4</div><h3>Llega preparado</h3><p>Sin sorpresas, sabrás tu nivel</p></div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="section section-alt" aria-labelledby="beta-title">
+        <div class="container">
+            <div class="section-label" style="text-align:center">Beta privada</div>
+            <h2 id="beta-title" class="section-title" style="text-align:center;margin:0 auto 16px">Sé de los primeros en probarlo</h2>
+            <p class="section-subtitle" style="text-align:center;margin:0 auto 48px">Buscamos opositores comprometidos que quieran ayudarnos a construir la mejor herramienta de preparación</p>
+            <div class="beta-benefits">
+                <div class="beta-card">
+                    <div class="beta-icon">🎁</div>
+                    <h3>Precio fundador de por vida</h3>
+                    <p>Accede a un descuento exclusivo que mantendrás para siempre, incluso cuando subamos precios.</p>
+                </div>
+                <div class="beta-card">
+                    <div class="beta-icon">🗣️</div>
+                    <h3>Tu feedback importa</h3>
+                    <p>Tendrás línea directa con el equipo. Tus sugerencias darán forma al producto final.</p>
+                </div>
+                <div class="beta-card">
+                    <div class="beta-icon">🚀</div>
+                    <h3>Acceso anticipado</h3>
+                    <p>Empieza a prepararte antes que nadie con las funcionalidades más avanzadas.</p>
+                </div>
+            </div>
+            <div class="stats-bar">
+                <div class="stat-item"><div class="stat-value">2.4M</div><div class="stat-label">Opositores en España</div></div>
+                <div class="stat-item"><div class="stat-value">330K</div><div class="stat-label">Plazas previstas 2026</div></div>
+                <div class="stat-item"><div class="stat-value">28</div><div class="stat-label">Temas temario AGE</div></div>
+                <div class="stat-item"><div class="stat-value">1º sem</div><div class="stat-label">Lanzamiento 2026</div></div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="cta" id="waitlist" aria-labelledby="cta-title">
+        <div class="container">
+            <h2 id="cta-title" class="cta-title">¿Quieres ser beta tester?</h2>
+            <p class="cta-subtitle">Únete a la lista de espera y sé de los primeros en probar Oposita Smart. Precio fundador garantizado.</p>
+            <form class="cta-form" id="cta-form" aria-label="Formulario de registro beta">
+                <label for="cta-email" class="visually-hidden">Tu email</label>
+                <input type="email" id="cta-email" class="cta-input" placeholder="tu@email.com" required aria-required="true">
+                <button type="submit" class="cta-button">Quiero ser beta tester</button>
+            </form>
+            <div class="form-success" id="cta-success" role="alert" style="background:rgba(255,255,255,0.2);color:white">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                <span>¡Estás dentro! Te avisaremos cuando abramos la beta.</span>
+            </div>
+            <p class="cta-note">🔒 Sin spam · Solo actualizaciones importantes del lanzamiento</p>
+        </div>
+    </section>
+    
+    <section class="section">
+        <div class="container">
+            <div class="section-label" style="text-align:center">Preguntas frecuentes</div>
+            <h2 class="section-title" style="text-align:center;margin:0 auto 48px">Lo que quieres saber</h2>
+            <div class="faq-grid">
+                <div class="faq-item"><div class="faq-question">¿Cuándo estará disponible?</div><div class="faq-answer">Lanzamos la beta en el primer semestre de 2026. Los de la lista tendrán acceso prioritario y precio fundador.</div></div>
+                <div class="faq-item"><div class="faq-question">¿Qué oposición cubre?</div><div class="faq-answer">Empezamos con Auxiliar Administrativo del Estado (C2). Después expandiremos a otras.</div></div>
+                <div class="faq-item"><div class="faq-question">¿Cuánto costará?</div><div class="faq-answer">Precio por definir, pero fundadores tendrán descuento significativo de por vida.</div></div>
+                <div class="faq-item"><div class="faq-question">¿Sustituye academia?</div><div class="faq-answer">Es un complemento perfecto. Te ayuda a consolidar lo aprendido y detectar puntos débiles.</div></div>
+            </div>
+        </div>
+    </section>
+    </main>
+    
+    <!-- Sticky CTA Mobile -->
+    <div class="sticky-cta" id="sticky-cta" aria-label="Formulario rápido de registro">
+        <form class="sticky-cta-content sticky-cta-form" id="sticky-form">
+            <input type="email" class="sticky-cta-input" placeholder="Tu email" required aria-label="Tu email">
+            <button type="submit" class="sticky-cta-button">Unirme</button>
+        </form>
+        <div class="sticky-cta-success" id="sticky-success">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            <span>¡Estás en la lista!</span>
+        </div>
+    </div>
+    
+    <footer class="footer" role="contentinfo">
+        <div class="container">
+            <div class="footer-content">
+                <a href="#" class="logo" aria-label="Oposita Smart - Inicio"><div class="logo-icon" aria-hidden="true">OS</div><div class="logo-text">Oposita<span>Smart</span></div></a>
+                <nav class="footer-links" aria-label="Enlaces del footer"><a href="mailto:hola@opositasmart.com">Contacto</a><a href="/privacidad.html">Privacidad</a><a href="#">Términos</a></nav>
+            </div>
+            <div class="footer-bottom">© 2026 Oposita Smart. Hecho con ❤️ para opositores.</div>
+        </div>
+    </footer>
+    
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+        // Form handling con preparación para Supabase
+        function handleForm(formId, successId, hideForm = true) {
+            const form = document.getElementById(formId);
+            if (!form) return;
+            
+            form.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const email = e.target.querySelector('input').value;
+                const button = e.target.querySelector('button');
+                
+                // Deshabilitar botón mientras procesa
+                button.disabled = true;
+                const originalText = button.textContent;
+                button.textContent = 'Enviando...';
+                
+                try {
+                    // TODO: Conectar con Supabase
+                    // const { error } = await supabase.from('waitlist').insert({ email });
+                    // if (error) throw error;
+                    
+                    console.log('Email registrado:', email);
+                    
+                    // Mostrar éxito
+                    if (hideForm) {
+                        e.target.style.display = 'none';
+                    } else {
+                        e.target.classList.add('hidden');
+                    }
+                    document.getElementById(successId).classList.add('show');
+                    
+                    // Si es el sticky, ocultar después de 3 segundos
+                    if (formId === 'sticky-form') {
+                        setTimeout(() => {
+                            document.getElementById('sticky-cta').classList.remove('visible');
+                        }, 3000);
+                    }
+                    
+                } catch (error) {
+                    console.error('Error:', error);
+                    button.disabled = false;
+                    button.textContent = originalText;
+                }
+            });
+        }
+        
+        handleForm('hero-form', 'hero-success');
+        handleForm('cta-form', 'cta-success');
+        handleForm('sticky-form', 'sticky-success', false);
+        
+        // Sticky CTA: mostrar después de pasar el hero
+        const stickyCta = document.getElementById('sticky-cta');
+        const heroSection = document.querySelector('.hero');
+        
+        function handleStickyVisibility() {
+            if (!stickyCta || !heroSection) return;
+            
+            const heroBottom = heroSection.getBoundingClientRect().bottom;
+            
+            // Mostrar cuando el hero sale de la pantalla
+            if (heroBottom < 100) {
+                stickyCta.classList.add('visible');
+            } else {
+                stickyCta.classList.remove('visible');
+            }
+        }
+        
+        // Solo activar en móvil
+        if (window.innerWidth <= 640) {
+            window.addEventListener('scroll', handleStickyVisibility, { passive: true });
+        }
+        
+        // Smooth scroll para links internos
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', (e) => {
+                e.preventDefault();
+                const target = document.querySelector(anchor.getAttribute('href'));
+                if (t
