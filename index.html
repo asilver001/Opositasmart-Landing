@@ -1399,8 +1399,15 @@
         </div>
     </footer>
     
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-        // Form handling con preparación para Supabase
+    <!-- Supabase Client -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script>
+        // Inicializar Supabase
+        const supabaseUrl = 'https://yutfgmiyndmhsjhzxkdr.supabase.co';
+        const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inl1dGZnbWl5bmRtaHNqaHp4a2RyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjU4MDE2OTksImV4cCI6MjA4MTM3NzY5OX0.U1X8dmdHjzybKHtWJ4-kcJSrigELUhynhZcs8tU8NwI';
+        const supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
+
+        // Form handling con Supabase
         function handleForm(formId, successId, hideForm = true) {
             const form = document.getElementById(formId);
             if (!form) return;
@@ -1410,19 +1417,19 @@
                 const email = e.target.querySelector('input').value;
                 const button = e.target.querySelector('button');
                 
-                // Deshabilitar botón mientras procesa
                 button.disabled = true;
                 const originalText = button.textContent;
                 button.textContent = 'Enviando...';
                 
                 try {
-                    // TODO: Conectar con Supabase
-                    // const { error } = await supabase.from('waitlist').insert({ email });
-                    // if (error) throw error;
+                    const { error } = await supabase
+                        .from('waitlist')
+                        .insert({ email, source: 'landing' });
                     
-                    console.log('Email registrado:', email);
+                    if (error && error.code !== '23505') {
+                        throw error;
+                    }
                     
-                    // Mostrar éxito
                     if (hideForm) {
                         e.target.style.display = 'none';
                     } else {
@@ -1430,7 +1437,6 @@
                     }
                     document.getElementById(successId).classList.add('show');
                     
-                    // Si es el sticky, ocultar después de 3 segundos
                     if (formId === 'sticky-form') {
                         setTimeout(() => {
                             document.getElementById('sticky-cta').classList.remove('visible');
@@ -1440,7 +1446,8 @@
                 } catch (error) {
                     console.error('Error:', error);
                     button.disabled = false;
-                    button.textContent = originalText;
+                    button.textContent = 'Error - Reintentar';
+                    setTimeout(() => { button.textContent = originalText; }, 2000);
                 }
             });
         }
@@ -1449,16 +1456,13 @@
         handleForm('cta-form', 'cta-success');
         handleForm('sticky-form', 'sticky-success', false);
         
-        // Sticky CTA: mostrar después de pasar el hero
+        // Sticky CTA
         const stickyCta = document.getElementById('sticky-cta');
         const heroSection = document.querySelector('.hero');
         
         function handleStickyVisibility() {
             if (!stickyCta || !heroSection) return;
-            
             const heroBottom = heroSection.getBoundingClientRect().bottom;
-            
-            // Mostrar cuando el hero sale de la pantalla
             if (heroBottom < 100) {
                 stickyCta.classList.add('visible');
             } else {
@@ -1466,14 +1470,18 @@
             }
         }
         
-        // Solo activar en móvil
         if (window.innerWidth <= 640) {
             window.addEventListener('scroll', handleStickyVisibility, { passive: true });
         }
         
-        // Smooth scroll para links internos
+        // Smooth scroll
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', (e) => {
                 e.preventDefault();
                 const target = document.querySelector(anchor.getAttribute('href'));
-                if (t
+                if (target) target.scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+    </script>
+</body>
+</html>
