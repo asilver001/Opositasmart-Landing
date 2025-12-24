@@ -79,7 +79,7 @@
             --text-dark: #1F2937;
             --text-medium: #4B5563;
             --text-light: #6B7280;
-            --text-muted: #6B7280; /* Mejorado de #9CA3AF para mejor contraste */
+            --text-muted: #6B7280;
             --border-light: #E5E7EB;
             --border-lighter: #F3F4F6;
         }
@@ -1399,82 +1399,146 @@
         </div>
     </footer>
     
-    <!-- Supabase Client -->
+    <!-- Supabase Client - SOLO UNA VEZ -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script>
-        // Inicializar Supabase
-        const supabaseUrl = 'https://yutfgmiyndmhsjhzxkdr.supabase.co';
-        const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inl1dGZnbWl5bmRtaHNqaHp4a2RyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjU4MDE2OTksImV4cCI6MjA4MTM3NzY5OX0.U1X8dmdHjzybKHtWJ4-kcJSrigELUhynhZcs8tU8NwI';
-        const supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
+        // =====================================================
+        // CONFIGURACIÓN SUPABASE - NO DUPLICAR ESTA SECCIÓN
+        // =====================================================
+        const SUPABASE_URL = 'https://yutfgmiyndmhsjhzxkdr.supabase.co';
+        const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inl1dGZnbWl5bmRtaHNqaHp4a2RyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjU4MDE2OTksImV4cCI6MjA4MTM3NzY5OX0.U1X8dmdHjzybKHtWJ4-kcJSrigELUhynhZcs8tU8NwI';
+        
+        // Crear cliente Supabase (usando window.supabase de la librería CDN)
+        const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
-        // Form handling con Supabase
+        // =====================================================
+        // FUNCIÓN PARA GUARDAR EMAIL
+        // =====================================================
+        async function saveEmailToWaitlist(email, source = 'landing') {
+            try {
+                console.log('Guardando email:', email);
+                
+                const { data, error } = await supabaseClient
+                    .from('waitlist')
+                    .insert([{ email: email, source: source }])
+                    .select();
+                
+                if (error) {
+                    // Email duplicado = éxito (ya estaba registrado)
+                    if (error.code === '23505') {
+                        console.log('Email ya registrado');
+                        return { success: true, alreadyExists: true };
+                    }
+                    console.error('Error Supabase:', error);
+                    return { success: false, error: error };
+                }
+                
+                console.log('Email guardado:', data);
+                return { success: true, data: data };
+                
+            } catch (e) {
+                console.error('Excepción:', e);
+                return { success: false, error: e };
+            }
+        }
+
+        // =====================================================
+        // MANEJADOR DE FORMULARIOS
+        // =====================================================
         function handleForm(formId, successId, hideForm = true) {
             const form = document.getElementById(formId);
             if (!form) return;
             
             form.addEventListener('submit', async (e) => {
                 e.preventDefault();
-                const email = e.target.querySelector('input').value;
+                
+                const emailInput = e.target.querySelector('input[type="email"]');
+                const email = emailInput ? emailInput.value.trim() : '';
                 const button = e.target.querySelector('button');
                 
-                button.disabled = true;
-                const originalText = button.textContent;
-                button.textContent = 'Enviando...';
+                if (!email) return;
                 
-                try {
-                    const { error } = await supabase
-                        .from('waitlist')
-                        .insert({ email, source: 'landing' });
-                    
-                    if (error && error.code !== '23505') {
-                        throw error;
-                    }
+                // Deshabilitar botón
+                if (button) {
+                    button.disabled = true;
+                    button.dataset.originalText = button.textContent;
+                    button.textContent = 'Enviando...';
+                }
+                
+                const result = await saveEmailToWaitlist(email);
+                
+                if (result.success) {
+                    // Mostrar éxito
+                    const successEl = document.getElementById(successId);
                     
                     if (hideForm) {
                         e.target.style.display = 'none';
                     } else {
                         e.target.classList.add('hidden');
                     }
-                    document.getElementById(successId).classList.add('show');
                     
+                    if (successEl) {
+                        successEl.classList.add('show');
+                    }
+                    
+                    // Sticky form: ocultar después de 3s
                     if (formId === 'sticky-form') {
                         setTimeout(() => {
-                            document.getElementById('sticky-cta').classList.remove('visible');
+                            const stickyCta = document.getElementById('sticky-cta');
+                            if (stickyCta) stickyCta.classList.remove('visible');
                         }, 3000);
                     }
                     
-                } catch (error) {
-                    console.error('Error:', error);
-                    button.disabled = false;
-                    button.textContent = 'Error - Reintentar';
-                    setTimeout(() => { button.textContent = originalText; }, 2000);
+                } else {
+                    // Error
+                    if (button) {
+                        button.disabled = false;
+                        button.textContent = 'Error - Reintentar';
+                        setTimeout(() => {
+                            button.textContent = button.dataset.originalText || 'Enviar';
+                        }, 2000);
+                    }
                 }
             });
         }
         
-        handleForm('hero-form', 'hero-success');
-        handleForm('cta-form', 'cta-success');
-        handleForm('sticky-form', 'sticky-success', false);
+        // =====================================================
+        // INICIALIZACIÓN
+        // =====================================================
+        document.addEventListener('DOMContentLoaded', function() {
+            // Inicializar los 3 formularios
+            handleForm('hero-form', 'hero-success', true);
+            handleForm('cta-form', 'cta-success', true);
+            handleForm('sticky-form', 'sticky-success', false);
+            
+            console.log('Oposita Smart: Formularios inicializados');
+        });
         
-        // Sticky CTA
-        const stickyCta = document.getElementById('sticky-cta');
-        const heroSection = document.querySelector('.hero');
-        
-        function handleStickyVisibility() {
-            if (!stickyCta || !heroSection) return;
-            const heroBottom = heroSection.getBoundingClientRect().bottom;
-            if (heroBottom < 100) {
-                stickyCta.classList.add('visible');
-            } else {
-                stickyCta.classList.remove('visible');
+        // =====================================================
+        // STICKY CTA (solo móvil)
+        // =====================================================
+        (function() {
+            const stickyCta = document.getElementById('sticky-cta');
+            const heroSection = document.querySelector('.hero');
+            
+            function handleStickyVisibility() {
+                if (!stickyCta || !heroSection) return;
+                const heroBottom = heroSection.getBoundingClientRect().bottom;
+                if (heroBottom < 100) {
+                    stickyCta.classList.add('visible');
+                } else {
+                    stickyCta.classList.remove('visible');
+                }
             }
-        }
+            
+            if (window.innerWidth <= 640) {
+                window.addEventListener('scroll', handleStickyVisibility, { passive: true });
+            }
+        })();
         
-        if (window.innerWidth <= 640) {
-            window.addEventListener('scroll', handleStickyVisibility, { passive: true });
-        }
-        
-        // Smooth scroll
+        // =====================================================
+        // SMOOTH SCROLL
+        // =====================================================
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', (e) => {
                 e.preventDefault();
