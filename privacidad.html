@@ -3,33 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Política de Privacidad | Oposita Smart</title>
-    <meta name="description" content="Política de privacidad de Oposita Smart. Información sobre el tratamiento de datos personales.">
-    <link rel="canonical" href="https://opositasmart.com/privacidad.html">
+    <title>Términos y Condiciones | Oposita Smart</title>
+    <meta name="description" content="Términos y condiciones de uso de Oposita Smart, la app de preparación de oposiciones.">
+    <link rel="canonical" href="https://opositasmart.com/terminos.html">
+    
+    <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%238B5CF6'/><text x='50' y='68' font-size='50' text-anchor='middle' fill='white' font-family='system-ui' font-weight='bold'>OS</text></svg>">
+    
     <style>
+        :root {
+            --purple-primary: #8B5CF6;
+            --purple-dark: #7C3AED;
+            --bg-main: #FAFAFA;
+            --bg-white: #FFFFFF;
+            --text-dark: #1F2937;
+            --text-medium: #4B5563;
+            --border-lighter: #F3F4F6;
+        }
+        
         * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            background: #FAFAFA;
-            color: #1F2937;
+            background: var(--bg-main);
+            color: var(--text-dark);
             line-height: 1.7;
         }
+        
+        .container { max-width: 800px; margin: 0 auto; padding: 0 20px; }
+        
+        /* Nav */
         .nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 1000;
-            padding: 12px 0;
-            background: rgba(250, 250, 250, 0.95);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid #F3F4F6;
+            padding: 16px 0;
+            background: var(--bg-white);
+            border-bottom: 1px solid var(--border-lighter);
         }
         .nav-content {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 0 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -43,7 +52,7 @@
         .logo-icon {
             width: 36px;
             height: 36px;
-            background: linear-gradient(135deg, #8B5CF6 0%, #06B6D4 100%);
+            background: linear-gradient(135deg, var(--purple-primary) 0%, #06B6D4 100%);
             border-radius: 8px;
             display: flex;
             align-items: center;
@@ -55,125 +64,145 @@
         .logo-text {
             font-size: 16px;
             font-weight: 700;
-            color: #1F2937;
+            color: var(--text-dark);
         }
-        .logo-text span { color: #8B5CF6; }
+        .logo-text span { color: var(--purple-primary); }
+        
         .back-link {
-            color: #8B5CF6;
+            color: var(--purple-primary);
             text-decoration: none;
             font-size: 14px;
             font-weight: 500;
         }
         .back-link:hover { text-decoration: underline; }
         
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 100px 20px 60px;
+        /* Content */
+        .content {
+            padding: 60px 0;
+            background: var(--bg-white);
+            min-height: calc(100vh - 200px);
         }
+        
         h1 {
             font-size: 32px;
             font-weight: 700;
             margin-bottom: 8px;
-            color: #1F2937;
+            color: var(--text-dark);
         }
+        
         .last-updated {
             font-size: 14px;
-            color: #6B7280;
+            color: var(--text-medium);
             margin-bottom: 40px;
         }
+        
         h2 {
             font-size: 20px;
             font-weight: 600;
-            margin: 32px 0 16px;
-            color: #1F2937;
-        }
-        p, li {
-            font-size: 16px;
-            color: #4B5563;
+            margin-top: 32px;
             margin-bottom: 16px;
+            color: var(--text-dark);
         }
-        ul {
-            padding-left: 24px;
-            margin-bottom: 16px;
-        }
-        li { margin-bottom: 8px; }
-        a { color: #8B5CF6; }
         
-        .footer {
-            text-align: center;
-            padding: 40px 20px;
-            font-size: 14px;
-            color: #6B7280;
-            border-top: 1px solid #E5E7EB;
+        p {
+            margin-bottom: 16px;
+            color: var(--text-medium);
         }
+        
+        ul {
+            margin-bottom: 16px;
+            padding-left: 24px;
+            color: var(--text-medium);
+        }
+        
+        li {
+            margin-bottom: 8px;
+        }
+        
+        a {
+            color: var(--purple-primary);
+        }
+        
+        /* Footer */
+        .footer {
+            padding: 32px 0;
+            background: var(--text-dark);
+            color: rgba(255,255,255,0.8);
+            text-align: center;
+        }
+        .footer a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+        }
+        .footer a:hover { color: white; }
     </style>
 </head>
 <body>
     <nav class="nav">
-        <div class="nav-content">
-            <a href="/" class="logo">
-                <div class="logo-icon">OS</div>
-                <div class="logo-text">Oposita<span>Smart</span></div>
-            </a>
-            <a href="/" class="back-link">← Volver al inicio</a>
+        <div class="container">
+            <div class="nav-content">
+                <a href="/" class="logo">
+                    <div class="logo-icon">OS</div>
+                    <div class="logo-text">Oposita<span>Smart</span></div>
+                </a>
+                <a href="/" class="back-link">← Volver al inicio</a>
+            </div>
         </div>
     </nav>
     
-    <main class="container">
-        <h1>Política de Privacidad</h1>
-        <p class="last-updated">Última actualización: Diciembre 2024</p>
-        
-        <p>En Oposita Smart nos tomamos muy en serio la privacidad de nuestros usuarios. Esta política explica qué datos recogemos, por qué los recogemos y cómo los utilizamos.</p>
-        
-        <h2>1. Responsable del tratamiento</h2>
-        <p>El responsable del tratamiento de tus datos es Oposita Smart.</p>
-        <p>Email de contacto: <a href="mailto:hola@opositasmart.com">hola@opositasmart.com</a></p>
-        
-        <h2>2. Datos que recogemos</h2>
-        <p>Actualmente, solo recogemos:</p>
-        <ul>
-            <li><strong>Dirección de email:</strong> Cuando te registras en nuestra lista de espera para ser beta tester.</li>
-        </ul>
-        
-        <h2>3. Finalidad del tratamiento</h2>
-        <p>Utilizamos tu email únicamente para:</p>
-        <ul>
-            <li>Informarte sobre el lanzamiento de Oposita Smart</li>
-            <li>Enviarte actualizaciones importantes sobre el producto</li>
-            <li>Ofrecerte acceso anticipado como beta tester</li>
-        </ul>
-        <p>No enviamos spam ni compartimos tu email con terceros.</p>
-        
-        <h2>4. Base legal</h2>
-        <p>La base legal para el tratamiento de tus datos es tu <strong>consentimiento</strong>, que nos das al registrarte voluntariamente en nuestra lista de espera.</p>
-        
-        <h2>5. Conservación de datos</h2>
-        <p>Conservaremos tu email mientras mantengas interés en nuestro producto o hasta que solicites su eliminación.</p>
-        
-        <h2>6. Tus derechos</h2>
-        <p>Tienes derecho a:</p>
-        <ul>
-            <li><strong>Acceso:</strong> Saber qué datos tenemos sobre ti</li>
-            <li><strong>Rectificación:</strong> Corregir datos incorrectos</li>
-            <li><strong>Supresión:</strong> Solicitar que eliminemos tus datos</li>
-            <li><strong>Oposición:</strong> Oponerte al tratamiento de tus datos</li>
-            <li><strong>Portabilidad:</strong> Recibir tus datos en formato electrónico</li>
-        </ul>
-        <p>Para ejercer cualquiera de estos derechos, escríbenos a <a href="mailto:hola@opositasmart.com">hola@opositasmart.com</a>.</p>
-        
-        <h2>7. Seguridad</h2>
-        <p>Almacenamos tus datos en servidores seguros con cifrado. Utilizamos Supabase como proveedor de base de datos, que cumple con los estándares de seguridad de la industria.</p>
-        
-        <h2>8. Cambios en esta política</h2>
-        <p>Podemos actualizar esta política ocasionalmente. Te notificaremos de cualquier cambio significativo por email.</p>
-        
-        <h2>9. Contacto</h2>
-        <p>Si tienes preguntas sobre esta política de privacidad, contacta con nosotros en <a href="mailto:hola@opositasmart.com">hola@opositasmart.com</a>.</p>
+    <main class="content">
+        <div class="container">
+            <h1>Términos y Condiciones</h1>
+            <p class="last-updated">Última actualización: Diciembre 2024</p>
+            
+            <p>Bienvenido a Oposita Smart. Al acceder y utilizar nuestro sitio web y servicios, aceptas cumplir con estos términos y condiciones.</p>
+            
+            <h2>1. Descripción del Servicio</h2>
+            <p>Oposita Smart es una plataforma digital de preparación para oposiciones que ofrece herramientas de estudio basadas en repetición espaciada y preguntas calibradas. Actualmente nos encontramos en fase de desarrollo y ofrecemos una lista de espera para acceso anticipado.</p>
+            
+            <h2>2. Lista de Espera</h2>
+            <p>Al registrarte en nuestra lista de espera:</p>
+            <ul>
+                <li>Proporcionas tu dirección de email de forma voluntaria</li>
+                <li>Aceptas recibir comunicaciones relacionadas con el lanzamiento del producto</li>
+                <li>Entiendes que el acceso como "fundador" está sujeto a disponibilidad y términos que se comunicarán antes del lanzamiento</li>
+            </ul>
+            
+            <h2>3. Propiedad Intelectual</h2>
+            <p>Todo el contenido de este sitio web, incluyendo pero no limitado a textos, gráficos, logos, iconos, imágenes, clips de audio y software, es propiedad de Oposita Smart o sus licenciantes y está protegido por las leyes de propiedad intelectual españolas e internacionales.</p>
+            
+            <h2>4. Uso Aceptable</h2>
+            <p>Te comprometes a:</p>
+            <ul>
+                <li>Proporcionar información veraz y actualizada</li>
+                <li>No utilizar el servicio para fines ilegales o no autorizados</li>
+                <li>No intentar acceder de forma no autorizada a nuestros sistemas</li>
+                <li>No reproducir, duplicar o explotar comercialmente ninguna parte del servicio sin autorización expresa</li>
+            </ul>
+            
+            <h2>5. Limitación de Responsabilidad</h2>
+            <p>Oposita Smart se proporciona "tal cual" y "según disponibilidad". No garantizamos que el servicio sea ininterrumpido, seguro o libre de errores. No nos hacemos responsables de:</p>
+            <ul>
+                <li>Resultados de exámenes u oposiciones</li>
+                <li>Pérdida de datos o información</li>
+                <li>Daños indirectos derivados del uso del servicio</li>
+            </ul>
+            
+            <h2>6. Modificaciones</h2>
+            <p>Nos reservamos el derecho de modificar estos términos en cualquier momento. Los cambios entrarán en vigor inmediatamente después de su publicación en el sitio web. El uso continuado del servicio después de cualquier modificación constituye tu aceptación de los nuevos términos.</p>
+            
+            <h2>7. Legislación Aplicable</h2>
+            <p>Estos términos se rigen por la legislación española. Cualquier disputa que surja en relación con estos términos estará sujeta a la jurisdicción exclusiva de los tribunales de España.</p>
+            
+            <h2>8. Contacto</h2>
+            <p>Si tienes preguntas sobre estos términos, puedes contactarnos en: <a href="mailto:hola@opositasmart.com">hola@opositasmart.com</a></p>
+        </div>
     </main>
     
     <footer class="footer">
-        © 2026 Oposita Smart. Todos los derechos reservados.
+        <div class="container">
+            <p>© 2026 Oposita Smart · <a href="/privacidad.html">Privacidad</a> · <a href="/terminos.html">Términos</a></p>
+        </div>
     </footer>
 </body>
 </html>
