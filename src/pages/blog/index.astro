@@ -1,0 +1,141 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import BlogCard from '../../components/BlogCard.astro';
+import CTABanner from '../../components/CTABanner.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('blog', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+const categories = [...new Set(posts.map(p => p.data.category))];
+
+const categoryLabels: Record<string, string> = {
+  temario: 'Temario',
+  metodo: 'Método',
+  convocatorias: 'Convocatorias',
+  guias: 'Guías',
+  consejos: 'Consejos',
+};
+---
+
+<BaseLayout
+  title="Blog | Oposita Smart — Guías y Consejos para Oposiciones"
+  description="Artículos prácticos sobre cómo preparar oposiciones: temario, técnicas de estudio, convocatorias y ciencia del aprendizaje."
+>
+  <section class="blog-index">
+    <div class="container">
+      <div class="blog-header">
+        <h1 class="blog-title">Guías para opositores</h1>
+        <p class="blog-description">Artículos prácticos para preparar tu oposición con ciencia. Temario, método, convocatorias y más.</p>
+      </div>
+
+      {categories.length > 1 && (
+        <div class="category-filters">
+          <span class="filter-label">Filtrar:</span>
+          {categories.map(cat => (
+            <span class="filter-pill">{categoryLabels[cat] || cat}</span>
+          ))}
+        </div>
+      )}
+
+      <div class="posts-grid">
+        {posts.map((post) => (
+          <BlogCard
+            title={post.data.title}
+            description={post.data.description}
+            date={post.data.date}
+            category={post.data.category}
+            slug={post.id}
+            emoji={post.data.emoji}
+            readingTime={post.data.readingTime}
+          />
+        ))}
+      </div>
+
+      {posts.length === 0 && (
+        <div class="empty-state">
+          <p>Pronto publicaremos artículos. ¡Vuelve pronto!</p>
+        </div>
+      )}
+
+      <CTABanner />
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .blog-index {
+    padding: 100px 0 60px;
+  }
+
+  .blog-header {
+    text-align: center;
+    margin-bottom: 48px;
+  }
+
+  .blog-title {
+    font-size: clamp(28px, 4vw, 40px);
+    font-weight: 800;
+    color: var(--text-heading);
+    letter-spacing: -0.03em;
+    margin-bottom: 12px;
+  }
+
+  .blog-description {
+    font-size: 17px;
+    color: var(--text-secondary);
+    max-width: 520px;
+    margin: 0 auto;
+  }
+
+  .category-filters {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    justify-content: center;
+    margin-bottom: 32px;
+    flex-wrap: wrap;
+  }
+
+  .filter-label {
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-right: 4px;
+  }
+
+  .filter-pill {
+    font-size: 13px;
+    padding: 6px 14px;
+    border-radius: var(--radius-pill);
+    background: var(--bg-white);
+    border: 1px solid var(--border-light);
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .filter-pill:hover {
+    border-color: var(--green-primary);
+    color: var(--green-primary);
+    background: var(--green-tint);
+  }
+
+  .posts-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  .empty-state {
+    text-align: center;
+    padding: 60px 0;
+    color: var(--text-muted);
+    font-size: 16px;
+  }
+
+  @media (max-width: 900px) {
+    .posts-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 640px) {
+    .posts-grid { grid-template-columns: 1fr; }
+  }
+</style>

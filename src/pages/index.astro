@@ -1,0 +1,973 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CTABanner from '../components/CTABanner.astro';
+import BlogCard from '../components/BlogCard.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('blog', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+  .slice(0, 3);
+---
+
+<BaseLayout title="Oposita Smart | Prepara tu Oposición con Ciencia — App de Test Oposiciones 2026">
+  <Fragment slot="head">
+    <meta name="keywords" content="oposiciones auxiliar administrativo 2026, test oposiciones AGE, preparar oposiciones online, app oposiciones, oposiciones estado 2026, temario auxiliar administrativo">
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Oposita Smart",
+      "description": "App de preparación de oposiciones de Auxiliar Administrativo del Estado con ciencia cognitiva, repetición espaciada y preguntas calibradas al examen real.",
+      "url": "https://opositasmart-landing.vercel.app",
+      "applicationCategory": "EducationalApplication",
+      "operatingSystem": "Web",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "EUR",
+        "description": "Lista de espera gratuita con precio fundador garantizado"
+      }
+    })} />
+  </Fragment>
+
+  <!-- ========== HERO ========== -->
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-text">
+          <div class="hero-badge" role="status">
+            <span class="badge-dot"></span>
+            Lanzamiento 2026
+          </div>
+          <h1 id="hero-title" class="hero-title">
+            Aprueba tu oposición <span class="highlight">estudiando con ciencia</span>
+          </h1>
+          <p class="hero-subtitle">
+            Repetición espaciada + preguntas calibradas al examen real de Auxiliar Administrativo del Estado.
+            A tu ritmo, sin agobios.
+          </p>
+          <form class="hero-form" id="hero-form" novalidate>
+            <label for="hero-email" class="visually-hidden">Tu email</label>
+            <input type="email" id="hero-email" class="hero-input" placeholder="tu@email.com" required aria-required="true">
+            <button type="submit" class="hero-button">Quiero acceso</button>
+          </form>
+          <div class="form-success" id="hero-success" role="alert">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            <span>¡Genial! Te avisaremos cuando lancemos.</span>
+          </div>
+          <div class="hero-trust" role="list" aria-label="Beneficios">
+            <div class="hero-trust-item" role="listitem">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+              Sin spam
+            </div>
+            <div class="hero-trust-item" role="listitem">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+              Precio fundador
+            </div>
+            <div class="hero-trust-item" role="listitem">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+              Acceso anticipado
+            </div>
+          </div>
+        </div>
+        <div class="hero-visual" aria-hidden="true">
+          <div class="hero-stats">
+            <div class="stat-pill">
+              <span class="stat-number">1.000+</span>
+              <span class="stat-label">Preguntas</span>
+            </div>
+            <div class="stat-pill">
+              <span class="stat-number">11</span>
+              <span class="stat-label">Temas</span>
+            </div>
+            <div class="stat-pill">
+              <span class="stat-number">FSRS</span>
+              <span class="stat-label">Algoritmo</span>
+            </div>
+          </div>
+          <div class="phone-mockup">
+            <div class="phone-frame">
+              <div class="phone-screen">
+                <div class="app-topbar">
+                  <div class="app-logo">Oposita Smart</div>
+                </div>
+                <div class="app-content">
+                  <div class="app-greeting">Tu sesión de hoy</div>
+                  <div class="app-card-green">
+                    <div class="card-green-title">Sesión recomendada</div>
+                    <div class="card-green-sub">15 preguntas · ~10 min</div>
+                    <div class="card-green-btn">Empezar &rarr;</div>
+                  </div>
+                  <div class="app-progress-section">
+                    <div class="progress-label">
+                      <span>Progreso semanal</span>
+                      <span class="progress-pct">68%</span>
+                    </div>
+                    <div class="progress-bar">
+                      <div class="progress-fill" style="width: 68%"></div>
+                    </div>
+                  </div>
+                  <div class="app-tema-row">
+                    <span class="tema-dot tema-dot-green"></span>
+                    <span class="tema-name">T1 · Constitución</span>
+                    <span class="tema-pct">82%</span>
+                  </div>
+                  <div class="app-tema-row">
+                    <span class="tema-dot tema-dot-amber"></span>
+                    <span class="tema-name">T4 · Gobierno</span>
+                    <span class="tema-pct">45%</span>
+                  </div>
+                  <div class="app-tema-row">
+                    <span class="tema-dot tema-dot-light"></span>
+                    <span class="tema-name">T9 · LPAC</span>
+                    <span class="tema-pct">12%</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== PROBLEM ========== -->
+  <section class="section" aria-labelledby="problem-title">
+    <div class="container">
+      <div class="section-label">El problema</div>
+      <h2 id="problem-title" class="section-title">Preparar oposiciones no debería destrozarte</h2>
+      <p class="section-subtitle">Los métodos tradicionales están rotos. Preguntas irreales, estudio sin retención y un abandono alarmante.</p>
+      <div class="card-grid" role="list">
+        <article class="problem-card" role="listitem">
+          <div class="problem-icon">😰</div>
+          <h3>Preguntas irreales</h3>
+          <p>Muchas apps usan preguntas más difíciles que el examen real. Te frustras sin motivo.</p>
+          <div class="problem-stat">87%</div>
+          <div class="problem-stat-label">reporta frustración</div>
+        </article>
+        <article class="problem-card" role="listitem">
+          <div class="problem-icon">🔄</div>
+          <h3>Estudias sin retener</h3>
+          <p>Lees, relees, subrayas... pero a la semana no recuerdas nada.</p>
+          <div class="problem-stat">73%</div>
+          <div class="problem-stat-label">olvida en 7 días</div>
+        </article>
+        <article class="problem-card" role="listitem">
+          <div class="problem-icon">💔</div>
+          <h3>Abandono masivo</h3>
+          <p>Más de la mitad abandonan antes de presentarse. No por capacidad, sino por burnout.</p>
+          <div class="problem-stat">58%</div>
+          <div class="problem-stat-label">tasa de abandono</div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== SOLUTION ========== -->
+  <section class="section section-white" id="metodo" aria-labelledby="solution-title">
+    <div class="container">
+      <div class="section-label">La solución</div>
+      <h2 id="solution-title" class="section-title">Un sistema que sí funciona</h2>
+      <p class="section-subtitle">Oposita Smart combina ciencia cognitiva, preguntas calibradas y un enfoque humano.</p>
+      <div class="card-grid">
+        <div class="solution-card">
+          <div class="solution-icon">🎯</div>
+          <h3>Preguntas reales</h3>
+          <p>Nivel de dificultad calibrado a exámenes oficiales AGE. Sin trucos.</p>
+        </div>
+        <div class="solution-card">
+          <div class="solution-icon">🧠</div>
+          <h3>Repetición espaciada</h3>
+          <p>Algoritmo FSRS que te muestra cada pregunta en el momento óptimo para recordarla.</p>
+        </div>
+        <div class="solution-card">
+          <div class="solution-icon">💚</div>
+          <h3>Sin agobios</h3>
+          <p>Unos minutos al día. Sin presión artificial ni gamificación tóxica. A tu ritmo.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== HOW IT WORKS ========== -->
+  <section class="section section-dark">
+    <div class="container">
+      <div class="section-label-light">Cómo funciona</div>
+      <h2 class="section-title-light">Simple, pero potente</h2>
+      <p class="section-subtitle-light">4 pasos para transformar tu preparación</p>
+      <div class="steps-grid">
+        <div class="step">
+          <div class="step-number">1</div>
+          <h3>Elige tu oposición</h3>
+          <p>Empezamos con Auxiliar AGE (C2)</p>
+        </div>
+        <div class="step">
+          <div class="step-number">2</div>
+          <h3>Practica a diario</h3>
+          <p>Sesiones de 10-15 min optimizadas</p>
+        </div>
+        <div class="step">
+          <div class="step-number">3</div>
+          <h3>Repasa con ciencia</h3>
+          <p>El algoritmo decide qué y cuándo</p>
+        </div>
+        <div class="step">
+          <div class="step-number">4</div>
+          <h3>Llega preparado</h3>
+          <p>Sin sorpresas en el examen</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== STATS ========== -->
+  <section class="section section-white">
+    <div class="container">
+      <div class="stats-bar">
+        <div class="stat-item">
+          <div class="stat-value">2.4M</div>
+          <div class="stat-desc">Opositores en España</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value">330K</div>
+          <div class="stat-desc">Plazas previstas 2026</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value">1.000+</div>
+          <div class="stat-desc">Preguntas calibradas</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value">11</div>
+          <div class="stat-desc">Temas del temario</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== BETA BENEFITS ========== -->
+  <section class="section">
+    <div class="container" style="text-align: center;">
+      <div class="section-label">Beta privada</div>
+      <h2 class="section-title" style="margin: 0 auto 16px;">Sé de los primeros</h2>
+      <p class="section-subtitle" style="margin: 0 auto 48px;">Buscamos opositores comprometidos que quieran ayudarnos a construir la mejor herramienta</p>
+      <div class="card-grid">
+        <div class="beta-card">
+          <div class="beta-icon">🎁</div>
+          <h3>Precio fundador de por vida</h3>
+          <p>Descuento exclusivo que mantendrás para siempre, incluso cuando subamos precios.</p>
+        </div>
+        <div class="beta-card">
+          <div class="beta-icon">🗣️</div>
+          <h3>Tu feedback importa</h3>
+          <p>Línea directa con el equipo. Tus sugerencias darán forma al producto.</p>
+        </div>
+        <div class="beta-card">
+          <div class="beta-icon">🚀</div>
+          <h3>Acceso anticipado</h3>
+          <p>Empieza antes que nadie con las funcionalidades más avanzadas.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== BLOG PREVIEW ========== -->
+  {posts.length > 0 && (
+    <section class="section section-white">
+      <div class="container" style="text-align: center;">
+        <div class="section-label">Blog</div>
+        <h2 class="section-title" style="margin: 0 auto 16px;">Guías para opositores</h2>
+        <p class="section-subtitle" style="margin: 0 auto 48px;">Artículos prácticos para preparar tu oposición con ciencia</p>
+        <div class="card-grid">
+          {posts.map((post) => (
+            <BlogCard
+              title={post.data.title}
+              description={post.data.description}
+              date={post.data.date}
+              category={post.data.category}
+              slug={post.id}
+              emoji={post.data.emoji}
+              readingTime={post.data.readingTime}
+            />
+          ))}
+        </div>
+        <a href="/blog" class="blog-all-link">Ver todos los artículos &rarr;</a>
+      </div>
+    </section>
+  )}
+
+  <!-- ========== CTA ========== -->
+  <section id="waitlist">
+    <div class="container">
+      <CTABanner
+        title="¿Quieres ser beta tester?"
+        subtitle="Únete a la lista de espera. Precio fundador garantizado."
+      />
+    </div>
+  </section>
+
+  <!-- ========== FAQ ========== -->
+  <section class="section" id="faq">
+    <div class="container" style="text-align: center;">
+      <div class="section-label">Preguntas frecuentes</div>
+      <h2 class="section-title" style="margin: 0 auto 48px;">Lo que quieres saber</h2>
+      <div class="faq-grid">
+        <div class="faq-item">
+          <div class="faq-question">¿Cuándo estará disponible?</div>
+          <div class="faq-answer">Lanzamos la beta en el primer semestre de 2026. Los de la lista tendrán acceso prioritario y precio fundador.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">¿Qué oposición cubre?</div>
+          <div class="faq-answer">Empezamos con Auxiliar Administrativo del Estado (C2). Después expandiremos a otras.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">¿Cuánto costará?</div>
+          <div class="faq-answer">Precio por definir, pero fundadores tendrán descuento significativo de por vida.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">¿Sustituye academia?</div>
+          <div class="faq-answer">Es un complemento perfecto. Te ayuda a consolidar lo aprendido y detectar puntos débiles.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  /* ========== HERO ========== */
+  .hero {
+    padding: 120px 0 80px;
+    background: var(--bg-white);
+  }
+
+  .hero-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--green-tint);
+    border: 1px solid rgba(45, 106, 79, 0.2);
+    padding: 6px 14px;
+    border-radius: var(--radius-pill);
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--green-primary);
+    margin-bottom: 20px;
+  }
+
+  .badge-dot {
+    width: 8px;
+    height: 8px;
+    background: var(--green-accent);
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.6; transform: scale(1.3); }
+  }
+
+  .hero-title {
+    font-size: clamp(32px, 4vw, 48px);
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 20px;
+    color: var(--text-heading);
+    letter-spacing: -0.03em;
+  }
+
+  .highlight {
+    color: var(--green-primary);
+  }
+
+  .hero-subtitle {
+    font-size: 17px;
+    color: var(--text-secondary);
+    margin-bottom: 32px;
+    max-width: 440px;
+    line-height: 1.6;
+  }
+
+  .hero-form {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+
+  .hero-input {
+    flex: 1;
+    padding: 14px 18px;
+    border: 2px solid var(--border-light);
+    border-radius: var(--radius-sm);
+    font-size: 15px;
+    font-family: inherit;
+    transition: all 0.2s;
+    background: white;
+  }
+  .hero-input:focus {
+    outline: none;
+    border-color: var(--green-primary);
+    box-shadow: 0 0 0 3px rgba(45, 106, 79, 0.1);
+  }
+
+  .hero-button {
+    background: var(--gradient-cta);
+    color: white;
+    padding: 14px 28px;
+    border: none;
+    border-radius: var(--radius-sm);
+    font-size: 15px;
+    font-weight: 600;
+    font-family: inherit;
+    cursor: pointer;
+    transition: all 0.2s;
+    white-space: nowrap;
+    box-shadow: var(--shadow-green);
+  }
+  .hero-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(45, 106, 79, 0.35);
+  }
+
+  .form-success {
+    display: none;
+    align-items: center;
+    gap: 10px;
+    padding: 14px;
+    background: var(--success-bg);
+    border-radius: var(--radius-sm);
+    color: var(--success);
+    font-weight: 500;
+    margin-bottom: 16px;
+  }
+
+  .hero-trust {
+    display: flex;
+    gap: 16px;
+    font-size: 13px;
+    color: var(--text-muted);
+  }
+
+  .hero-trust-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .hero-trust-item svg {
+    color: var(--green-accent);
+  }
+
+  /* ========== PHONE MOCKUP ========== */
+  .hero-visual {
+    position: relative;
+  }
+
+  .hero-stats {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 24px;
+  }
+
+  .stat-pill {
+    background: white;
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-pill);
+    padding: 8px 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .stat-number {
+    font-weight: 700;
+    color: var(--green-primary);
+    font-size: 16px;
+  }
+
+  .stat-label {
+    font-size: 12px;
+    color: var(--text-light);
+  }
+
+  .phone-mockup {
+    width: 280px;
+    margin: 0 auto;
+  }
+
+  .phone-frame {
+    background: linear-gradient(145deg, #1f2937, #374151);
+    border-radius: 40px;
+    padding: 8px;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.15);
+  }
+
+  .phone-screen {
+    background: var(--bg-main);
+    border-radius: 34px;
+    overflow: hidden;
+    height: 520px;
+  }
+
+  .app-topbar {
+    background: white;
+    padding: 14px 16px;
+    border-bottom: 1px solid var(--border-light);
+  }
+
+  .app-logo {
+    font-weight: 700;
+    font-size: 14px;
+    color: var(--text-heading);
+    letter-spacing: -0.02em;
+    text-align: center;
+  }
+
+  .app-content {
+    padding: 16px;
+  }
+
+  .app-greeting {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text-heading);
+    margin-bottom: 16px;
+    letter-spacing: -0.02em;
+  }
+
+  .app-card-green {
+    background: var(--gradient-cta);
+    border-radius: var(--radius-xl);
+    padding: 20px;
+    color: white;
+    margin-bottom: 20px;
+  }
+
+  .card-green-title {
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+
+  .card-green-sub {
+    font-size: 12px;
+    opacity: 0.8;
+    margin-bottom: 14px;
+  }
+
+  .card-green-btn {
+    background: rgba(255, 255, 255, 0.15);
+    text-align: center;
+    padding: 10px;
+    border-radius: var(--radius-md);
+    font-size: 13px;
+    font-weight: 600;
+  }
+
+  .app-progress-section {
+    background: white;
+    border-radius: var(--radius-lg);
+    padding: 14px;
+    margin-bottom: 12px;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .progress-label {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    margin-bottom: 8px;
+  }
+
+  .progress-pct {
+    color: var(--green-primary);
+    font-weight: 700;
+  }
+
+  .progress-bar {
+    height: 6px;
+    background: var(--border-light);
+    border-radius: 99px;
+    overflow: hidden;
+  }
+
+  .progress-fill {
+    height: 100%;
+    background: var(--gradient-progress);
+    border-radius: 99px;
+  }
+
+  .app-tema-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border-light);
+    font-size: 12px;
+  }
+
+  .tema-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .tema-dot-green { background: var(--green-primary); }
+  .tema-dot-amber { background: var(--warning); }
+  .tema-dot-light { background: var(--border-medium); }
+
+  .tema-name {
+    flex: 1;
+    font-weight: 500;
+    color: var(--text-secondary);
+  }
+
+  .tema-pct {
+    font-weight: 700;
+    color: var(--green-primary);
+  }
+
+  /* ========== SECTIONS ========== */
+  .section {
+    padding: 80px 0;
+  }
+
+  .section-white {
+    background: var(--bg-white);
+  }
+
+  .section-dark {
+    background: var(--text-heading);
+    color: white;
+  }
+
+  .section-label {
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--green-primary);
+    margin-bottom: 12px;
+  }
+
+  .section-label-light {
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--green-accent);
+    margin-bottom: 12px;
+  }
+
+  .section-title {
+    font-size: clamp(26px, 3.5vw, 38px);
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 16px;
+    max-width: 600px;
+    color: var(--text-heading);
+    letter-spacing: -0.02em;
+  }
+
+  .section-title-light {
+    font-size: clamp(26px, 3.5vw, 38px);
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 16px;
+    color: white;
+    letter-spacing: -0.02em;
+  }
+
+  .section-subtitle {
+    font-size: 16px;
+    color: var(--text-secondary);
+    max-width: 540px;
+    margin-bottom: 48px;
+  }
+
+  .section-subtitle-light {
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.7);
+    max-width: 540px;
+    margin-bottom: 48px;
+  }
+
+  /* ========== CARD GRID ========== */
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  /* ========== PROBLEM CARDS ========== */
+  .problem-card {
+    background: var(--bg-white);
+    border-radius: var(--radius-xl);
+    padding: 28px;
+    border: 1px solid var(--border-light);
+    transition: all 0.2s;
+  }
+  .problem-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+  }
+
+  .problem-icon {
+    width: 48px;
+    height: 48px;
+    background: #FEE2E2;
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    margin-bottom: 16px;
+  }
+
+  .problem-card h3 {
+    font-size: 17px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: var(--text-heading);
+  }
+
+  .problem-card p {
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+  }
+
+  .problem-stat {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--error);
+    margin-top: 16px;
+  }
+
+  .problem-stat-label {
+    font-size: 12px;
+    color: var(--text-muted);
+  }
+
+  /* ========== SOLUTION CARDS ========== */
+  .solution-card {
+    background: var(--bg-main);
+    border-radius: var(--radius-xl);
+    padding: 32px 24px;
+    text-align: center;
+    transition: all 0.2s;
+  }
+  .solution-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+  }
+
+  .solution-icon {
+    width: 64px;
+    height: 64px;
+    margin: 0 auto 20px;
+    background: var(--gradient-cta);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    box-shadow: var(--shadow-green);
+  }
+
+  .solution-card h3 {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: var(--text-heading);
+  }
+
+  .solution-card p {
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+  }
+
+  /* ========== STEPS ========== */
+  .steps-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+  }
+
+  .step {
+    text-align: center;
+  }
+
+  .step-number {
+    width: 60px;
+    height: 60px;
+    margin: 0 auto 16px;
+    background: var(--gradient-cta);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    font-weight: 700;
+    color: white;
+    border: 3px solid rgba(255, 255, 255, 0.15);
+  }
+
+  .step h3 {
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+
+  .step p {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.6);
+  }
+
+  /* ========== STATS BAR ========== */
+  .stats-bar {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    background: var(--bg-main);
+    border-radius: var(--radius-xl);
+    padding: 40px;
+  }
+
+  .stat-item {
+    text-align: center;
+  }
+
+  .stat-value {
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--green-primary);
+  }
+
+  .stat-desc {
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-top: 4px;
+  }
+
+  /* ========== BETA CARDS ========== */
+  .beta-card {
+    background: var(--bg-white);
+    border-radius: var(--radius-xl);
+    padding: 28px;
+    text-align: center;
+    border: 1px solid var(--border-light);
+    transition: all 0.2s;
+  }
+  .beta-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+    border-color: rgba(45, 106, 79, 0.3);
+  }
+
+  .beta-icon {
+    font-size: 40px;
+    margin-bottom: 16px;
+  }
+
+  .beta-card h3 {
+    font-size: 17px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: var(--text-heading);
+  }
+
+  .beta-card p {
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+  }
+
+  /* ========== BLOG ALL LINK ========== */
+  .blog-all-link {
+    display: inline-block;
+    margin-top: 32px;
+    color: var(--green-primary);
+    font-size: 15px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .blog-all-link:hover {
+    color: var(--green-deep);
+  }
+
+  /* ========== FAQ ========== */
+  .faq-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    max-width: 860px;
+    margin: 0 auto;
+    text-align: left;
+  }
+
+  .faq-item {
+    background: var(--bg-white);
+    border-radius: var(--radius-md);
+    padding: 20px;
+    border: 1px solid var(--border-light);
+    transition: all 0.2s;
+  }
+  .faq-item:hover {
+    border-color: var(--border-medium);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .faq-question {
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: var(--text-heading);
+  }
+
+  .faq-answer {
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+  }
+
+  /* ========== RESPONSIVE ========== */
+  @media (max-width: 1100px) {
+    .hero-content {
+      grid-template-columns: 1fr;
+      text-align: center;
+      gap: 48px;
+    }
+    .hero-subtitle { margin: 0 auto 32px; }
+    .hero-form {
+      flex-direction: column;
+      max-width: 360px;
+      margin: 0 auto 16px;
+    }
+    .hero-trust { justify-content: center; flex-wrap: wrap; }
+    .hero-visual { order: -1; }
+  }
+
+  @media (max-width: 900px) {
+    .card-grid { grid-template-columns: 1fr; }
+    .steps-grid { grid-template-columns: repeat(2, 1fr); }
+    .stats-bar { grid-template-columns: repeat(2, 1fr); }
+    .faq-grid { grid-template-columns: 1fr; }
+  }
+
+  @media (max-width: 640px) {
+    .steps-grid { grid-template-columns: 1fr; }
+    .stats-bar { grid-template-columns: 1fr; padding: 24px; }
+    .hero-stats { flex-wrap: wrap; justify-content: center; }
+  }
+</style>

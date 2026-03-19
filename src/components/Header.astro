@@ -1,0 +1,108 @@
+---
+const currentPath = Astro.url.pathname;
+---
+
+<nav class="nav" role="navigation" aria-label="Navegación principal">
+  <div class="container">
+    <div class="nav-content">
+      <a href="/" class="logo" aria-label="Oposita Smart - Inicio">
+        <div class="logo-icon" aria-hidden="true">OS</div>
+        <div class="logo-text">Oposita<span>Smart</span></div>
+      </a>
+      <div class="nav-links">
+        <a href="/blog" class:list={["nav-link", { active: currentPath.startsWith('/blog') }]}>Blog</a>
+        <a href="/#metodo" class="nav-link">Método</a>
+        <a href="/#faq" class="nav-link">FAQ</a>
+        <a href="/#waitlist" class="nav-cta">Probar gratis</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<style>
+  .nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    padding: 12px 0;
+    background: rgba(250, 250, 247, 0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border-light);
+  }
+
+  .nav-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+  }
+
+  .logo-icon {
+    width: 40px;
+    height: 40px;
+    background: var(--gradient-cta);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 700;
+    font-size: 14px;
+  }
+
+  .logo-text {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text-heading);
+    letter-spacing: -0.02em;
+  }
+  .logo-text span {
+    color: var(--green-primary);
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+  }
+
+  .nav-link {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-link:hover, .nav-link.active {
+    color: var(--text-heading);
+  }
+
+  .nav-cta {
+    background: var(--gradient-cta);
+    color: white;
+    padding: 10px 20px;
+    border-radius: var(--radius-sm);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+    transition: all 0.2s;
+    box-shadow: var(--shadow-green);
+  }
+  .nav-cta:hover {
+    transform: translateY(-1px);
+    color: white;
+    box-shadow: 0 6px 16px rgba(45, 106, 79, 0.35);
+  }
+
+  @media (max-width: 640px) {
+    .nav-link { display: none; }
+  }
+</style>
