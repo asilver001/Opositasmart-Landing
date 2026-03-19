@@ -1,0 +1,212 @@
+---
+interface Props {
+  title?: string;
+  subtitle?: string;
+}
+
+const {
+  title = '¿Listo para empezar?',
+  subtitle = 'Prueba Oposita Smart gratis. Sin compromiso, a tu ritmo.',
+} = Astro.props;
+---
+
+<section class="cta-banner" aria-label="Llamada a la acción">
+  <div class="cta-circles" aria-hidden="true">
+    <div class="circle circle-1"></div>
+    <div class="circle circle-2"></div>
+  </div>
+  <h3 class="cta-title">{title}</h3>
+  <p class="cta-subtitle">{subtitle}</p>
+  <form class="cta-form" id="blog-cta-form" novalidate>
+    <label for="blog-cta-email" class="visually-hidden">Tu email</label>
+    <input
+      type="email"
+      id="blog-cta-email"
+      class="cta-input"
+      placeholder="tu@email.com"
+      required
+      aria-required="true"
+    >
+    <button type="submit" class="cta-button">Unirme gratis</button>
+  </form>
+  <div class="cta-success" id="blog-cta-success" role="alert">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+    <span>Te avisaremos cuando lancemos.</span>
+  </div>
+  <p class="cta-note">Sin spam. Solo actualizaciones importantes.</p>
+</section>
+
+<script is:inline src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script is:inline>
+(function() {
+  const SUPABASE_URL = 'https://yutfgmiyndmhsjhzxkdr.supabase.co';
+  const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inl1dGZnbWl5bmRtaHNqaHp4a2RyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjU4MDE2OTksImV4cCI6MjA4MTM3NzY5OX0.U1X8dmdHjzybKHtWJ4-kcJSrigELUhynhZcs8tU8NwI';
+
+  function initForms() {
+    var client = window.supabase ? window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY) : null;
+
+    document.querySelectorAll('form[id$="-form"]').forEach(function(form) {
+      form.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        var input = form.querySelector('input[type="email"]');
+        var email = input ? input.value.trim().toLowerCase() : '';
+        var button = form.querySelector('button');
+        var emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+        if (!email || !emailRegex.test(email)) {
+          input.style.borderColor = 'var(--error)';
+          setTimeout(function() { input.style.borderColor = ''; }, 2000);
+          return;
+        }
+
+        if (button) {
+          button.disabled = true;
+          button.textContent = 'Enviando...';
+        }
+
+        try {
+          if (client) {
+            await client.from('waitlist').insert([{ email: email, source: 'blog' }]);
+          }
+
+          if (typeof gtag !== 'undefined') {
+            gtag('event', 'signup', { event_category: 'waitlist', event_label: form.id });
+          }
+
+          form.style.display = 'none';
+          var successId = form.id.replace('-form', '-success');
+          var successEl = document.getElementById(successId);
+          if (successEl) successEl.style.display = 'flex';
+        } catch (err) {
+          if (button) {
+            button.disabled = false;
+            button.textContent = 'Reintentar';
+          }
+        }
+      });
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initForms);
+  } else {
+    initForms();
+  }
+})();
+</script>
+
+<style>
+  .cta-banner {
+    background: var(--gradient-cta);
+    border-radius: var(--radius-2xl);
+    padding: 48px 32px;
+    text-align: center;
+    color: white;
+    position: relative;
+    overflow: hidden;
+    margin: 48px 0;
+  }
+
+  .cta-circles .circle {
+    position: absolute;
+    border-radius: 50%;
+  }
+  .circle-1 {
+    top: -40px;
+    right: -40px;
+    width: 120px;
+    height: 120px;
+    background: rgba(255, 255, 255, 0.03);
+  }
+  .circle-2 {
+    bottom: -60px;
+    left: -30px;
+    width: 160px;
+    height: 160px;
+    background: rgba(255, 255, 255, 0.04);
+  }
+
+  .cta-title {
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: 8px;
+    position: relative;
+  }
+
+  .cta-subtitle {
+    font-size: 15px;
+    opacity: 0.85;
+    margin-bottom: 24px;
+    position: relative;
+  }
+
+  .cta-form {
+    display: flex;
+    gap: 10px;
+    max-width: 420px;
+    margin: 0 auto 16px;
+    position: relative;
+  }
+
+  .cta-input {
+    flex: 1;
+    padding: 14px 18px;
+    border: none;
+    border-radius: var(--radius-sm);
+    font-size: 15px;
+    font-family: inherit;
+    transition: box-shadow 0.2s;
+  }
+  .cta-input:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.3);
+  }
+
+  .cta-button {
+    background: white;
+    color: var(--green-deep);
+    padding: 14px 24px;
+    border: none;
+    border-radius: var(--radius-sm);
+    font-size: 15px;
+    font-weight: 600;
+    font-family: inherit;
+    cursor: pointer;
+    transition: all 0.2s;
+    white-space: nowrap;
+  }
+  .cta-button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  .cta-success {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 14px;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: var(--radius-sm);
+    max-width: 420px;
+    margin: 0 auto 16px;
+    font-weight: 500;
+    position: relative;
+  }
+
+  .cta-note {
+    font-size: 13px;
+    opacity: 0.7;
+    position: relative;
+  }
+
+  @media (max-width: 480px) {
+    .cta-banner {
+      padding: 36px 20px;
+    }
+    .cta-form {
+      flex-direction: column;
+    }
+  }
+</style>

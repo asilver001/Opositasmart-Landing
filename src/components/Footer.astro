@@ -1,0 +1,98 @@
+---
+const year = new Date().getFullYear();
+---
+
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-content">
+      <a href="/" class="logo" aria-label="Oposita Smart - Inicio">
+        <div class="logo-icon" aria-hidden="true">OS</div>
+        <div class="logo-text">Oposita<span>Smart</span></div>
+      </a>
+      <nav class="footer-links" aria-label="Enlaces del footer">
+        <a href="/blog">Blog</a>
+        <a href="mailto:hola@opositasmart.com">Contacto</a>
+        <a href="/privacidad">Privacidad</a>
+      </nav>
+    </div>
+    <div class="footer-bottom">&copy; {year} Oposita Smart. Hecho con cuidado para opositores.</div>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    padding: 48px 0 24px;
+    background: var(--text-heading);
+    color: rgba(255, 255, 255, 0.8);
+  }
+
+  .footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 32px;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+  }
+
+  .logo-icon {
+    width: 36px;
+    height: 36px;
+    background: var(--gradient-cta);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 700;
+    font-size: 12px;
+  }
+
+  .logo-text {
+    font-size: 16px;
+    font-weight: 700;
+    color: white;
+  }
+  .logo-text span {
+    color: var(--green-accent);
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 24px;
+  }
+  .footer-links a {
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    font-size: 13px;
+    transition: color 0.2s;
+  }
+  .footer-links a:hover {
+    color: white;
+  }
+
+  .footer-bottom {
+    text-align: center;
+    padding-top: 24px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.5);
+  }
+
+  @media (max-width: 640px) {
+    .footer-content {
+      flex-direction: column;
+      gap: 20px;
+      text-align: center;
+    }
+    .footer-links {
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+  }
+</style>

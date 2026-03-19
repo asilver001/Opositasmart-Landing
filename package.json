@@ -1,0 +1,28 @@
+{
+  "name": "opositasmart-landing-astro",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/asilver001/Opositasmart-Landing.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/asilver001/Opositasmart-Landing/issues"
+  },
+  "homepage": "https://github.com/asilver001/Opositasmart-Landing#readme",
+  "dependencies": {
+    "@astrojs/rss": "^4.0.17",
+    "@astrojs/sitemap": "^3.7.1",
+    "astro": "^6.0.7"
+  }
+}

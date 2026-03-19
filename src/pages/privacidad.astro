@@ -1,0 +1,79 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Política de Privacidad | Oposita Smart" description="Política de privacidad de Oposita Smart.">
+  <section class="legal-page">
+    <div class="container">
+      <h1>Política de Privacidad</h1>
+      <p class="last-updated">Última actualización: marzo 2026</p>
+
+      <h2>1. Responsable del tratamiento</h2>
+      <p>Oposita Smart es responsable de los datos personales que nos proporciones a través de nuestro sitio web y aplicación.</p>
+
+      <h2>2. Datos que recopilamos</h2>
+      <ul>
+        <li><strong>Email</strong>: Al registrarte en la lista de espera o crear una cuenta</li>
+        <li><strong>Datos de uso</strong>: Progreso de estudio, respuestas a preguntas (para personalizar la experiencia)</li>
+        <li><strong>Datos analíticos</strong>: Información anónima de navegación (Google Analytics, Microsoft Clarity)</li>
+      </ul>
+
+      <h2>3. Finalidad</h2>
+      <ul>
+        <li>Proporcionarte el servicio de preparación de oposiciones</li>
+        <li>Personalizar tu experiencia de estudio</li>
+        <li>Comunicarte actualizaciones sobre el lanzamiento</li>
+        <li>Mejorar nuestro producto</li>
+      </ul>
+
+      <h2>4. Base legal</h2>
+      <p>El tratamiento se basa en tu consentimiento (al registrarte) y en la ejecución del servicio que solicitas.</p>
+
+      <h2>5. Tus derechos</h2>
+      <p>Puedes ejercer tus derechos de acceso, rectificación, supresión, portabilidad, limitación y oposición enviando un email a <a href="mailto:hola@opositasmart.com">hola@opositasmart.com</a>.</p>
+
+      <h2>6. Contacto</h2>
+      <p>Para cualquier consulta sobre privacidad: <a href="mailto:hola@opositasmart.com">hola@opositasmart.com</a></p>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .legal-page {
+    padding: 100px 0 60px;
+  }
+  .legal-page .container {
+    max-width: 720px;
+  }
+  .legal-page h1 {
+    font-size: 32px;
+    font-weight: 800;
+    color: var(--text-heading);
+    margin-bottom: 8px;
+    letter-spacing: -0.02em;
+  }
+  .last-updated {
+    color: var(--text-light);
+    font-size: 14px;
+    margin-bottom: 40px;
+  }
+  .legal-page h2 {
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--text-heading);
+    margin-top: 32px;
+    margin-bottom: 12px;
+  }
+  .legal-page p, .legal-page li {
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--text-secondary);
+    margin-bottom: 12px;
+  }
+  .legal-page ul {
+    padding-left: 24px;
+  }
+  .legal-page a {
+    color: var(--green-primary);
+  }
+</style>
