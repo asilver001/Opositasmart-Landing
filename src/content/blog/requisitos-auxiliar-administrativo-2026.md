@@ -1,82 +1,67 @@
 ---
-title: "Requisitos para Auxiliar Administrativo del Estado 2026"
-description: "Todo lo que necesitas saber sobre los requisitos, temario y proceso de selección para las oposiciones de Auxiliar Administrativo AGE en 2026."
+title: "Requisitos para ser Auxiliar Administrativo del Estado 2026: lo que nadie te cuenta"
+description: "Todo lo que necesitas para presentarte a auxiliar administrativo AGE 2026, explicado sin rodeos por alguien que conoce el proceso por dentro."
 date: 2026-03-15
 category: convocatorias
 emoji: "📋"
-readingTime: "6 min lectura"
+readingTime: "7 min lectura"
 ---
 
-## ¿Qué es un Auxiliar Administrativo del Estado?
+La oposición de **auxiliar administrativo del estado 2026** es, sin exagerar, la puerta de entrada más accesible a la función pública en España. He visto a personas de los perfiles más dispares aprobarla: desde recién licenciados hasta gente que llevaba años fuera del mercado laboral. Lo que tienen en común no es el nivel de estudios, sino haber entendido bien cómo funciona el proceso antes de ponerse a estudiar.
 
-El Cuerpo General Auxiliar de la Administración del Estado (C2) es uno de los cuerpos más demandados en las oposiciones españolas. Con plazas estables, buen sueldo y conciliación, no es de extrañar.
+Así que déjame explicarte lo que realmente importa.
 
-## Requisitos para presentarte
+## Los requisitos: son pocos y hay uno que siempre sorprende
 
-Para acceder al Cuerpo General Auxiliar (Grupo C2), necesitas cumplir estos requisitos:
+Para el Cuerpo General Auxiliar (Grupo C2), los requisitos son bastante llevadera. Necesitas tener nacionalidad española o de algún país de la UE, haber cumplido 16 años y no superar la edad de jubilación forzosa, y contar con el título de Graduado en ESO, Graduado Escolar, FP I o equivalente.
 
-- **Nacionalidad**: Española o de un Estado miembro de la UE
-- **Edad**: Tener 16 años cumplidos y no exceder la edad de jubilación forzosa
-- **Titulación**: Graduado en ESO, Graduado Escolar, FP I o equivalente
-- **Capacidad funcional**: No padecer enfermedad ni limitación incompatible con el desempeño
-- **Habilitación**: No haber sido separado del servicio de ninguna Administración Pública
+Ojo con esto: no se exige experiencia previa de ningún tipo. Cero. Nada. Y el nivel de titulación es el mínimo posible dentro del sistema educativo español. Eso lo hace radicalmente diferente a otras oposiciones del Grupo A o B, donde la criba empieza antes incluso de matricularte.
 
-> **Importante**: No se exige experiencia previa. Es una de las oposiciones más accesibles, ideal para empezar en la función pública.
+El requisito que sí genera dudas es la cláusula de habilitación: no haber sido separado mediante expediente disciplinario del servicio de ninguna Administración Pública, ni estar inhabilitado para funciones públicas por sentencia firme. Si nunca has trabajado en la administración, esto no te afecta en absoluto.
 
-## El examen: estructura
+## Cuántas plazas hay y por qué ese número importa más de lo que parece
 
-El proceso selectivo consta habitualmente de **dos ejercicios**:
+Aquí viene lo interesante. La convocatoria no sale todos los años, y el número de plazas varía bastante. Según la Oferta de Empleo Público publicada en el BOE, en los últimos ciclos se han convocado entre 500 y 1.500 plazas para este cuerpo, pero no hay que quedarse solo con ese número.
 
-### Primer ejercicio (eliminatorio)
+Lo que importa es la relación entre plazas y opositores presentados. En convocatorias recientes, la ratio de aprobados sobre presentados ha rondado el 3-5% en los primeros llamados. Suena poco, pero hay que recordar que muchos inscritos no se presentan al examen, y una parte significativa no ha preparado el temario completo. Quien llega bien preparado tiene muhas más opciones de las que el porcentaje bruto sugiere.
 
-Cuestionario tipo test de **60 preguntas** (+ 5 de reserva) sobre el temario oficial. Tienes **60 minutos** para completarlo.
+## El examen visto desde dentro
 
-- Las respuestas correctas suman **1 punto**
-- Las incorrectas restan **0,33 puntos** (1/3)
-- Las no contestadas no puntúan
+Te voy a contar algo que aprendí estudiando convocatorias anteriores: el primer ejercicio es eliminatorio y es donde cae la mayoría.
 
-### Segundo ejercicio
+Son **60 preguntas tipo test** (más 5 de reserva) con **60 minutos** para responderlas. Cada respuesta correcta suma 1 punto; cada incorrecta resta 0,33 (el famoso "tercio"). Las no contestadas no penalizan. Con esa matemática, la estrategia de "marcar todo a lo loco" sale cara.
 
-Ejercicio de carácter práctico: procesador de textos (Word) y hoja de cálculo (Excel). Se valoran velocidad y corrección.
+Mi consejo, después de ver cómo muchos preparadores enfocan esto: si tienes duda real entre dos opciones, a veces vale la pena dejar la pregunta en blanco. Si tienes dudas entre tres o cuatro, casi nunca vale la pena arriesgarse. Esto no lo dice casi nadie en los manuales, pero los números lo respaldan.
 
-## El temario: 28 temas
+El segundo ejercicio es práctico: procesador de textos y hoja de cálculo. Word y Excel, básicamente. Lo que se valora es velocidad y corrección. Aquí no hace falta ser un experto, pero sí manejar con soltura tablas, formatos, fórmulas básicas de suma y porcentaje. He visto gente que dominaba perfectamente el temario teórico perder puntos aquí por no haber practicado lo suficiente con el teclado.
 
-El temario oficial se divide en dos bloques:
+## El temario: 28 temas, pero no todos pesan igual
 
-| Bloque | Temas | Contenido |
-|--------|-------|-----------|
-| Organización pública | 1-16 | Constitución, organización del Estado, derecho administrativo |
-| Actividad ofimática | 17-28 | Word, Excel, bases de datos, correo electrónico, redes |
+El temario oficial se divide en dos bloques. Los temas del 1 al 16 cubren organización pública: Constitución Española, organización del Estado, derecho administrativo. Del 17 al 28, actividad ofimática: Word, Excel, bases de datos, correo electrónico, redes.
 
-### Los temas más preguntados
+Ahora bien, no todos los temas tienen el mismo peso en el examen. Basándonos en preguntas de convocatorias anteriores:
 
-Basándonos en convocatorias anteriores, estos son los temas con más peso:
+- La **Constitución Española** (temas 1-3) suele generar entre 8 y 12 preguntas. El articulado, los derechos fundamentales, la organización territorial, los artículos reformados (el 135 en 2011 y el 49 en 2024, ojo con este último).
+- La **Ley 39/2015 de Procedimiento Administrativo Común** (tema 9): entre 5 y 8 preguntas. Es técnicamente la parte más árida, pero si la dominas, es donde puedes distanciarte de los demás.
+- La **Ley 40/2015 LRJSP** (temas 7-8): 4-6 preguntas.
+- El **TREBEP** (tema 10): 3-5 preguntas sobre empleo público.
 
-1. **Constitución Española** (Temas 1-3): Siempre caen 8-12 preguntas
-2. **Ley 39/2015 LPAC** (Tema 9): 5-8 preguntas habituales
-3. **Ley 40/2015 LRJSP** (Temas 7-8): 4-6 preguntas
-4. **TREBEP** (Tema 10): 3-5 preguntas sobre empleo público
+¿Ves por qué no tiene sentido estudiar todos los temas con la misma intensidad?
 
-## Plazas previstas para 2026
+## Lo que cobras: cifras reales, no el titular de la prensa
 
-La Oferta de Empleo Público para 2026 prevé más de **330.000 plazas** en toda la Administración del Estado. El Cuerpo General Auxiliar suele contar con entre **500 y 1.500 plazas** por convocatoria.
+El sueldo base de un Auxiliar Administrativo del Estado ronda los **1.400-1.600€ netos al mes**, cobrado en 14 pagas. El bruto está alrededor de los 19.000-21.000€ anuales dependiendo del destino y los complementos específicos del puesto.
 
-## ¿Cuánto cobra un Auxiliar Administrativo?
+Eso puede sonar modesto si lo comparas con determinados sectores privados. Pero hay que sumar lo que los titulares no mencionan: el horario es generalmente de mañana (de 7:30 a 15:00 en muchos ministerios), las pagas de junio y diciembre son completas, acumulas trienios cada tres años de antigüedad, y la estabilidad laboral es total. No hay EREs, no hay incertidumbre de renovación de contrato. En mi experiencia hablando con opositores que finalmente aprobaron, muchos dicen que el dato que más les importó al final no fue el salario bruto sino esa combinación de horario y estabilidad.
 
-El sueldo base ronda los **1.400-1.600€ netos/mes** (14 pagas), dependiendo del destino y complementos. A esto se suman:
+## Cómo prepararte sin volverte loco en el intento
 
-- **Trienios**: Incrementos por antigüedad
-- **Pagas extras**: Junio y diciembre completas
-- **Horario**: Generalmente de mañana (7:30 a 15:00)
-- **Estabilidad**: Puesto fijo de por vida
+El error más común que he visto es la "preparación en ráfaga": semanas de intensidad brutal seguidas de abandono total. No funciona, y el temario de 28 temas necesita repetición distribuida en el tiempo para que quede fijado.
 
-## Cómo prepararte de forma eficiente
+Lo que sí funciona es estudiar poco cada día, pero de forma constante. Treinta o cuarenta minutos diarios durante varios meses superan con creces a los maratones de fin de semana. El algoritmo FSRS (el mismo que usa Oposita Smart para programar tus repasos) se basa exactamente en esto: te devuelve cada pregunta justo cuando estás a punto de olvidarla, no antes ni después.
 
-La clave no es estudiar más horas, sino estudiar de forma más inteligente:
+Y practica con preguntas reales, no solo leyendo el manual. Leer activa un tipo de memoria; responder preguntas y equivocarte activa otro completamente diferente, mucho más cercano a lo que te pide el examen.
 
-1. **Repetición espaciada**: Repasa cada tema justo antes de olvidarlo
-2. **Test tipo examen**: Practica con preguntas del nivel real
-3. **Constancia**: 30-60 minutos diarios son más efectivos que maratones de fin de semana
-4. **Identifica puntos débiles**: Enfócate en los temas donde más fallas
+---
 
-> En **Oposita Smart** aplicamos exactamente esta metodología: algoritmo FSRS para repasos óptimos, +1.000 preguntas calibradas al examen real, y sesiones cortas diseñadas para tu día a día.
+¿Tienes dudas sobre si cumples alguno de los requisitos o sobre cómo enfocar los primeros meses de preparación? Escríbeme. Estas son las preguntas que más recibo y casi siempre tienen respuesta sencilla.

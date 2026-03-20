@@ -1,0 +1,90 @@
+---
+---
+
+<button
+  class="theme-toggle"
+  id="theme-toggle"
+  aria-label="Cambiar tema de color"
+  title="Cambiar entre verde y morado"
+>
+  <span class="toggle-track">
+    <span class="toggle-dot" id="toggle-dot"></span>
+  </span>
+  <span class="toggle-label" id="toggle-label">🌿</span>
+</button>
+
+<script is:inline>
+  (function() {
+    const saved = localStorage.getItem('os-theme');
+    if (saved === 'purple') {
+      document.documentElement.setAttribute('data-theme', 'purple');
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      const btn = document.getElementById('theme-toggle');
+      const dot = document.getElementById('toggle-dot');
+      const label = document.getElementById('toggle-label');
+
+      function updateVisual() {
+        const isPurple = document.documentElement.getAttribute('data-theme') === 'purple';
+        dot.style.transform = isPurple ? 'translateX(20px)' : 'translateX(0)';
+        label.textContent = isPurple ? '💜' : '🌿';
+      }
+
+      updateVisual();
+
+      btn.addEventListener('click', function() {
+        const current = document.documentElement.getAttribute('data-theme');
+        if (current === 'purple') {
+          document.documentElement.removeAttribute('data-theme');
+          localStorage.setItem('os-theme', 'green');
+        } else {
+          document.documentElement.setAttribute('data-theme', 'purple');
+          localStorage.setItem('os-theme', 'purple');
+        }
+        updateVisual();
+      });
+    });
+  })();
+</script>
+
+<style>
+  .theme-toggle {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    border-radius: var(--radius-pill);
+    transition: all 0.2s;
+  }
+  .theme-toggle:hover {
+    background: var(--green-tint);
+  }
+
+  .toggle-track {
+    position: relative;
+    width: 40px;
+    height: 20px;
+    background: var(--border-medium);
+    border-radius: 99px;
+    display: flex;
+    align-items: center;
+    padding: 2px;
+  }
+
+  .toggle-dot {
+    width: 16px;
+    height: 16px;
+    background: var(--gradient-cta);
+    border-radius: 50%;
+    transition: transform 0.25s ease;
+  }
+
+  .toggle-label {
+    font-size: 14px;
+    line-height: 1;
+  }
+</style>

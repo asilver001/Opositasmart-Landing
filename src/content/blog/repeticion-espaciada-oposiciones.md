@@ -1,83 +1,84 @@
 ---
-title: "Repetición espaciada: la ciencia detrás de recordar para siempre"
-description: "Descubre cómo funciona la repetición espaciada y por qué es el método más eficaz para preparar oposiciones. Basado en ciencia cognitiva."
+title: "Repetición espaciada en oposiciones: por qué cambió por completo cómo estudio"
+description: "Cómo la repetición espaciada transforma la preparación de oposiciones: qué es, cómo funciona FSRS y por qué estudiar menos pero mejor sí funciona."
 date: 2026-03-10
 category: metodo
 emoji: "🧠"
 readingTime: "8 min lectura"
 ---
 
-## El problema: olvidamos casi todo
+Si alguna vez has llegado al último mes antes del examen y has sentido que los primeros temas se te habían evaporado de la cabeza, sabes exactamente de qué voy a hablar. La **repetición espaciada en oposiciones** no es una moda ni un truco de productividad — es el único método que, al menos en mi experiencia y en la de varios opositores que conozco, de verdad mantiene el temario fresco durante meses.
 
-Hermann Ebbinghaus descubrió en 1885 algo que todo opositor conoce bien: **olvidamos el 70% de lo estudiado en 24 horas**. A la semana, apenas queda un 20%.
+Pero empecemos por el principio.
 
-Esto explica por qué releer el temario una y otra vez no funciona. Tu cerebro descarta la información que no refuerzas activamente.
+## Lo que pasa cuando estudias sin método
 
-## ¿Qué es la repetición espaciada?
+Imagina que llevas tres semanas dándole al Tema 1 sobre la Constitución Española. Te sabes el Art. 103.1 CE de memoria: "La Administración Pública sirve con objetividad los intereses generales y actúa de acuerdo con los principios de eficacia, jerarquía, descentralización, desconcentración y coordinación, con sometimiento pleno a la ley y al Derecho." Perfecto.
 
-La repetición espaciada es una técnica de estudio que **programa los repasos en el momento óptimo**: justo antes de que vayas a olvidar algo.
+Avanzas al Tema 5. Al Tema 8. Llevas dos meses estudiando y te sientes bien.
 
-En lugar de repasar todo todos los días, el sistema decide:
-- **Lo que ya dominas** → repaso en 2 semanas
-- **Lo que estás aprendiendo** → repaso en 3 días
-- **Lo que acabas de fallar** → repaso mañana
+Entonces un compañero te pregunta por el Art. 103.1 CE y... duda. ¿Era eficacia, eficiencia? ¿Desconcentración o descentralización? Los dos, vale, pero ¿en qué orden?
 
-### La curva del olvido vs. repetición espaciada
+Eso no es un fallo tuyo. Es simplemente lo que hace el cerebro humano: descarta lo que no usa. Hermann Ebbinghaus lo documentó hace más de un siglo — los porcentajes exactos varían según el estudio y el tipo de material, pero la idea es clara: sin repasos activos, la mayor parte de lo aprendido desaparece en días. Releer el tema no arregla eso. Solo te da la sensación de que lo sabes.
 
-Sin repasos programados, la retención cae exponencialmente. Con repetición espaciada, cada repaso refuerza la memoria y la curva se aplana:
+## Qué es la repetición espaciada (de verdad, sin tecnicismos)
 
-- **Repaso 1** (día 1): Retención del 90% → 60%
-- **Repaso 2** (día 3): Retención del 90% → 75%
-- **Repaso 3** (día 7): Retención del 90% → 85%
-- **Repaso 4** (día 21): Retención del 90% → 92%
+La repetición espaciada funciona sobre una premisa sencilla: repasar algo justo cuando estás a punto de olvidarlo es mucho más eficaz que repasarlo todos los días o dejarlo semanas sin tocarlo.
 
-Después de 4-5 repasos bien programados, la información pasa a **memoria a largo plazo**.
+Piénsalo como regar una planta. Si la riegas cada día, acabas ahogándola y malgastas agua. Si esperas demasiado, se seca. Hay un momento óptimo, y ese momento depende de la planta — y de cuánto ha llovido antes.
 
-## FSRS: el algoritmo que usamos
+Con las preguntas de oposición pasa igual. Una pregunta que ya dominas no necesita repaso mañana; igual puede esperar dos semanas. Una que acabas de fallar sí necesita atención pronto. El objetivo de la repetición espaciada es programar cada repaso en ese momento óptimo, ni antes ni después.
 
-Existen varios algoritmos de repetición espaciada. El más antiguo es **SM-2** (SuperMemo, 1987). Nosotros usamos **FSRS** (Free Spaced Repetition Scheduler), desarrollado en 2022:
+¿El resultado? En vez de repasar cien preguntas al día porque "igual se me olvida algo", repasas las veinte que realmente necesitan atención hoy. El resto puede esperar — y ese es el punto.
 
-| Característica | SM-2 | FSRS |
-|----------------|------|------|
-| Año | 1987 | 2022 |
-| Parámetros | 2 | 19 |
-| Precisión | Básica | Alta (basado en ML) |
-| Adaptación | Fija | Se adapta a tu patrón |
-| Retención target | Fija | Configurable |
+## FSRS: el algoritmo que calcula cuándo repasar
 
-FSRS tiene una ventaja clave: **se adapta a tu velocidad de aprendizaje**. Si eres rápido memorizando leyes pero lento con fechas, ajusta los intervalos por separado.
+Hay varios algoritmos que implementan este principio. El más conocido históricamente es SM-2, de los años 80, que usaba dos parámetros para calcular los intervalos. Funcionaba, pero era bastante rígido.
 
-## Cómo aplicarlo a las oposiciones
+El que yo he acabado usando — y el que usa Oposita Smart — se llama FSRS (Free Spaced Repetition Scheduler), desarrollado en 2022. La diferencia práctica es que FSRS aprende de tu comportamiento real. No asume que todos aprendemos al mismo ritmo ni que todas las preguntas son igual de difíciles para ti.
 
-### 1. Convierte el temario en preguntas
+Si llevas semanas respondiendo bien las preguntas de derecho administrativo pero tropiezas siempre con las fechas de las leyes, FSRS ajusta los intervalos por separado para cada tipo. No hay que configurar nada. Solo responder preguntas y dejar que el modelo aprenda.
 
-No estudies "leyendo". Transforma cada concepto en una pregunta tipo test. Tu cerebro retiene mejor cuando tiene que **recuperar activamente** la información (efecto testing).
+Lo que hace internamente es calcular dos cosas: tu "estabilidad" con cada concepto (cuánto tiempo puedes pasar sin olvidarlo) y tu "dificultad" percibida con él. Con esos dos valores, calcula cuándo tienes que volver a repasar para mantener una probabilidad de recuerdo alta — por defecto, alrededor del 90%.
 
-### 2. Sesiones cortas y frecuentes
+No hace falta entender las matemáticas. Solo saber que, cuando la app te dice que hoy te toca repasar el Art. 103.1 CE, es porque hoy es el momento justo.
 
-**15-20 minutos al día** son más efectivos que 3 horas el domingo. La repetición espaciada funciona mejor con sesiones breves pero constantes.
+## Cómo se siente estudiar con repetición espaciada
 
-### 3. No huyas de lo difícil
+Antes de usar este método, mi rutina era la de siempre: leer el tema, subrayar, hacer esquema, releer. A veces fichas. La sensación era de control — "me sé esto" — pero ese control se evaporaba en semanas.
 
-Cuando fallas una pregunta, el sistema la programa para repasar pronto. **Fallar es parte del proceso** — cada error marca exactamente dónde necesitas reforzar.
+Con repetición espaciada, las primeras semanas son raras. Tienes la sensación de que no avanzas porque estás repasando cosas de hace días en vez de aprender temas nuevos. Eso descoloca.
 
-### 4. Confía en el sistema
+Pero alrededor de la cuarta o quinta semana pasa algo. Empiezas a responder correctamente preguntas de hace un mes, sin haberlas tocado en días. El Tema 1 sigue ahí, intacto, aunque llevas tres semanas centrado en el Tema 6. Y el Tema 6 empieza a fijarse también. No de golpe, sino poco a poco, pregunta a pregunta.
 
-El instinto dice "tengo que repasar el Tema 1 otra vez". Pero si el algoritmo dice que lo tienes dominado y que ahora toca el Tema 7, confía. Está optimizando tu tiempo.
+Esa sensación — la de que el temario se va acumulando en vez de evaporarse — es exactamente lo que cambia el juego de cara al examen.
 
-## Resultados esperados
+## Cómo aplicarlo a tu preparación
 
-Con repetición espaciada aplicada de forma consistente:
+Algunas cosas concretas que marcan la diferencia:
 
-- **Semana 1-2**: Te sientes como que no avanzas (es normal)
-- **Semana 3-4**: Empiezas a notar que recuerdas cosas de hace semanas
-- **Mes 2-3**: Los temas "viejos" siguen frescos mientras avanzas con los nuevos
-- **Mes 4+**: Retención estable del 85-90% en todo el temario
+**Transforma el temario en preguntas, no en apuntes.** Leer activa la ilusión de comprensión. Responder preguntas obliga al cerebro a recuperar la información, y eso es lo que crea memoria duradera. Es lo que en psicología del aprendizaje se llama "efecto testing" — y es real.
 
-## La diferencia en oposiciones
+**Sesiones cortas y constantes ganan a maratones puntuales.** Veinte minutos al día, todos los días, produce más retención que tres horas el sábado. Esto lo he comprobado en mis propias carnes y lo confirman todos los opositores que conozco que han llegado a usar el método en serio. El cerebro consolida mientras duermes, y necesita ese ciclo repetido.
 
-Un opositor que estudia 6 meses con método tradicional (leer y releer) llega al examen habiendo olvidado los primeros temas. Uno que usa repetición espaciada llega con **todo el temario fresco**.
+**Cuando fallas una pregunta, no te frustres — es información.** Cada fallo le dice al algoritmo que esa pregunta necesita más atención. El error no es el problema; ignorarlo sí lo es. Así que lo ideal es responder honestamente, aunque duela, en vez de marcar "lo sabía" cuando no era del todo cierto.
 
-Esa es la diferencia entre aprobar y quedarse fuera por 2 puntos.
+**No trates de hacer trampa con las autoevaluaciones.** He visto a gente marcar "fácil" sistemáticamente para que las preguntas no vuelvan pronto. El resultado es obvio: el examen te pilla sin haberlo repasado de verdad. El sistema solo funciona si eres honesto con él.
 
-> **Oposita Smart** implementa FSRS de forma transparente. Tú respondes preguntas, nosotros calculamos cuándo necesitas repasar cada una. Sin complicaciones, solo ciencia.
+## ¿Cuándo se notan los resultados?
+
+No hay una respuesta única porque depende del volumen del temario, de cuánto estudias al día y de desde dónde partes. Pero como referencia aproximada, y con sesiones diarias de unos veinte minutos:
+
+Las primeras dos semanas es normal sentir que el progreso es lento. Estás cimentando, aunque no lo parezca. Hacia el final del primer mes suele llegar el primer "momento WTF" — cuando recuerdas con detalle algo que aprendiste hace tres semanas y no has tocado desde entonces.
+
+A partir del segundo o tercer mes, el efecto acumulativo se vuelve evidente: temas que estudiaste al principio siguen frescos mientras avanzas por los últimos. Eso es exactamente lo que quieres de cara a un examen que te pregunta por todo el temario a la vez.
+
+## La diferencia real el día del examen
+
+Un opositor que llega al examen después de meses estudiando a la antigua llega con los últimos temas frescos y los primeros oxidados. Es casi inevitable. La memoria se comporta así sin intervención activa.
+
+Uno que ha usado repetición espaciada de forma consistente llega con todo el temario en un estado razonablemente parejo. No hay temas que "tengo que repasar esta noche" porque se mantienen solos.
+
+Esa diferencia — llegar al examen con el Art. 103.1 CE tan fresco como las preguntas de LPAC que repasaste ayer — es la que a veces separa aprobar de quedarse fuera por dos puntos.
+
+Y eso, en las oposiciones, lo es todo.
