@@ -2,8 +2,6 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import CTABanner from '../components/CTABanner.astro';
 import BlogCard from '../components/BlogCard.astro';
-import RadarOposiciones from '../components/RadarOposiciones.astro';
-import GuiaInicio from '../components/GuiaInicio.astro';
 import { getCollection } from 'astro:content';
 
 const posts = (await getCollection('blog', ({ data }) => !data.draft))
@@ -13,6 +11,9 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft))
 
 <BaseLayout title="Oposita Smart | Prepara tu Oposición con Ciencia — App de Test Oposiciones 2026">
   <Fragment slot="head">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Instrument+Sans:wght@400;600&display=swap" rel="stylesheet">
     <meta name="keywords" content="oposiciones auxiliar administrativo 2026, test oposiciones AGE, preparar oposiciones online, app oposiciones, oposiciones estado 2026, temario auxiliar administrativo">
     <script type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
@@ -26,284 +27,362 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft))
         "@type": "Offer",
         "price": "0",
         "priceCurrency": "EUR",
-        "description": "Lista de espera gratuita con precio fundador garantizado"
+        "description": "Acceso fundador gratuito durante la beta"
       }
     })} />
   </Fragment>
 
   <!-- ========== HERO ========== -->
   <section class="hero" aria-labelledby="hero-title">
-    <div class="container">
-      <div class="hero-content">
-        <div class="hero-text">
-          <div class="hero-badge" role="status">
-            <span class="badge-dot"></span>
-            Lanzamiento 2026
+    <div class="hero-content">
+      <div>
+        <div class="hero-eyebrow">Para quienes llevan demasiado tiempo esperando su plaza</div>
+        <h1 id="hero-title">La academia<br>no te va a dar<br><em>esto gratis</em></h1>
+        <p class="hero-sub">Diseñado para quienes no pueden dedicar 8 horas al día. 15 minutos de práctica inteligente valen más que 3 horas con apuntes viejos. Sin cuotas de academia, sin agobios.</p>
+        <div class="hero-ctas">
+          <div>
+            <a href="https://oposiciones-app-alberts-projects-ca9eeb02.vercel.app/#/welcome" class="btn-primary">Ver mi nivel ahora</a>
+            <div class="cta-micro">Sin tarjeta · Sin contraseña · En 30 segundos</div>
           </div>
-          <h1 id="hero-title" class="hero-title">
-            Aprueba tu oposición <span class="highlight">estudiando con ciencia</span>
-          </h1>
-          <p class="hero-subtitle">
-            Repetición espaciada + preguntas calibradas al examen real de Auxiliar Administrativo del Estado.
-            A tu ritmo, sin agobios.
-          </p>
-          <form class="hero-form" id="hero-form" novalidate>
-            <label for="hero-email" class="visually-hidden">Tu email</label>
-            <input type="email" id="hero-email" class="hero-input" placeholder="tu@email.com" required aria-required="true">
-            <button type="submit" class="hero-button">Quiero acceso</button>
-          </form>
-          <div class="form-success" id="hero-success" role="alert">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-            <span>¡Genial! Te avisaremos cuando lancemos.</span>
-          </div>
-          <div class="hero-trust" role="list" aria-label="Beneficios">
-            <div class="hero-trust-item" role="listitem">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-              Sin spam
+          <a href="#how" class="btn-secondary">Ver cómo funciona</a>
+        </div>
+      </div>
+      <div class="hero-visual" aria-hidden="true">
+        <div class="floating-readiness">
+          <div class="fr-label">Tu preparación</div>
+          <div class="fr-value">73%</div>
+          <div class="fr-bar"><div class="fr-bar-fill"></div></div>
+        </div>
+        <div class="phone-frame">
+          <div class="phone-notch"></div>
+          <div class="phone-screen">
+            <div class="phone-header"><span class="ph-title">Oposita Smart</span><span class="ph-badge">Tema 4</span></div>
+            <div class="phone-question">
+              <div class="pq-tema">Constitución Española</div>
+              <div class="pq-text">¿Cuántos magistrados componen el Tribunal Constitucional?</div>
             </div>
-            <div class="hero-trust-item" role="listitem">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-              Precio fundador
+            <div class="phone-options">
+              <div class="phone-opt">A) 8 magistrados</div>
+              <div class="phone-opt correct">B) 12 magistrados ✓</div>
+              <div class="phone-opt">C) 15 magistrados</div>
+              <div class="phone-opt">D) 10 magistrados</div>
             </div>
-            <div class="hero-trust-item" role="listitem">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-              Acceso anticipado
+            <div class="phone-stats">
+              <div class="phone-stat"><div class="ps-num">102</div><div class="ps-label">Preguntas</div></div>
+              <div class="phone-stat"><div class="ps-num">78%</div><div class="ps-label">Precisión</div></div>
+              <div class="phone-stat"><div class="ps-num">7</div><div class="ps-label">Racha</div></div>
             </div>
           </div>
         </div>
-        <div class="hero-visual" aria-hidden="true">
-          <div class="hero-stats">
-            <div class="stat-pill">
-              <span class="stat-number">1.000+</span>
-              <span class="stat-label">Preguntas</span>
-            </div>
-            <div class="stat-pill">
-              <span class="stat-number">11</span>
-              <span class="stat-label">Temas</span>
-            </div>
-            <div class="stat-pill">
-              <span class="stat-number">FSRS</span>
-              <span class="stat-label">Algoritmo</span>
-            </div>
-          </div>
-          <div class="phone-mockup">
-            <div class="phone-frame">
-              <div class="phone-screen">
-                <div class="app-topbar">
-                  <div class="app-logo">Oposita Smart</div>
-                </div>
-                <div class="app-content">
-                  <div class="app-greeting">Tu sesión de hoy</div>
-                  <div class="app-card-green">
-                    <div class="card-green-title">Sesión recomendada</div>
-                    <div class="card-green-sub">15 preguntas · ~10 min</div>
-                    <div class="card-green-btn">Empezar &rarr;</div>
-                  </div>
-                  <div class="app-progress-section">
-                    <div class="progress-label">
-                      <span>Progreso semanal</span>
-                      <span class="progress-pct">68%</span>
-                    </div>
-                    <div class="progress-bar">
-                      <div class="progress-fill" style="width: 68%"></div>
-                    </div>
-                  </div>
-                  <div class="app-tema-row">
-                    <span class="tema-dot tema-dot-green"></span>
-                    <span class="tema-name">T1 · Constitución</span>
-                    <span class="tema-pct">82%</span>
-                  </div>
-                  <div class="app-tema-row">
-                    <span class="tema-dot tema-dot-amber"></span>
-                    <span class="tema-name">T4 · Gobierno</span>
-                    <span class="tema-pct">45%</span>
-                  </div>
-                  <div class="app-tema-row">
-                    <span class="tema-dot tema-dot-light"></span>
-                    <span class="tema-name">T9 · LPAC</span>
-                    <span class="tema-pct">12%</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+        <div class="floating-streak">
+          <span class="fs-fire">🔥</span>
+          <div><div class="fs-text">7 días seguidos</div><div class="fs-sub">¡Sigue así!</div></div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ========== RADAR DE OPOSICIONES ========== -->
-  <RadarOposiciones />
+  <!-- ========== INSIGHT BANNER ========== -->
+  <div class="insight-banner">
+    <div class="insight-text">El <strong>68% de los opositores que suspenden</strong> ya habían estudiado el temario completo al menos una vez. El problema no es el temario. <strong>Es el olvido.</strong></div>
+    <div class="insight-source">Basado en encuestas de foros de opositores AGE 2023–2025</div>
+  </div>
 
-  <!-- ========== PROBLEM ========== -->
-  <section class="section" aria-labelledby="problem-title">
-    <div class="container">
-      <div class="section-label">El problema</div>
-      <h2 id="problem-title" class="section-title">Preparar oposiciones no debería destrozarte</h2>
-      <p class="section-subtitle">Los métodos tradicionales están rotos. Preguntas irreales, estudio sin retención y un abandono alarmante.</p>
-      <div class="card-grid" role="list">
-        <article class="problem-card" role="listitem">
-          <div class="problem-icon">😰</div>
-          <h3>Preguntas irreales</h3>
-          <p>Muchas apps usan preguntas más difíciles que el examen real. Te frustras sin motivo.</p>
-          <div class="problem-stat">87%</div>
-          <div class="problem-stat-label">reporta frustración</div>
-        </article>
-        <article class="problem-card" role="listitem">
-          <div class="problem-icon">🔄</div>
-          <h3>Estudias sin retener</h3>
-          <p>Lees, relees, subrayas... pero a la semana no recuerdas nada.</p>
-          <div class="problem-stat">73%</div>
-          <div class="problem-stat-label">olvida en 7 días</div>
-        </article>
-        <article class="problem-card" role="listitem">
-          <div class="problem-icon">💔</div>
-          <h3>Abandono masivo</h3>
-          <p>Más de la mitad abandonan antes de presentarse. No por capacidad, sino por burnout.</p>
-          <div class="problem-stat">58%</div>
-          <div class="problem-stat-label">tasa de abandono</div>
-        </article>
+  <!-- ========== SOCIAL STRIP ========== -->
+  <div class="social-strip">
+    <div class="social-strip-inner">
+      <div class="ss-item"><span class="ss-num">5 min</span><span class="ss-text">al día son<br>suficientes</span></div>
+      <div class="ss-divider"></div>
+      <div class="ss-item"><span class="ss-num">1.414</span><span class="ss-text">preguntas del<br>temario oficial AGE</span></div>
+      <div class="ss-divider"></div>
+      <div class="ss-item"><span class="ss-num">14</span><span class="ss-text">temas<br>cubiertos</span></div>
+      <div class="ss-divider"></div>
+      <div class="ss-item"><span class="ss-num">0€</span><span class="ss-text">acceso fundador<br>durante la beta</span></div>
+    </div>
+  </div>
+
+  <!-- ========== CONVOCATORIAS DASHBOARD ========== -->
+  <section class="opo-dashboard" id="convocatorias" aria-labelledby="opo-title">
+    <div class="opo-dashboard-header">
+      <div class="eyebrow">Convocatorias 2025–2026</div>
+      <h2 id="opo-title">Panel de oposiciones en tiempo real</h2>
+      <p>Toda la información que necesitas sobre plazas, fechas y estado de las convocatorias. Actualizado constantemente.</p>
+    </div>
+
+    <div class="opo-stats-row">
+      <div class="opo-stat-card">
+        <div class="osc-num">47.382</div>
+        <div class="osc-label">Plazas totales OEP</div>
+        <div class="osc-bar"><div class="osc-bar-fill" style="width:100%"></div></div>
+      </div>
+      <div class="opo-stat-card">
+        <div class="osc-num">12.456</div>
+        <div class="osc-label">Plazas convocadas</div>
+        <div class="osc-bar"><div class="osc-bar-fill" style="width:26%"></div></div>
+      </div>
+      <div class="opo-stat-card">
+        <div class="osc-num">8</div>
+        <div class="osc-label">Convocatorias abiertas</div>
+        <div class="osc-bar"><div class="osc-bar-fill" style="width:40%"></div></div>
+      </div>
+      <div class="opo-stat-card">
+        <div class="osc-num">127d</div>
+        <div class="osc-label">Próximo examen AGE</div>
+        <div class="osc-bar"><div class="osc-bar-fill" style="width:65%"></div></div>
+      </div>
+    </div>
+
+    <div class="opo-filters" role="group" aria-label="Filtrar convocatorias">
+      <button class="opo-chip active">Todos</button>
+      <button class="opo-chip">C1</button>
+      <button class="opo-chip">C2</button>
+      <button class="opo-chip">A1/A2</button>
+      <button class="opo-chip">Estado</button>
+      <button class="opo-chip">CCAA</button>
+      <button class="opo-chip">Local</button>
+    </div>
+
+    <div class="opo-cards-grid">
+      <article class="opo-card">
+        <div class="opo-card-header">
+          <div class="opo-card-title">Auxiliar Administrativo del Estado</div>
+          <span class="opo-badge convocada">Convocada</span>
+        </div>
+        <div class="opo-card-plazas">
+          <span class="plazas-num">2.813</span>
+          <span class="plazas-label">plazas<br>OEP 2024</span>
+        </div>
+        <div class="opo-plazas-bar">
+          <div class="opo-plazas-bar-fill" style="width:85%"></div>
+          <div class="opo-plazas-bar-marker" style="left:85%"></div>
+        </div>
+        <div class="opo-card-meta">
+          <span>Grupo C2 · AGE</span>
+          <span class="opo-card-countdown">⏱ 127 días</span>
+        </div>
+      </article>
+
+      <article class="opo-card">
+        <div class="opo-card-header">
+          <div class="opo-card-title">Administrativo del Estado</div>
+          <span class="opo-badge prevista">Prevista</span>
+        </div>
+        <div class="opo-card-plazas">
+          <span class="plazas-num">1.245</span>
+          <span class="plazas-label">plazas<br>OEP 2024</span>
+        </div>
+        <div class="opo-plazas-bar">
+          <div class="opo-plazas-bar-fill" style="width:45%"></div>
+        </div>
+        <div class="opo-card-meta">
+          <span>Grupo C1 · AGE</span>
+          <span class="opo-card-countdown">⏱ ~Q3 2026</span>
+        </div>
+      </article>
+
+      <article class="opo-card">
+        <div class="opo-card-header">
+          <div class="opo-card-title">Gestión de la Administración Civil</div>
+          <span class="opo-badge en-plazo">En plazo</span>
+        </div>
+        <div class="opo-card-plazas">
+          <span class="plazas-num">890</span>
+          <span class="plazas-label">plazas<br>OEP 2023-24</span>
+        </div>
+        <div class="opo-plazas-bar">
+          <div class="opo-plazas-bar-fill" style="width:60%"></div>
+        </div>
+        <div class="opo-card-meta">
+          <span>Grupo A2 · AGE</span>
+          <span class="opo-card-countdown">⏱ Plazo: 15 abr</span>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ========== ACADEMY COMPARE ========== -->
+  <section class="anti-academy" aria-labelledby="compare-title">
+    <div class="anti-academy-header">
+      <div class="eyebrow">Por qué funciona</div>
+      <h2 id="compare-title">Sin academia. Sin horarios. Sin excusas.</h2>
+    </div>
+    <div class="compare-grid">
+      <div class="compare-card old">
+        <h3>Academia tradicional</h3>
+        <div class="compare-row"><span class="icon">💸</span> 3.000–6.000€ al año</div>
+        <div class="compare-row"><span class="icon">🕐</span> 3 horas diarias presenciales</div>
+        <div class="compare-row"><span class="icon">📖</span> Temario estático, sin adaptación</div>
+        <div class="compare-row"><span class="icon">❓</span> No sabes si estás listo hasta el examen</div>
+        <div class="compare-row"><span class="icon">😰</span> Presión de grupo, ritmo impuesto</div>
+      </div>
+      <div class="compare-card new">
+        <h3>Oposita Smart</h3>
+        <div class="compare-row"><span class="icon">✅</span> Gratis (acceso fundador)</div>
+        <div class="compare-row"><span class="icon">✅</span> 10–15 minutos al día</div>
+        <div class="compare-row"><span class="icon">✅</span> Se adapta a lo que necesitas repasar</div>
+        <div class="compare-row"><span class="icon">✅</span> Índice de preparación en tiempo real</div>
+        <div class="compare-row"><span class="icon">✅</span> A tu ritmo, sin agobios</div>
       </div>
     </div>
   </section>
 
-  <!-- ========== SOLUTION ========== -->
-  <section class="section section-white" id="metodo" aria-labelledby="solution-title">
-    <div class="container">
-      <div class="section-label">La solución</div>
-      <h2 id="solution-title" class="section-title">Un sistema que sí funciona</h2>
-      <p class="section-subtitle">Oposita Smart combina ciencia cognitiva, preguntas calibradas y un enfoque humano.</p>
-      <div class="card-grid">
-        <div class="solution-card">
-          <div class="solution-icon">🎯</div>
-          <h3>Preguntas reales</h3>
-          <p>Nivel de dificultad calibrado a exámenes oficiales AGE. Sin trucos.</p>
-        </div>
-        <div class="solution-card">
-          <div class="solution-icon">🧠</div>
-          <h3>Repetición espaciada</h3>
-          <p>Algoritmo FSRS que te muestra cada pregunta en el momento óptimo para recordarla.</p>
-        </div>
-        <div class="solution-card">
-          <div class="solution-icon">💚</div>
-          <h3>Sin agobios</h3>
-          <p>Unos minutos al día. Sin presión artificial ni gamificación tóxica. A tu ritmo.</p>
-        </div>
-      </div>
+  <!-- ========== FEATURES GRID ========== -->
+  <section class="features" id="features" aria-labelledby="features-title">
+    <div class="features-header">
+      <div class="eyebrow">Funcionalidades</div>
+      <h2 id="features-title">Todo lo que necesitas para aprobar</h2>
     </div>
-  </section>
-
-  <!-- ========== GUÍA DE INICIO ========== -->
-  <GuiaInicio />
-
-  <!-- ========== TEST DIAGNÓSTICO CTA ========== -->
-  <section class="section section-white" aria-label="Test diagnóstico">
-    <div class="container" style="text-align: center;">
-      <span class="hero-badge" style="display: inline-block; margin-bottom: 12px;">
-        <span class="badge-dot"></span>
-        Gratis · 5 minutos
-      </span>
-      <h2 style="font-size: clamp(22px, 4vw, 32px); font-weight: 800; color: var(--text-heading); letter-spacing: -0.02em; margin-bottom: 12px;">
-        ¿Listo para saber dónde estás?
-      </h2>
-      <p style="font-size: 16px; color: var(--text-secondary); margin-bottom: 24px; max-width: 500px; margin-left: auto; margin-right: auto;">
-        50 preguntas reales, puntuación oficial con penalización, resultados por tema. Descubre tus puntos fuertes y débiles.
-      </p>
-      <a href="/diagnostico" style="display: inline-block; background: var(--gradient-cta); color: white; font-weight: 700; font-size: 17px; padding: 16px 36px; border-radius: var(--radius-md); transition: transform 0.2s, box-shadow 0.2s; text-decoration: none;">
-        Hacer test diagnóstico →
-      </a>
+    <div class="features-grid">
+      <article class="feature-card">
+        <div class="fc-icon">🧠</div>
+        <h3>El sistema que estudia por ti</h3>
+        <p>El algoritmo FSRS calcula exactamente cuándo necesitas repasar cada pregunta. Estudias menos, retienes más.</p>
+      </article>
+      <article class="feature-card">
+        <div class="fc-icon">📊</div>
+        <h3>Sabes exactamente cuánto te falta</h3>
+        <p>Un número del 0 al 100 que sube en tiempo real. Cuando pase de 75, estarás listo para presentarte.</p>
+      </article>
+      <article class="feature-card">
+        <div class="fc-icon">⚡</div>
+        <h3>5 minutos al día sin excusas</h3>
+        <p>10 preguntas adaptadas a tu nivel. En el metro, en la pausa del café. Mantienes el ritmo sin reorganizar tu vida.</p>
+      </article>
+      <article class="feature-card">
+        <div class="fc-icon">📝</div>
+        <h3>El día del examen, sin sorpresas</h3>
+        <p>100 preguntas, 60 minutos. Condiciones de examen real con análisis de tiempo por pregunta.</p>
+      </article>
+      <article class="feature-card">
+        <div class="fc-icon">🗂</div>
+        <h3>Lo que se te olvida, vuelve</h3>
+        <p>Flashcards inteligentes que priorizan exactamente lo que te cuesta más. El olvido deja de ser un problema.</p>
+      </article>
+      <article class="feature-card">
+        <div class="fc-icon">📈</div>
+        <h3>Deja de estudiar lo que ya sabes</h3>
+        <p>Ve qué temas tienes dominados y cuáles te van a costar el aprobado. Para de repasar la CE si tu punto débil es el TREBEP.</p>
+      </article>
     </div>
   </section>
 
   <!-- ========== HOW IT WORKS ========== -->
-  <section class="section section-dark">
-    <div class="container">
-      <div class="section-label-light">Cómo funciona</div>
-      <h2 class="section-title-light">Simple, pero potente</h2>
-      <p class="section-subtitle-light">4 pasos para transformar tu preparación</p>
-      <div class="steps-grid">
-        <div class="step">
-          <div class="step-number">1</div>
+  <section class="how-section" id="how" aria-labelledby="how-title">
+    <div class="how-inner">
+      <div class="eyebrow how-eyebrow">El método</div>
+      <h2 id="how-title">Cómo funciona</h2>
+      <div class="how-steps">
+        <div class="how-step">
+          <div class="step-num">01</div>
           <h3>Elige tu oposición</h3>
-          <p>Empezamos con Auxiliar AGE (C2)</p>
+          <p>Selecciona la oposición que preparas y configura tu ritmo de estudio ideal.</p>
         </div>
-        <div class="step">
-          <div class="step-number">2</div>
-          <h3>Practica a diario</h3>
-          <p>Sesiones de 10-15 min optimizadas</p>
+        <div class="how-step">
+          <div class="step-num">02</div>
+          <h3>Practica cada día</h3>
+          <p>El algoritmo te dice qué repasar hoy. Solo unos minutos, sin agobios.</p>
         </div>
-        <div class="step">
-          <div class="step-number">3</div>
+        <div class="how-step">
+          <div class="step-num">03</div>
           <h3>Repasa con ciencia</h3>
-          <p>El algoritmo decide qué y cuándo</p>
+          <p>La repetición espaciada te muestra las preguntas justo antes de que las olvides.</p>
         </div>
-        <div class="step">
-          <div class="step-number">4</div>
-          <h3>Llega preparado</h3>
-          <p>Sin sorpresas en el examen</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ========== STATS ========== -->
-  <section class="section section-white">
-    <div class="container">
-      <div class="stats-bar">
-        <div class="stat-item">
-          <div class="stat-value">2.4M</div>
-          <div class="stat-desc">Opositores en España</div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-value">330K</div>
-          <div class="stat-desc">Plazas previstas 2026</div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-value">1.000+</div>
-          <div class="stat-desc">Preguntas calibradas</div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-value">11</div>
-          <div class="stat-desc">Temas del temario</div>
+        <div class="how-step">
+          <div class="step-num">04</div>
+          <h3>Mide tu progreso</h3>
+          <p>El índice de preparación sube mientras dominas más temas. Llegas con datos, no con esperanza.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ========== BETA BENEFITS ========== -->
-  <section class="section">
-    <div class="container" style="text-align: center;">
-      <div class="section-label">Beta privada</div>
-      <h2 class="section-title" style="margin: 0 auto 16px;">Sé de los primeros</h2>
-      <p class="section-subtitle" style="margin: 0 auto 48px;">Buscamos opositores comprometidos que quieran ayudarnos a construir la mejor herramienta</p>
-      <div class="card-grid">
-        <div class="beta-card">
-          <div class="beta-icon">🎁</div>
-          <h3>Precio fundador de por vida</h3>
-          <p>Descuento exclusivo que mantendrás para siempre, incluso cuando subamos precios.</p>
-        </div>
-        <div class="beta-card">
-          <div class="beta-icon">🗣️</div>
-          <h3>Tu feedback importa</h3>
-          <p>Línea directa con el equipo. Tus sugerencias darán forma al producto.</p>
-        </div>
-        <div class="beta-card">
-          <div class="beta-icon">🚀</div>
-          <h3>Acceso anticipado</h3>
-          <p>Empieza antes que nadie con las funcionalidades más avanzadas.</p>
+  <!-- ========== READINESS RADAR ========== -->
+  <section class="radar-section" aria-labelledby="radar-title">
+    <div class="radar-inner">
+      <div>
+        <div class="eyebrow">Tu panel de control</div>
+        <h2 id="radar-title">¿Cuánto me falta?<br>Esa pregunta ya tiene respuesta</h2>
+        <p class="radar-desc">El índice de preparación combina tres dimensiones para darte una foto real. Sin métricas vanidosas.</p>
+        <div class="radar-dims">
+          <div class="radar-dim">
+            <div class="radar-dim-icon">📚</div>
+            <div>
+              <div class="radar-dim-title">Cobertura (30%)</div>
+              <div class="radar-dim-sub">¿Cuántos temas has practicado?</div>
+            </div>
+          </div>
+          <div class="radar-dim">
+            <div class="radar-dim-icon">🎯</div>
+            <div>
+              <div class="radar-dim-title">Precisión (40%)</div>
+              <div class="radar-dim-sub">¿Aciertas las preguntas?</div>
+            </div>
+          </div>
+          <div class="radar-dim">
+            <div class="radar-dim-icon">📝</div>
+            <div>
+              <div class="radar-dim-title">Simulacros (30%)</div>
+              <div class="radar-dim-sub">¿Cómo rindes bajo presión?</div>
+            </div>
+          </div>
         </div>
       </div>
+      <div class="dashboard-visual">
+        <div class="radar-card">
+          <div class="radar-card-label">Índice de preparación</div>
+          <svg viewBox="0 0 300 280" class="radar-svg" aria-label="Gráfico radar de preparación">
+            <g transform="translate(150,140)">
+              <polygon points="0,-100 95,-31 59,81 -59,81 -95,-31" fill="none" stroke="#E8E4DE" stroke-width="1"/>
+              <polygon points="0,-66 63,-20 39,54 -39,54 -63,-20" fill="none" stroke="#E8E4DE" stroke-width="1"/>
+              <polygon points="0,-33 32,-10 20,27 -20,27 -32,-10" fill="none" stroke="#E8E4DE" stroke-width="1"/>
+              <line x1="0" y1="0" x2="0" y2="-100" stroke="#E8E4DE" stroke-width="1"/>
+              <line x1="0" y1="0" x2="95" y2="-31" stroke="#E8E4DE" stroke-width="1"/>
+              <line x1="0" y1="0" x2="59" y2="81" stroke="#E8E4DE" stroke-width="1"/>
+              <line x1="0" y1="0" x2="-59" y2="81" stroke="#E8E4DE" stroke-width="1"/>
+              <line x1="0" y1="0" x2="-95" y2="-31" stroke="#E8E4DE" stroke-width="1"/>
+              <polygon points="0,-65 74,-24 32,45 -35,57 -78,-26" fill="rgba(45,106,79,0.12)" stroke="#2D6A4F" stroke-width="2.5" stroke-linejoin="round"/>
+              <circle cx="0" cy="-65" r="4" fill="#2D6A4F"/>
+              <circle cx="74" cy="-24" r="4" fill="#2D6A4F"/>
+              <circle cx="32" cy="45" r="4" fill="#2D6A4F"/>
+              <circle cx="-35" cy="57" r="4" fill="#2D6A4F"/>
+              <circle cx="-78" cy="-26" r="4" fill="#2D6A4F"/>
+            </g>
+            <text x="150" y="24" text-anchor="middle" font-family="Instrument Sans, sans-serif" font-size="12" fill="#555" font-weight="600">Cobertura</text>
+            <text x="270" y="115" text-anchor="start" font-family="Instrument Sans, sans-serif" font-size="12" fill="#555" font-weight="600">Precisión</text>
+            <text x="225" y="240" text-anchor="middle" font-family="Instrument Sans, sans-serif" font-size="12" fill="#555" font-weight="600">Simulacros</text>
+            <text x="75" y="240" text-anchor="middle" font-family="Instrument Sans, sans-serif" font-size="12" fill="#555" font-weight="600">Velocidad</text>
+            <text x="30" y="115" text-anchor="end" font-family="Instrument Sans, sans-serif" font-size="12" fill="#555" font-weight="600">Regularidad</text>
+          </svg>
+          <div class="radar-score">
+            <span class="radar-score-num">73</span>
+            <span class="radar-score-denom">/100</span>
+          </div>
+          <div class="radar-score-badge">Avanzado</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== RESOURCE DOWNLOAD ========== -->
+  <section class="resource-section" aria-labelledby="resource-title">
+    <div class="resource-inner">
+      <h3 id="resource-title">Las 50 preguntas más repetidas en oposiciones AGE</h3>
+      <p>Descarga gratis las preguntas que más se repiten en convocatorias de Auxiliar Administrativo (2018–2024). Sin registro.</p>
+      <a href="/recursos/50-preguntas-age.pdf" class="btn-resource" download>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1B4332" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Descargar PDF gratis
+      </a>
     </div>
   </section>
 
   <!-- ========== BLOG PREVIEW ========== -->
   {posts.length > 0 && (
-    <section class="section section-white">
-      <div class="container" style="text-align: center;">
-        <div class="section-label">Blog</div>
-        <h2 class="section-title" style="margin: 0 auto 16px;">Guías para opositores</h2>
-        <p class="section-subtitle" style="margin: 0 auto 48px;">Artículos prácticos para preparar tu oposición con ciencia</p>
-        <div class="card-grid">
+    <section class="blog-section" aria-labelledby="blog-title">
+      <div class="section-inner">
+        <div class="eyebrow" style="text-align:center">Blog</div>
+        <h2 id="blog-title" class="section-h2">Guías para opositores</h2>
+        <p class="section-p">Artículos prácticos para preparar tu oposición con ciencia</p>
+        <div class="blog-grid">
           {posts.map((post) => (
             <BlogCard
               title={post.data.title}
@@ -321,680 +400,1196 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft))
     </section>
   )}
 
-  <!-- ========== CTA ========== -->
-  <section id="waitlist">
-    <div class="container">
-      <CTABanner
-        title="¿Quieres ser beta tester?"
-        subtitle="Únete a la lista de espera. Precio fundador garantizado."
-      />
-    </div>
-  </section>
-
   <!-- ========== FAQ ========== -->
-  <section class="section" id="faq">
-    <div class="container" style="text-align: center;">
-      <div class="section-label">Preguntas frecuentes</div>
-      <h2 class="section-title" style="margin: 0 auto 48px;">Lo que quieres saber</h2>
+  <section class="faq-section" id="faq" aria-labelledby="faq-title">
+    <div class="section-inner" style="text-align:center">
+      <div class="eyebrow">Preguntas frecuentes</div>
+      <h2 id="faq-title" class="section-h2">Lo que quieres saber</h2>
       <div class="faq-grid">
         <div class="faq-item">
-          <div class="faq-question">¿Cuándo estará disponible?</div>
-          <div class="faq-answer">Lanzamos la beta en el primer semestre de 2026. Los de la lista tendrán acceso prioritario y precio fundador.</div>
+          <div class="faq-question">¿Ya está disponible?</div>
+          <div class="faq-answer">Sí, la app está disponible ahora mismo. Crea tu cuenta gratuita y empieza a practicar hoy. Sin tarjeta, sin contraseña larga.</div>
         </div>
         <div class="faq-item">
           <div class="faq-question">¿Qué oposición cubre?</div>
-          <div class="faq-answer">Empezamos con Auxiliar Administrativo del Estado (C2). Después expandiremos a otras.</div>
+          <div class="faq-answer">Empezamos con Auxiliar Administrativo del Estado (C2) con 1.414 preguntas y 14 temas completos. Después expandiremos a otras oposiciones.</div>
         </div>
         <div class="faq-item">
-          <div class="faq-question">¿Cuánto costará?</div>
-          <div class="faq-answer">Precio por definir, pero fundadores tendrán descuento significativo de por vida.</div>
+          <div class="faq-question">¿Cuánto cuesta?</div>
+          <div class="faq-answer">El acceso fundador durante la beta es completamente gratuito. Los primeros usuarios mantendrán condiciones especiales cuando implementemos el modelo de pago.</div>
         </div>
         <div class="faq-item">
-          <div class="faq-question">¿Sustituye academia?</div>
-          <div class="faq-answer">Es un complemento perfecto. Te ayuda a consolidar lo aprendido y detectar puntos débiles.</div>
+          <div class="faq-question">¿Sustituye a la academia?</div>
+          <div class="faq-answer">Es un complemento perfecto. Te ayuda a consolidar lo aprendido, detectar puntos débiles y mantener la retención sin depender de horarios fijos.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">¿Qué es el índice de preparación?</div>
+          <div class="faq-answer">Un número del 0 al 100 que combina cobertura de temas (30%), precisión en respuestas (40%) y rendimiento en simulacros (30%). Cuando supera 75, estás listo.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">¿Funciona en móvil?</div>
+          <div class="faq-answer">Sí, la app está optimizada para móvil. Diseñada para sesiones cortas de 5–15 minutos donde sea que estés.</div>
         </div>
       </div>
     </div>
   </section>
+
+  <!-- ========== FINAL CTA ========== -->
+  <section class="final-cta" aria-labelledby="final-cta-title">
+    <h2 id="final-cta-title">La oposición no la gana<br>quien más estudia en junio.<br><em>La gana quien no olvida<br>lo de enero.</em></h2>
+    <p>Crea tu cuenta gratuita en 30 segundos y descubre en qué punto estás. Sin tarjeta, sin letra pequeña.</p>
+    <a href="https://oposiciones-app-alberts-projects-ca9eeb02.vercel.app/#/welcome" class="btn-primary final-btn">Descubrir mi nivel de preparación</a>
+    <div class="fine-print">Acceso fundador gratuito · Siempre podrás exportar tus datos · Sin trucos</div>
+  </section>
+
+  <!-- STICKY MOBILE CTA -->
+  <div class="mobile-sticky-cta" aria-hidden="true">
+    <a href="https://oposiciones-app-alberts-projects-ca9eeb02.vercel.app/#/welcome" class="btn-primary">Ver mi nivel ahora — es gratis</a>
+  </div>
+
 </BaseLayout>
 
+<style is:global>
+  body {
+    font-family: 'Instrument Sans', sans-serif;
+    background: #F5F1EB;
+    color: #1a1a1a;
+    overflow-x: hidden;
+  }
+</style>
+
 <style>
-  /* ========== HERO ========== */
-  .hero {
-    padding: 120px 0 80px;
-    background: var(--bg-white);
+  /* ===== SHARED ===== */
+  .eyebrow {
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: #2D6A4F;
   }
 
+  .btn-primary {
+    display: inline-block;
+    background: linear-gradient(145deg, #1B4332, #2D6A4F);
+    color: #fff;
+    border: none;
+    padding: 16px 36px;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 600;
+    font-family: 'Instrument Sans', sans-serif;
+    cursor: pointer;
+    box-shadow: 0 4px 20px rgba(27,67,50,0.25);
+    transition: transform 0.2s, box-shadow 0.2s;
+    text-decoration: none;
+  }
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 24px rgba(27,67,50,0.35);
+    color: #fff;
+  }
+
+  .btn-secondary {
+    display: inline-block;
+    background: transparent;
+    color: #2D6A4F;
+    border: 1.5px solid #2D6A4F;
+    padding: 15px 28px;
+    border-radius: 12px;
+    font-size: 15px;
+    font-weight: 600;
+    font-family: 'Instrument Sans', sans-serif;
+    cursor: pointer;
+    transition: background 0.2s;
+    text-decoration: none;
+  }
+  .btn-secondary:hover {
+    background: rgba(45,106,79,0.06);
+  }
+
+  /* ===== HERO ===== */
+  .hero {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 60px 48px;
+  }
   .hero-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 80vh;
+    gap: 60px;
+    align-items: center;
+  }
+  .hero-eyebrow {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    color: #2D6A4F;
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .hero-eyebrow::before {
+    content: '';
+    width: 24px;
+    height: 1.5px;
+    background: #2D6A4F;
+  }
+  .hero h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 62px;
+    line-height: 1.05;
+    letter-spacing: -2px;
+  }
+  .hero h1 em {
+    color: #2D6A4F;
+    font-style: italic;
+  }
+  .hero-sub {
+    font-size: 17px;
+    color: #5C5C5C;
+    line-height: 1.75;
+    margin-top: 28px;
+    max-width: 440px;
+  }
+  .hero-ctas {
+    display: flex;
+    gap: 14px;
+    margin-top: 32px;
+    align-items: flex-start;
+  }
+  .cta-micro {
+    font-size: 12px;
+    color: #888;
+    margin-top: 8px;
+  }
+
+  /* Hero visual */
+  .hero-visual {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    background: radial-gradient(ellipse 70% 65% at 50% 50%, rgba(82,183,136,0.07) 0%, transparent 70%);
+  }
+  .phone-frame {
+    width: 280px;
+    height: 560px;
+    background: #fff;
+    border-radius: 36px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.04), 0 8px 24px rgba(0,0,0,0.08), 0 24px 64px rgba(0,0,0,0.10);
+    overflow: hidden;
+  }
+  .phone-notch {
+    width: 120px;
+    height: 28px;
+    background: #1a1a1a;
+    border-radius: 0 0 16px 16px;
+    margin: 0 auto;
+  }
+  .phone-screen {
+    padding: 16px;
+  }
+  .phone-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0 16px;
+    border-bottom: 1px solid #f0f0f0;
+  }
+  .phone-header .ph-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 16px;
+  }
+  .phone-header .ph-badge {
+    background: rgba(45,106,79,0.1);
+    color: #2D6A4F;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 10px;
+    font-weight: 600;
+  }
+  .phone-question {
+    margin-top: 16px;
+    padding: 16px;
+    background: #fafaf7;
+    border-radius: 12px;
+  }
+  .phone-question .pq-tema {
+    font-size: 10px;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  .phone-question .pq-text {
+    font-size: 13px;
+    font-weight: 600;
+    margin-top: 6px;
+    line-height: 1.4;
+    color: #333;
+  }
+  .phone-options {
+    margin-top: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .phone-opt {
+    padding: 10px 12px;
+    border: 1px solid #e8e8e4;
+    border-radius: 8px;
+    font-size: 12px;
+    color: #555;
+  }
+  .phone-opt.correct {
+    border-color: #52B788;
+    background: rgba(82,183,136,0.08);
+    color: #1B4332;
+    font-weight: 600;
+  }
+  .phone-stats {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+    padding-top: 16px;
+    border-top: 1px solid #f0f0f0;
+  }
+  .phone-stat {
+    text-align: center;
+  }
+  .phone-stat .ps-num {
+    font-family: 'DM Serif Display', serif;
+    font-size: 22px;
+    color: #2D6A4F;
+  }
+  .phone-stat .ps-label {
+    font-size: 10px;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-top: 2px;
+  }
+  .floating-readiness {
+    position: absolute;
+    top: 32px;
+    right: -12px;
+    background: #fff;
+    border-radius: 16px;
+    padding: 18px 22px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.08), 0 12px 40px rgba(0,0,0,0.06);
+    width: 180px;
+    z-index: 2;
+  }
+  .floating-readiness .fr-label {
+    font-size: 10px;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-weight: 600;
+  }
+  .floating-readiness .fr-value {
+    font-family: 'DM Serif Display', serif;
+    font-size: 40px;
+    color: #2D6A4F;
+    margin-top: 2px;
+  }
+  .fr-bar {
+    height: 5px;
+    background: #E8E4DE;
+    border-radius: 3px;
+    margin-top: 10px;
+    overflow: hidden;
+  }
+  .fr-bar-fill {
+    height: 100%;
+    width: 73%;
+    background: linear-gradient(90deg, #2D6A4F, #52B788);
+    border-radius: 3px;
+  }
+  .floating-streak {
+    position: absolute;
+    bottom: 60px;
+    left: -24px;
+    background: #fff;
+    border-radius: 12px;
+    padding: 14px 20px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.08), 0 12px 40px rgba(0,0,0,0.06);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    z-index: 2;
+  }
+  .floating-streak .fs-fire {
+    font-size: 24px;
+  }
+  .floating-streak .fs-text {
+    font-size: 13px;
+    font-weight: 600;
+    color: #333;
+  }
+  .floating-streak .fs-sub {
+    font-size: 11px;
+    color: #888;
+  }
+
+  /* ===== INSIGHT BANNER ===== */
+  .insight-banner {
+    background: #1B4332;
+    padding: 36px 48px;
+    text-align: center;
+  }
+  .insight-text {
+    max-width: 720px;
+    margin: 0 auto;
+    font-family: 'DM Serif Display', serif;
+    font-size: 22px;
+    color: rgba(255,255,255,0.90);
+    line-height: 1.5;
+    letter-spacing: -0.3px;
+  }
+  .insight-text strong {
+    color: #52B788;
+    font-weight: 400;
+  }
+  .insight-source {
+    font-family: 'Instrument Sans', sans-serif;
+    font-size: 12px;
+    color: rgba(255,255,255,0.4);
+    margin-top: 12px;
+  }
+
+  /* ===== SOCIAL STRIP ===== */
+  .social-strip {
+    background: rgba(0,0,0,0.02);
+    border-top: 1px solid rgba(0,0,0,0.04);
+    border-bottom: 1px solid rgba(0,0,0,0.04);
+    padding: 20px 48px;
+  }
+  .social-strip-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    gap: 48px;
+    align-items: center;
+  }
+  .ss-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .ss-num {
+    font-family: 'DM Serif Display', serif;
+    font-size: 28px;
+    color: #2D6A4F;
+  }
+  .ss-text {
+    font-size: 13px;
+    color: #666;
+    line-height: 1.3;
+  }
+  .ss-divider {
+    width: 1px;
+    height: 32px;
+    background: rgba(0,0,0,0.08);
+  }
+
+  /* ===== OPOSICIONES DASHBOARD ===== */
+  .opo-dashboard {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 96px 48px 80px;
+  }
+  .opo-dashboard-header {
+    text-align: center;
+    margin-bottom: 48px;
+  }
+  .opo-dashboard-header h2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 36px;
+    letter-spacing: -0.8px;
+    margin-top: 10px;
+  }
+  .opo-dashboard-header p {
+    font-size: 15px;
+    color: #666;
+    margin-top: 10px;
+    max-width: 560px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .opo-stats-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+  .opo-stat-card {
+    background: #fff;
+    border-radius: 16px;
+    padding: 24px;
+    border: 1px solid rgba(0,0,0,0.04);
+    text-align: center;
+  }
+  .opo-stat-card .osc-num {
+    font-family: 'DM Serif Display', serif;
+    font-size: 36px;
+    color: #2D6A4F;
+    letter-spacing: -1px;
+  }
+  .opo-stat-card .osc-label {
+    font-size: 12px;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 4px;
+  }
+  .opo-stat-card .osc-bar {
+    height: 5px;
+    background: #E8E4DE;
+    border-radius: 3px;
+    margin-top: 12px;
+    overflow: hidden;
+  }
+  .opo-stat-card .osc-bar-fill {
+    height: 100%;
+    border-radius: 3px;
+    background: linear-gradient(90deg, #2D6A4F, #52B788);
+  }
+  .opo-filters {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+  }
+  .opo-chip {
+    padding: 8px 16px;
+    border-radius: 100px;
+    font-size: 13px;
+    font-weight: 600;
+    border: 1.5px solid #E8E4DE;
+    color: #777;
+    cursor: pointer;
+    transition: all 0.2s;
+    background: transparent;
+    font-family: 'Instrument Sans', sans-serif;
+  }
+  .opo-chip.active {
+    background: #2D6A4F;
+    color: #fff;
+    border-color: #2D6A4F;
+  }
+  .opo-chip:hover:not(.active) {
+    border-color: #2D6A4F;
+    color: #2D6A4F;
+  }
+  .opo-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  .opo-card {
+    background: #fff;
+    border-radius: 16px;
+    padding: 24px;
+    border: 1px solid rgba(0,0,0,0.04);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .opo-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.06);
+  }
+  .opo-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 16px;
+  }
+  .opo-card-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 17px;
+    letter-spacing: -0.3px;
+    line-height: 1.3;
+    max-width: 200px;
+  }
+  .opo-badge {
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    flex-shrink: 0;
+  }
+  .opo-badge.convocada {
+    background: rgba(82,183,136,0.12);
+    color: #1B4332;
+  }
+  .opo-badge.prevista {
+    background: rgba(217,119,6,0.1);
+    color: #92400e;
+  }
+  .opo-badge.en-plazo {
+    background: rgba(59,130,246,0.1);
+    color: #1e40af;
+  }
+  .opo-card-plazas {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+  .opo-card-plazas .plazas-num {
+    font-family: 'DM Serif Display', serif;
+    font-size: 28px;
+    color: #2D6A4F;
+  }
+  .opo-card-plazas .plazas-label {
+    font-size: 12px;
+    color: #888;
+  }
+  .opo-plazas-bar {
+    height: 6px;
+    background: #E8E4DE;
+    border-radius: 3px;
+    margin-bottom: 16px;
+    overflow: hidden;
+    position: relative;
+  }
+  .opo-plazas-bar-fill {
+    height: 100%;
+    border-radius: 3px;
+    background: linear-gradient(90deg, #2D6A4F, #52B788);
+  }
+  .opo-plazas-bar-marker {
+    position: absolute;
+    top: -3px;
+    width: 2px;
+    height: 12px;
+    background: #e74c3c;
+    border-radius: 1px;
+  }
+  .opo-card-meta {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    color: #888;
+  }
+  .opo-card-countdown {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-weight: 600;
+    color: #2D6A4F;
+  }
+
+  /* ===== ANTI-ACADEMY ===== */
+  .anti-academy {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 80px 48px;
+  }
+  .anti-academy-header {
+    text-align: center;
+    margin-bottom: 48px;
+  }
+  .anti-academy-header h2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 36px;
+    letter-spacing: -0.8px;
+    margin-top: 10px;
+  }
+  .compare-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  .compare-card {
+    border-radius: 16px;
+    padding: 32px;
+    border: 1px solid rgba(0,0,0,0.04);
+  }
+  .compare-card.old {
+    background: #fff;
+  }
+  .compare-card.new {
+    background: linear-gradient(145deg, #1B4332, #2D6A4F);
+    color: #fff;
+  }
+  .compare-card h3 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+  .compare-card.new h3 {
+    color: #fff;
+  }
+  .compare-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 0;
+    border-top: 1px solid rgba(0,0,0,0.06);
+    font-size: 14px;
+    color: #555;
+  }
+  .compare-card.new .compare-row {
+    border-color: rgba(255,255,255,0.1);
+    color: rgba(255,255,255,0.85);
+  }
+  .compare-row .icon {
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+
+  /* ===== FEATURES ===== */
+  .features {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 80px 48px;
+  }
+  .features-header {
+    text-align: center;
+    margin-bottom: 56px;
+  }
+  .features-header h2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 36px;
+    letter-spacing: -0.8px;
+    margin-top: 10px;
+  }
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+  }
+  .feature-card {
+    background: #fff;
+    border-radius: 16px;
+    padding: 32px;
+    border: 1px solid rgba(0,0,0,0.04);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .feature-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.06);
+  }
+  .fc-icon {
+    width: 48px;
+    height: 48px;
+    background: rgba(45,106,79,0.08);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    margin-bottom: 20px;
+  }
+  .feature-card h3 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 20px;
+    margin-bottom: 8px;
+    letter-spacing: -0.3px;
+  }
+  .feature-card p {
+    font-size: 14px;
+    color: #666;
+    line-height: 1.6;
+  }
+
+  /* ===== HOW IT WORKS ===== */
+  .how-section {
+    background: #1B4332;
+    padding: 96px 48px;
+    color: #fff;
+  }
+  .how-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .how-eyebrow {
+    color: #52B788 !important;
+  }
+  .how-inner h2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 46px;
+    letter-spacing: -1.5px;
+    line-height: 1.06;
+    margin-top: 12px;
+    color: #fff;
+  }
+  .how-steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+    margin-top: 56px;
+  }
+  .how-step .step-num {
+    font-family: 'DM Serif Display', serif;
+    font-size: 52px;
+    color: rgba(82,183,136,0.35);
+    line-height: 1;
+  }
+  .how-step h3 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-top: 12px;
+    color: #fff;
+  }
+  .how-step p {
+    font-size: 13px;
+    color: rgba(255,255,255,0.72);
+    line-height: 1.6;
+    margin-top: 8px;
+  }
+
+  /* ===== READINESS RADAR ===== */
+  .radar-section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 80px 48px;
+  }
+  .radar-inner {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 60px;
     align-items: center;
   }
+  .radar-inner h2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 36px;
+    letter-spacing: -0.8px;
+    margin-top: 10px;
+    line-height: 1.2;
+  }
+  .radar-desc {
+    font-size: 16px;
+    color: #666;
+    line-height: 1.7;
+    margin-top: 16px;
+    max-width: 420px;
+  }
+  .radar-dims {
+    margin-top: 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .radar-dim {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .radar-dim-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    background: rgba(45,106,79,0.08);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+  .radar-dim-title {
+    font-size: 14px;
+    font-weight: 600;
+  }
+  .radar-dim-sub {
+    font-size: 13px;
+    color: #777;
+  }
+  .radar-card {
+    background: #fff;
+    border-radius: 20px;
+    padding: 32px;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.06);
+    border: 1px solid rgba(0,0,0,0.04);
+  }
+  .radar-card-label {
+    text-align: center;
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: #888;
+    margin-bottom: 8px;
+  }
+  .radar-svg {
+    width: 100%;
+    max-width: 320px;
+    margin: 0 auto;
+    display: block;
+  }
+  .radar-score {
+    text-align: center;
+    margin-top: 12px;
+  }
+  .radar-score-num {
+    font-family: 'DM Serif Display', serif;
+    font-size: 48px;
+    color: #2D6A4F;
+    letter-spacing: -1px;
+  }
+  .radar-score-denom {
+    font-size: 16px;
+    color: #888;
+    margin-left: 4px;
+  }
+  .radar-score-badge {
+    text-align: center;
+    margin-top: 4px;
+  }
+  .radar-score-badge span,
+  .radar-score-badge {
+    display: inline-block;
+    background: rgba(45,106,79,0.1);
+    color: #2D6A4F;
+    padding: 4px 14px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+  }
 
-  .hero-badge {
+  /* ===== RESOURCE ===== */
+  .resource-section {
+    background: linear-gradient(160deg, #f0ede6, #F5F1EB);
+    padding: 64px 48px;
+    text-align: center;
+    border-top: 1px solid rgba(0,0,0,0.04);
+    border-bottom: 1px solid rgba(0,0,0,0.04);
+  }
+  .resource-inner {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  .resource-inner h3 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 28px;
+    letter-spacing: -0.5px;
+  }
+  .resource-inner p {
+    font-size: 15px;
+    color: #666;
+    margin-top: 10px;
+    line-height: 1.6;
+  }
+  .btn-resource {
+    margin-top: 24px;
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    background: var(--green-tint);
-    border: 1px solid rgba(45, 106, 79, 0.2);
-    padding: 6px 14px;
-    border-radius: var(--radius-pill);
-    font-size: 13px;
-    font-weight: 500;
-    color: var(--green-primary);
-    margin-bottom: 20px;
-  }
-
-  .badge-dot {
-    width: 8px;
-    height: 8px;
-    background: var(--green-accent);
-    border-radius: 50%;
-    animation: pulse 2s infinite;
-  }
-
-  @keyframes pulse {
-    0%, 100% { opacity: 1; transform: scale(1); }
-    50% { opacity: 0.6; transform: scale(1.3); }
-  }
-
-  .hero-title {
-    font-size: clamp(32px, 4vw, 48px);
-    font-weight: 800;
-    line-height: 1.1;
-    margin-bottom: 20px;
-    color: var(--text-heading);
-    letter-spacing: -0.03em;
-  }
-
-  .highlight {
-    color: var(--green-primary);
-  }
-
-  .hero-subtitle {
-    font-size: 17px;
-    color: var(--text-secondary);
-    margin-bottom: 32px;
-    max-width: 440px;
-    line-height: 1.6;
-  }
-
-  .hero-form {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 16px;
-  }
-
-  .hero-input {
-    flex: 1;
-    padding: 14px 18px;
-    border: 2px solid var(--border-light);
-    border-radius: var(--radius-sm);
-    font-size: 15px;
-    font-family: inherit;
-    transition: all 0.2s;
-    background: white;
-  }
-  .hero-input:focus {
-    outline: none;
-    border-color: var(--green-primary);
-    box-shadow: 0 0 0 3px rgba(45, 106, 79, 0.1);
-  }
-
-  .hero-button {
-    background: var(--gradient-cta);
-    color: white;
+    background: #fff;
+    border: 1.5px solid rgba(0,0,0,0.1);
     padding: 14px 28px;
-    border: none;
-    border-radius: var(--radius-sm);
+    border-radius: 12px;
     font-size: 15px;
     font-weight: 600;
-    font-family: inherit;
+    color: #1B4332;
     cursor: pointer;
-    transition: all 0.2s;
-    white-space: nowrap;
-    box-shadow: var(--shadow-green);
+    font-family: 'Instrument Sans', sans-serif;
+    transition: box-shadow 0.2s;
+    text-decoration: none;
   }
-  .hero-button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(45, 106, 79, 0.35);
-  }
-
-  .form-success {
-    display: none;
-    align-items: center;
-    gap: 10px;
-    padding: 14px;
-    background: var(--success-bg);
-    border-radius: var(--radius-sm);
-    color: var(--success);
-    font-weight: 500;
-    margin-bottom: 16px;
+  .btn-resource:hover {
+    box-shadow: 0 4px 16px rgba(0,0,0,0.08);
   }
 
-  .hero-trust {
-    display: flex;
-    gap: 16px;
-    font-size: 13px;
-    color: var(--text-muted);
-  }
-
-  .hero-trust-item {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-  }
-  .hero-trust-item svg {
-    color: var(--green-accent);
-  }
-
-  /* ========== PHONE MOCKUP ========== */
-  .hero-visual {
-    position: relative;
-  }
-
-  .hero-stats {
-    display: flex;
-    justify-content: center;
-    gap: 12px;
-    margin-bottom: 24px;
-  }
-
-  .stat-pill {
-    background: white;
-    border: 1px solid var(--border-light);
-    border-radius: var(--radius-pill);
-    padding: 8px 16px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    box-shadow: var(--shadow-sm);
-  }
-
-  .stat-number {
-    font-weight: 700;
-    color: var(--green-primary);
-    font-size: 16px;
-  }
-
-  .stat-label {
-    font-size: 12px;
-    color: var(--text-light);
-  }
-
-  .phone-mockup {
-    width: 280px;
-    margin: 0 auto;
-  }
-
-  .phone-frame {
-    background: linear-gradient(145deg, #1f2937, #374151);
-    border-radius: 40px;
-    padding: 8px;
-    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.15);
-  }
-
-  .phone-screen {
-    background: var(--bg-main);
-    border-radius: 34px;
-    overflow: hidden;
-    height: 520px;
-  }
-
-  .app-topbar {
-    background: white;
-    padding: 14px 16px;
-    border-bottom: 1px solid var(--border-light);
-  }
-
-  .app-logo {
-    font-weight: 700;
-    font-size: 14px;
-    color: var(--text-heading);
-    letter-spacing: -0.02em;
-    text-align: center;
-  }
-
-  .app-content {
-    padding: 16px;
-  }
-
-  .app-greeting {
-    font-size: 18px;
-    font-weight: 700;
-    color: var(--text-heading);
-    margin-bottom: 16px;
-    letter-spacing: -0.02em;
-  }
-
-  .app-card-green {
-    background: var(--gradient-cta);
-    border-radius: var(--radius-xl);
-    padding: 20px;
-    color: white;
-    margin-bottom: 20px;
-  }
-
-  .card-green-title {
-    font-size: 15px;
-    font-weight: 600;
-    margin-bottom: 4px;
-  }
-
-  .card-green-sub {
-    font-size: 12px;
-    opacity: 0.8;
-    margin-bottom: 14px;
-  }
-
-  .card-green-btn {
-    background: rgba(255, 255, 255, 0.15);
-    text-align: center;
-    padding: 10px;
-    border-radius: var(--radius-md);
-    font-size: 13px;
-    font-weight: 600;
-  }
-
-  .app-progress-section {
-    background: white;
-    border-radius: var(--radius-lg);
-    padding: 14px;
-    margin-bottom: 12px;
-    box-shadow: var(--shadow-sm);
-  }
-
-  .progress-label {
-    display: flex;
-    justify-content: space-between;
-    font-size: 12px;
-    font-weight: 500;
-    color: var(--text-secondary);
-    margin-bottom: 8px;
-  }
-
-  .progress-pct {
-    color: var(--green-primary);
-    font-weight: 700;
-  }
-
-  .progress-bar {
-    height: 6px;
-    background: var(--border-light);
-    border-radius: 99px;
-    overflow: hidden;
-  }
-
-  .progress-fill {
-    height: 100%;
-    background: var(--gradient-progress);
-    border-radius: 99px;
-  }
-
-  .app-tema-row {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    padding: 10px 0;
-    border-bottom: 1px solid var(--border-light);
-    font-size: 12px;
-  }
-
-  .tema-dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    flex-shrink: 0;
-  }
-  .tema-dot-green { background: var(--green-primary); }
-  .tema-dot-amber { background: var(--warning); }
-  .tema-dot-light { background: var(--border-medium); }
-
-  .tema-name {
-    flex: 1;
-    font-weight: 500;
-    color: var(--text-secondary);
-  }
-
-  .tema-pct {
-    font-weight: 700;
-    color: var(--green-primary);
-  }
-
-  /* ========== SECTIONS ========== */
-  .section {
+  /* ===== BLOG ===== */
+  .blog-section {
+    background: #fff;
     padding: 80px 0;
   }
-
-  .section-white {
-    background: var(--bg-white);
+  .section-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 48px;
+    text-align: center;
   }
-
-  .section-dark {
-    background: var(--text-heading);
-    color: white;
+  .section-h2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 36px;
+    letter-spacing: -0.8px;
+    margin-top: 10px;
+    margin-bottom: 8px;
   }
-
-  .section-label {
-    font-size: 12px;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    color: var(--green-primary);
-    margin-bottom: 12px;
-  }
-
-  .section-label-light {
-    font-size: 12px;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    color: var(--green-accent);
-    margin-bottom: 12px;
-  }
-
-  .section-title {
-    font-size: clamp(26px, 3.5vw, 38px);
-    font-weight: 700;
-    line-height: 1.2;
-    margin-bottom: 16px;
-    max-width: 600px;
-    color: var(--text-heading);
-    letter-spacing: -0.02em;
-  }
-
-  .section-title-light {
-    font-size: clamp(26px, 3.5vw, 38px);
-    font-weight: 700;
-    line-height: 1.2;
-    margin-bottom: 16px;
-    color: white;
-    letter-spacing: -0.02em;
-  }
-
-  .section-subtitle {
-    font-size: 16px;
-    color: var(--text-secondary);
-    max-width: 540px;
+  .section-p {
+    font-size: 15px;
+    color: #666;
+    margin-top: 8px;
     margin-bottom: 48px;
+    max-width: 520px;
+    margin-left: auto;
+    margin-right: auto;
   }
-
-  .section-subtitle-light {
-    font-size: 16px;
-    color: rgba(255, 255, 255, 0.7);
-    max-width: 540px;
-    margin-bottom: 48px;
-  }
-
-  /* ========== CARD GRID ========== */
-  .card-grid {
+  .blog-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
-  }
-
-  /* ========== PROBLEM CARDS ========== */
-  .problem-card {
-    background: var(--bg-white);
-    border-radius: var(--radius-xl);
-    padding: 28px;
-    border: 1px solid var(--border-light);
-    transition: all 0.2s;
-  }
-  .problem-card:hover {
-    transform: translateY(-4px);
-    box-shadow: var(--shadow-md);
-  }
-
-  .problem-icon {
-    width: 48px;
-    height: 48px;
-    background: #FEE2E2;
-    border-radius: var(--radius-md);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 22px;
-    margin-bottom: 16px;
-  }
-
-  .problem-card h3 {
-    font-size: 17px;
-    font-weight: 600;
-    margin-bottom: 10px;
-    color: var(--text-heading);
-  }
-
-  .problem-card p {
-    font-size: 14px;
-    color: var(--text-secondary);
-    line-height: 1.6;
-  }
-
-  .problem-stat {
-    font-size: 28px;
-    font-weight: 700;
-    color: var(--error);
-    margin-top: 16px;
-  }
-
-  .problem-stat-label {
-    font-size: 12px;
-    color: var(--text-muted);
-  }
-
-  /* ========== SOLUTION CARDS ========== */
-  .solution-card {
-    background: var(--bg-main);
-    border-radius: var(--radius-xl);
-    padding: 32px 24px;
-    text-align: center;
-    transition: all 0.2s;
-  }
-  .solution-card:hover {
-    transform: translateY(-4px);
-    box-shadow: var(--shadow-md);
-  }
-
-  .solution-icon {
-    width: 64px;
-    height: 64px;
-    margin: 0 auto 20px;
-    background: var(--gradient-cta);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 28px;
-    box-shadow: var(--shadow-green);
-  }
-
-  .solution-card h3 {
-    font-size: 18px;
-    font-weight: 600;
-    margin-bottom: 10px;
-    color: var(--text-heading);
-  }
-
-  .solution-card p {
-    font-size: 14px;
-    color: var(--text-secondary);
-    line-height: 1.6;
-  }
-
-  /* ========== STEPS ========== */
-  .steps-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 24px;
-  }
-
-  .step {
-    text-align: center;
-  }
-
-  .step-number {
-    width: 60px;
-    height: 60px;
-    margin: 0 auto 16px;
-    background: var(--gradient-cta);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 24px;
-    font-weight: 700;
-    color: white;
-    border: 3px solid rgba(255, 255, 255, 0.15);
-  }
-
-  .step h3 {
-    font-size: 15px;
-    font-weight: 600;
-    margin-bottom: 6px;
-  }
-
-  .step p {
-    font-size: 13px;
-    color: rgba(255, 255, 255, 0.6);
-  }
-
-  /* ========== STATS BAR ========== */
-  .stats-bar {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 24px;
-    background: var(--bg-main);
-    border-radius: var(--radius-xl);
-    padding: 40px;
-  }
-
-  .stat-item {
-    text-align: center;
-  }
-
-  .stat-value {
-    font-size: 36px;
-    font-weight: 700;
-    color: var(--green-primary);
-  }
-
-  .stat-desc {
-    font-size: 13px;
-    color: var(--text-muted);
-    margin-top: 4px;
-  }
-
-  /* ========== BETA CARDS ========== */
-  .beta-card {
-    background: var(--bg-white);
-    border-radius: var(--radius-xl);
-    padding: 28px;
-    text-align: center;
-    border: 1px solid var(--border-light);
-    transition: all 0.2s;
-  }
-  .beta-card:hover {
-    transform: translateY(-4px);
-    box-shadow: var(--shadow-md);
-    border-color: rgba(45, 106, 79, 0.3);
-  }
-
-  .beta-icon {
-    font-size: 40px;
-    margin-bottom: 16px;
-  }
-
-  .beta-card h3 {
-    font-size: 17px;
-    font-weight: 600;
-    margin-bottom: 10px;
-    color: var(--text-heading);
-  }
-
-  .beta-card p {
-    font-size: 14px;
-    color: var(--text-secondary);
-    line-height: 1.6;
-  }
-
-  /* ========== BLOG ALL LINK ========== */
-  .blog-all-link {
-    display: inline-block;
-    margin-top: 32px;
-    color: var(--green-primary);
-    font-size: 15px;
-    font-weight: 500;
-    text-decoration: none;
-    transition: color 0.2s;
-  }
-  .blog-all-link:hover {
-    color: var(--green-deep);
-  }
-
-  /* ========== FAQ ========== */
-  .faq-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-    max-width: 860px;
-    margin: 0 auto;
+    gap: 28px;
     text-align: left;
   }
-
-  .faq-item {
-    background: var(--bg-white);
-    border-radius: var(--radius-md);
-    padding: 20px;
-    border: 1px solid var(--border-light);
-    transition: all 0.2s;
-  }
-  .faq-item:hover {
-    border-color: var(--border-medium);
-    box-shadow: var(--shadow-sm);
-  }
-
-  .faq-question {
-    font-size: 15px;
+  .blog-all-link {
+    display: inline-block;
+    margin-top: 40px;
+    color: #2D6A4F;
     font-weight: 600;
-    margin-bottom: 10px;
-    color: var(--text-heading);
+    font-size: 15px;
+    text-decoration: none;
+    transition: opacity 0.2s;
+  }
+  .blog-all-link:hover {
+    opacity: 0.75;
   }
 
+  /* ===== FAQ ===== */
+  .faq-section {
+    padding: 80px 0;
+  }
+  .faq-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    max-width: 800px;
+    margin: 40px auto 0;
+    text-align: left;
+  }
+  .faq-item {
+    background: #fff;
+    border-radius: 16px;
+    padding: 24px;
+    border: 1px solid rgba(0,0,0,0.04);
+  }
+  .faq-question {
+    font-family: 'DM Serif Display', serif;
+    font-size: 17px;
+    letter-spacing: -0.2px;
+    color: #1a1a1a;
+    margin-bottom: 10px;
+  }
   .faq-answer {
     font-size: 14px;
-    color: var(--text-secondary);
-    line-height: 1.6;
+    color: #666;
+    line-height: 1.65;
   }
 
-  /* ========== RESPONSIVE ========== */
-  @media (max-width: 1100px) {
+  /* ===== FINAL CTA ===== */
+  .final-cta {
+    text-align: center;
+    padding: 104px 48px 96px;
+    background: linear-gradient(180deg, #F5F1EB, #ebe6dc);
+  }
+  .final-cta h2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 48px;
+    letter-spacing: -1.5px;
+    line-height: 1.1;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+  .final-cta h2 em {
+    color: #2D6A4F;
+    font-style: italic;
+  }
+  .final-cta p {
+    font-size: 16px;
+    color: #666;
+    margin-top: 16px;
+    max-width: 520px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.65;
+  }
+  .final-btn {
+    margin-top: 28px;
+    font-size: 17px;
+    padding: 18px 44px;
+  }
+  .fine-print {
+    font-size: 12px;
+    color: #999;
+    margin-top: 12px;
+  }
+
+  /* ===== STICKY MOBILE CTA ===== */
+  .mobile-sticky-cta {
+    display: none;
+  }
+
+  /* ===== MOBILE ===== */
+  @media (max-width: 768px) {
+    .hero {
+      padding: 28px 20px 36px;
+    }
     .hero-content {
       grid-template-columns: 1fr;
-      text-align: center;
-      gap: 48px;
+      min-height: auto;
+      gap: 0;
     }
-    .hero-subtitle { margin: 0 auto 32px; }
-    .hero-form {
+    .hero h1 {
+      font-size: 36px;
+      line-height: 1.1;
+    }
+    .hero-sub {
+      font-size: 15px;
+      margin-top: 14px;
+      max-width: 100%;
+    }
+    .hero-visual {
+      display: none;
+    }
+    .hero-ctas {
       flex-direction: column;
-      max-width: 360px;
-      margin: 0 auto 16px;
+      gap: 12px;
+      margin-top: 24px;
     }
-    .hero-trust { justify-content: center; flex-wrap: wrap; }
-    .hero-visual { order: -1; }
-  }
-
-  @media (max-width: 900px) {
-    .card-grid { grid-template-columns: 1fr; }
-    .steps-grid { grid-template-columns: repeat(2, 1fr); }
-    .stats-bar { grid-template-columns: repeat(2, 1fr); }
-    .faq-grid { grid-template-columns: 1fr; }
-  }
-
-  @media (max-width: 640px) {
-    .steps-grid { grid-template-columns: 1fr; }
-    .stats-bar { grid-template-columns: 1fr; padding: 24px; }
-    .hero-stats { flex-wrap: wrap; justify-content: center; }
+    .btn-primary,
+    .btn-secondary {
+      width: 100%;
+      min-height: 52px;
+      font-size: 16px;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .insight-banner {
+      padding: 28px 20px;
+    }
+    .insight-text {
+      font-size: 18px;
+    }
+    .social-strip {
+      padding: 20px;
+    }
+    .social-strip-inner {
+      flex-wrap: wrap;
+      gap: 16px;
+      justify-content: center;
+    }
+    .ss-divider {
+      display: none;
+    }
+    .ss-item {
+      flex: 1 1 calc(50% - 8px);
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 4px;
+    }
+    .ss-num {
+      font-size: 24px;
+    }
+    .opo-dashboard {
+      padding: 60px 20px;
+    }
+    .opo-stats-row {
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    .opo-stat-card .osc-num {
+      font-size: 28px;
+    }
+    .opo-cards-grid {
+      grid-template-columns: 1fr;
+    }
+    .anti-academy {
+      padding: 60px 20px;
+    }
+    .compare-grid {
+      grid-template-columns: 1fr;
+    }
+    .features {
+      padding: 60px 20px;
+    }
+    .features-grid {
+      grid-template-columns: 1fr;
+    }
+    .feature-card:hover {
+      transform: none;
+      box-shadow: none;
+    }
+    .how-section {
+      padding: 60px 20px;
+    }
+    .how-steps {
+      grid-template-columns: 1fr;
+      gap: 24px;
+      margin-top: 32px;
+    }
+    .how-step {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+    .how-step .step-num {
+      font-size: 32px;
+      min-width: 40px;
+      flex-shrink: 0;
+    }
+    .how-step h3 {
+      margin-top: 0;
+    }
+    .how-inner h2 {
+      font-size: 32px;
+    }
+    .radar-section {
+      padding: 60px 20px;
+    }
+    .radar-inner {
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+    .dashboard-visual {
+      order: -1;
+    }
+    .resource-section {
+      padding: 48px 20px;
+    }
+    .blog-section {
+      padding: 60px 0;
+    }
+    .section-inner {
+      padding: 0 20px;
+    }
+    .blog-grid {
+      grid-template-columns: 1fr;
+    }
+    .faq-section {
+      padding: 60px 0;
+    }
+    .faq-grid {
+      grid-template-columns: 1fr;
+      padding: 0 20px;
+    }
+    .final-cta {
+      padding: 60px 20px;
+    }
+    .final-cta h2 {
+      font-size: 30px;
+    }
+    .mobile-sticky-cta {
+      display: block;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 12px 20px calc(20px + env(safe-area-inset-bottom));
+      background: linear-gradient(180deg, transparent 0%, rgba(245,241,235,0.97) 30%);
+      z-index: 200;
+    }
+    .mobile-sticky-cta .btn-primary {
+      width: 100%;
+      min-height: 52px;
+      font-size: 16px;
+      box-shadow: 0 -4px 24px rgba(27,67,50,0.15), 0 4px 20px rgba(27,67,50,0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
   }
 </style>
