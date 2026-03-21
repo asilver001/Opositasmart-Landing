@@ -1,0 +1,322 @@
+---
+/**
+ * GuiaInicio — Email capture section offering a free science-based study guide.
+ * Saves to existing waitlist table with source='guia_inicio'.
+ */
+---
+
+<section class="guia-section" id="guia" aria-label="Guía de inicio gratuita">
+  <div class="container">
+    <div class="guia-grid">
+      <!-- Copy side -->
+      <div class="guia-copy">
+        <span class="guia-badge">Guía gratuita</span>
+        <h2 class="guia-title">El 80% de los opositores estudia de la forma menos eficaz</h2>
+        <p class="guia-subtitle">Descarga gratis nuestra guía basada en investigación científica con más de 105.000 estudiantes analizados</p>
+
+        <ul class="guia-list">
+          <li>
+            <span class="guia-icon" aria-hidden="true">📖</span>
+            <span>Por qué releer el temario no funciona (y qué hacer en su lugar)</span>
+          </li>
+          <li>
+            <span class="guia-icon" aria-hidden="true">🧠</span>
+            <span>Las 2 únicas técnicas de estudio con eficacia probada</span>
+          </li>
+          <li>
+            <span class="guia-icon" aria-hidden="true">📋</span>
+            <span>Un plan de estudio modelo para oposiciones administrativas</span>
+          </li>
+          <li>
+            <span class="guia-icon" aria-hidden="true">⚠️</span>
+            <span>Los errores más comunes que retrasan tu preparación</span>
+          </li>
+        </ul>
+
+        <p class="guia-proof">Basado en la investigación de Héctor Ruiz Martín (International Science Teaching Foundation) y más de 100 años de ciencia cognitiva</p>
+      </div>
+
+      <!-- Form side -->
+      <div class="guia-form-wrapper">
+        <form class="guia-form" id="guia-form" novalidate>
+          <h3 class="form-title">Descarga la guía gratis</h3>
+
+          <div class="form-field">
+            <label for="guia-email">Email *</label>
+            <input type="email" id="guia-email" name="email" placeholder="tu@email.com" required aria-required="true" />
+          </div>
+
+          <div class="form-field">
+            <label for="guia-nombre">Nombre <span class="optional">(opcional)</span></label>
+            <input type="text" id="guia-nombre" name="nombre" placeholder="Tu nombre" />
+          </div>
+
+          <div class="form-field">
+            <label for="guia-oposicion">¿Qué oposición preparas? <span class="optional">(opcional)</span></label>
+            <select id="guia-oposicion" name="oposicion">
+              <option value="">Selecciona...</option>
+              <option value="auxiliar_age">Auxiliar Administrativo AGE</option>
+              <option value="administrativo_age">Administrativo AGE</option>
+              <option value="seguridad_social">Seguridad Social</option>
+              <option value="ccaa">Comunidad Autónoma</option>
+              <option value="otra">Otra</option>
+            </select>
+          </div>
+
+          <button type="submit" class="guia-submit" id="guia-submit">Descargar guía gratis</button>
+          <p class="guia-note">Sin spam. Solo contenido útil para tu preparación.</p>
+        </form>
+
+        <div class="guia-success" id="guia-success" role="alert">
+          <div class="success-icon" aria-hidden="true">✓</div>
+          <h3>¡Guía lista!</h3>
+          <p>Revisa tu bandeja de entrada. También puedes descargarla directamente:</p>
+          <a href="#" class="guia-download" onclick="alert('La guía se está preparando. Recibirás un email cuando esté lista.'); return false;">
+            Descargar PDF →
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script is:inline>
+(function() {
+  var form = document.getElementById('guia-form');
+  if (!form) return;
+
+  form.addEventListener('submit', async function(e) {
+    e.preventDefault();
+
+    var emailInput = document.getElementById('guia-email');
+    var email = emailInput.value.trim().toLowerCase();
+    var nombre = document.getElementById('guia-nombre').value.trim() || null;
+    var oposicion = document.getElementById('guia-oposicion').value || null;
+    var button = document.getElementById('guia-submit');
+    var emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+    if (!email || !emailRegex.test(email)) {
+      emailInput.style.borderColor = 'var(--error)';
+      setTimeout(function() { emailInput.style.borderColor = ''; }, 2000);
+      return;
+    }
+
+    button.disabled = true;
+    button.textContent = 'Enviando...';
+
+    try {
+      var SUPABASE_URL = 'https://yutfgmiyndmhsjhzxkdr.supabase.co';
+      var SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inl1dGZnbWl5bmRtaHNqaHp4a2RyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjU4MDE2OTksImV4cCI6MjA4MTM3NzY5OX0.U1X8dmdHjzybKHtWJ4-kcJSrigELUhynhZcs8tU8NwI';
+
+      if (window.supabase) {
+        var client = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+        await client.from('waitlist').insert([{
+          email: email,
+          nombre: nombre,
+          oposicion_interes: oposicion,
+          source: 'guia_inicio'
+        }]);
+      }
+
+      if (typeof gtag !== 'undefined') {
+        gtag('event', 'lead_guia', { event_category: 'lead', event_label: oposicion || 'sin_especificar' });
+      }
+
+      form.style.display = 'none';
+      document.getElementById('guia-success').style.display = 'block';
+    } catch (err) {
+      button.disabled = false;
+      button.textContent = 'Reintentar';
+    }
+  });
+})();
+</script>
+
+<style>
+  .guia-section {
+    padding: 64px 0;
+  }
+  .guia-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 40px;
+    align-items: start;
+  }
+  @media (min-width: 900px) {
+    .guia-grid { grid-template-columns: 1fr 1fr; gap: 60px; }
+  }
+
+  /* Copy */
+  .guia-badge {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--accent-primary);
+    background: var(--accent-tint);
+    padding: 4px 12px;
+    border-radius: var(--radius-pill);
+    margin-bottom: 16px;
+  }
+  .guia-title {
+    font-size: clamp(22px, 4vw, 32px);
+    font-weight: 800;
+    color: var(--text-heading);
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+    margin-bottom: 12px;
+  }
+  .guia-subtitle {
+    font-size: 16px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 24px;
+  }
+  .guia-list {
+    list-style: none;
+    margin-bottom: 24px;
+  }
+  .guia-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 14px;
+    font-size: 15px;
+    color: var(--text-body);
+    line-height: 1.5;
+  }
+  .guia-icon {
+    font-size: 18px;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .guia-proof {
+    font-size: 13px;
+    color: var(--text-muted);
+    font-style: italic;
+    line-height: 1.5;
+  }
+
+  /* Form */
+  .guia-form-wrapper {
+    background: var(--bg-white);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-2xl);
+    padding: 28px;
+    box-shadow: var(--shadow-md);
+  }
+  .form-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--text-heading);
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  .form-field {
+    margin-bottom: 16px;
+  }
+  .form-field label {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-body);
+    margin-bottom: 6px;
+  }
+  .optional {
+    font-weight: 400;
+    color: var(--text-muted);
+  }
+  .form-field input,
+  .form-field select {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1.5px solid var(--border-medium);
+    border-radius: var(--radius-sm);
+    font-size: 15px;
+    font-family: inherit;
+    color: var(--text-body);
+    background: var(--bg-white);
+    transition: border-color 0.2s;
+  }
+  .form-field input:focus,
+  .form-field select:focus {
+    outline: none;
+    border-color: var(--accent-primary);
+  }
+
+  .guia-submit {
+    width: 100%;
+    padding: 14px;
+    background: var(--gradient-cta);
+    color: white;
+    border: none;
+    border-radius: var(--radius-md);
+    font-size: 16px;
+    font-weight: 700;
+    font-family: inherit;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    margin-top: 4px;
+  }
+  .guia-submit:hover {
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-accent);
+  }
+  .guia-submit:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+  }
+  .guia-note {
+    font-size: 12px;
+    color: var(--text-muted);
+    text-align: center;
+    margin-top: 10px;
+  }
+
+  /* Success */
+  .guia-success {
+    display: none;
+    text-align: center;
+    padding: 20px;
+  }
+  .success-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: var(--success-bg);
+    color: #065F46;
+    font-size: 24px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 14px;
+  }
+  .guia-success h3 {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--text-heading);
+    margin-bottom: 8px;
+  }
+  .guia-success p {
+    font-size: 14px;
+    color: var(--text-secondary);
+    margin-bottom: 16px;
+  }
+  .guia-download {
+    display: inline-block;
+    background: var(--gradient-cta);
+    color: white;
+    padding: 10px 24px;
+    border-radius: var(--radius-md);
+    font-weight: 600;
+    font-size: 14px;
+    transition: transform 0.2s;
+  }
+  .guia-download:hover {
+    transform: translateY(-1px);
+    color: white;
+  }
+</style>

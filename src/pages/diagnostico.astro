@@ -1,0 +1,20 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import TestDiagnostico from '../components/react/TestDiagnostico.jsx';
+---
+
+<BaseLayout
+  title="Test Diagnóstico Gratuito — Oposita Smart"
+  description="Evalúa tu nivel para oposiciones administrativas con un test de 50 preguntas. Descubre tus puntos fuertes y débiles en 5 minutos."
+>
+  <main id="main-content">
+    <TestDiagnostico client:load />
+  </main>
+
+  <style>
+    /* Spinner animation for React component */
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+  </style>
+</BaseLayout>

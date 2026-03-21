@@ -1,0 +1,458 @@
+---
+/**
+ * RadarOposiciones — Real-time-looking dashboard of current oposiciones status.
+ * Fetches from Supabase client-side, renders as mobile-first card grid.
+ */
+---
+
+<section class="radar-section" id="radar" aria-label="Radar de Oposiciones">
+  <div class="container">
+    <div class="radar-header">
+      <span class="radar-badge">Actualización constante</span>
+      <h2 class="radar-title">Radar de Oposiciones</h2>
+      <p class="radar-subtitle">Estado actual de las principales convocatorias administrativas</p>
+    </div>
+
+    <!-- Filters -->
+    <div class="radar-filters" role="group" aria-label="Filtros">
+      <div class="filter-group">
+        <label class="filter-label">Ámbito</label>
+        <div class="filter-pills" id="ambito-filters">
+          <button class="pill active" data-filter="todos">Todos</button>
+          <button class="pill" data-filter="Estado">Estado</button>
+          <button class="pill" data-filter="ccaa">CCAA</button>
+        </div>
+      </div>
+      <div class="filter-group">
+        <label class="filter-label">Nivel</label>
+        <div class="filter-pills" id="nivel-filters">
+          <button class="pill active" data-filter="todos">Todos</button>
+          <button class="pill" data-filter="C1">C1</button>
+          <button class="pill" data-filter="C2">C2</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cards grid -->
+    <div class="radar-grid" id="radar-grid">
+      <div class="radar-loading" id="radar-loading">
+        <div class="loading-spinner"></div>
+        <p>Cargando convocatorias...</p>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="radar-cta">
+      <p>¿Preparando tu oposición?</p>
+      <a href="https://oposiciones-app-nu.vercel.app/welcome" class="radar-cta-button">
+        Estudia con repetición espaciada — Prueba gratis →
+      </a>
+    </div>
+  </div>
+</section>
+
+<script is:inline>
+(function() {
+  const SUPABASE_URL = 'https://yutfgmiyndmhsjhzxkdr.supabase.co';
+  const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inl1dGZnbWl5bmRtaHNqaHp4a2RyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjU4MDE2OTksImV4cCI6MjA4MTM3NzY5OX0.U1X8dmdHjzybKHtWJ4-kcJSrigELUhynhZcs8tU8NwI';
+
+  const ESTADOS = {
+    convocada: { label: 'Convocada', step: 1 },
+    plazo_inscripcion: { label: 'Inscripción', step: 2 },
+    lista_admitidos: { label: 'Admitidos', step: 3 },
+    fecha_examen_confirmada: { label: 'Examen', step: 4 },
+    examen_realizado: { label: 'Realizado', step: 5 },
+    lista_aprobados: { label: 'Aprobados', step: 6 },
+    pendiente_convocatoria: { label: 'Pendiente', step: 0 },
+  };
+
+  const STEPS = ['Convocada', 'Inscripción', 'Admitidos', 'Examen', 'Resultados'];
+
+  function timeAgo(date) {
+    const seconds = Math.floor((new Date() - new Date(date)) / 1000);
+    if (seconds < 3600) return 'hace ' + Math.floor(seconds / 60) + ' min';
+    if (seconds < 86400) return 'hace ' + Math.floor(seconds / 3600) + 'h';
+    return 'hace ' + Math.floor(seconds / 86400) + ' días';
+  }
+
+  function ambitoColor(ambito) {
+    if (ambito === 'Estado') return 'ambito-estado';
+    return 'ambito-ccaa';
+  }
+
+  function formatDate(d) {
+    if (!d) return null;
+    return new Date(d).toLocaleDateString('es-ES', { day: 'numeric', month: 'short', year: 'numeric' });
+  }
+
+  function renderCard(item) {
+    const estado = ESTADOS[item.estado] || { label: item.estado, step: 0 };
+    const activeStep = estado.step;
+
+    const pipeline = STEPS.map(function(s, i) {
+      const cls = (i + 1) <= activeStep ? 'step-active' : 'step-pending';
+      return '<span class="pipeline-step ' + cls + '">' + s + '</span>';
+    }).join('<span class="pipeline-dot">›</span>');
+
+    const fechaHtml = item.fecha_examen
+      ? '<span class="card-fecha">' + formatDate(item.fecha_examen) +
+        (item.fecha_examen_estimada ? ' <span class="badge-estimated">estimada</span>' : '') +
+        '</span>'
+      : '';
+
+    const linksHtml = [
+      item.enlace_boe ? '<a href="' + item.enlace_boe + '" target="_blank" rel="noopener" class="card-link">Ver BOE</a>' : '',
+      item.enlace_inscripcion ? '<a href="' + item.enlace_inscripcion + '" target="_blank" rel="noopener" class="card-link">Inscribirse</a>' : '',
+    ].filter(Boolean).join('');
+
+    return '<article class="radar-card" data-ambito="' + item.ambito + '" data-nivel="' + (item.nivel || '') + '">' +
+      '<div class="card-top">' +
+        '<div class="card-badges">' +
+          '<span class="badge-nivel">' + (item.nivel || '—') + '</span>' +
+          '<span class="badge-ambito ' + ambitoColor(item.ambito) + '">' + item.ambito + '</span>' +
+        '</div>' +
+        (item.plazas ? '<span class="card-plazas">' + item.plazas.toLocaleString('es-ES') + ' plazas</span>' : '') +
+      '</div>' +
+      '<h3 class="card-title">' + item.nombre + '</h3>' +
+      '<div class="card-pipeline">' + pipeline + '</div>' +
+      fechaHtml +
+      (item.notas ? '<p class="card-notas">' + item.notas + '</p>' : '') +
+      '<div class="card-footer">' +
+        '<span class="card-updated">' + timeAgo(item.ultima_actualizacion) + '</span>' +
+        '<div class="card-links">' + linksHtml + '</div>' +
+      '</div>' +
+    '</article>';
+  }
+
+  async function loadRadar() {
+    var client = window.supabase ? window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY) : null;
+    if (!client) return;
+
+    try {
+      var { data, error } = await client.from('oposiciones_radar').select('*').order('ultima_actualizacion', { ascending: false });
+      if (error) throw error;
+
+      var grid = document.getElementById('radar-grid');
+      var loading = document.getElementById('radar-loading');
+      if (loading) loading.style.display = 'none';
+      if (data && data.length > 0) {
+        grid.innerHTML = data.map(renderCard).join('');
+      } else {
+        grid.innerHTML = '<p class="radar-empty">No hay convocatorias disponibles.</p>';
+      }
+
+      window._radarData = data;
+      initFilters();
+    } catch (err) {
+      var loading = document.getElementById('radar-loading');
+      if (loading) loading.innerHTML = '<p>Error al cargar datos.</p>';
+    }
+  }
+
+  function initFilters() {
+    document.querySelectorAll('.filter-pills').forEach(function(group) {
+      group.addEventListener('click', function(e) {
+        if (e.target.classList.contains('pill')) {
+          group.querySelectorAll('.pill').forEach(function(p) { p.classList.remove('active'); });
+          e.target.classList.add('active');
+          applyFilters();
+        }
+      });
+    });
+  }
+
+  function applyFilters() {
+    var ambitoEl = document.querySelector('#ambito-filters .pill.active');
+    var nivelEl = document.querySelector('#nivel-filters .pill.active');
+    var ambito = ambitoEl ? ambitoEl.dataset.filter : 'todos';
+    var nivel = nivelEl ? nivelEl.dataset.filter : 'todos';
+
+    document.querySelectorAll('.radar-card').forEach(function(card) {
+      var matchAmbito = ambito === 'todos' ||
+        (ambito === 'ccaa' ? card.dataset.ambito !== 'Estado' : card.dataset.ambito === ambito);
+      var matchNivel = nivel === 'todos' || card.dataset.nivel === nivel;
+      card.style.display = (matchAmbito && matchNivel) ? '' : 'none';
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', loadRadar);
+  } else {
+    loadRadar();
+  }
+})();
+</script>
+
+<style>
+  .radar-section {
+    padding: 80px 0 48px;
+  }
+  .radar-header {
+    text-align: center;
+    margin-bottom: 32px;
+  }
+  .radar-badge {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--accent-primary);
+    background: var(--accent-tint);
+    padding: 4px 12px;
+    border-radius: var(--radius-pill);
+    margin-bottom: 12px;
+  }
+  .radar-title {
+    font-size: clamp(24px, 5vw, 36px);
+    font-weight: 800;
+    color: var(--text-heading);
+    letter-spacing: -0.03em;
+    margin-bottom: 8px;
+  }
+  .radar-subtitle {
+    font-size: 16px;
+    color: var(--text-secondary);
+  }
+
+  /* Filters */
+  .radar-filters {
+    display: flex;
+    gap: 24px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 28px;
+  }
+  .filter-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .filter-label {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-muted);
+  }
+  .filter-pills {
+    display: flex;
+    gap: 4px;
+  }
+  .pill {
+    font-size: 13px;
+    font-weight: 500;
+    padding: 6px 14px;
+    border-radius: var(--radius-pill);
+    border: 1px solid var(--border-medium);
+    background: var(--bg-white);
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all 0.15s;
+    font-family: inherit;
+  }
+  .pill:hover {
+    border-color: var(--accent-primary);
+    color: var(--accent-primary);
+  }
+  .pill.active {
+    background: var(--accent-primary);
+    color: white;
+    border-color: var(--accent-primary);
+  }
+
+  /* Grid */
+  .radar-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  @media (min-width: 640px) {
+    .radar-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (min-width: 1024px) {
+    .radar-grid { grid-template-columns: repeat(3, 1fr); }
+  }
+
+  /* Card */
+  .radar-card {
+    background: var(--bg-white);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-xl);
+    padding: 20px;
+    transition: box-shadow 0.2s, transform 0.2s;
+  }
+  .radar-card:hover {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
+  }
+  .card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  .card-badges {
+    display: flex;
+    gap: 6px;
+  }
+  .badge-nivel {
+    font-size: 11px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: var(--radius-pill);
+    background: var(--text-heading);
+    color: white;
+  }
+  .badge-ambito {
+    font-size: 11px;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: var(--radius-pill);
+  }
+  .ambito-estado {
+    background: var(--accent-tint);
+    color: var(--accent-primary);
+  }
+  .ambito-ccaa {
+    background: #DBEAFE;
+    color: #1D4ED8;
+  }
+  .card-plazas {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--accent-primary);
+  }
+  .card-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--text-heading);
+    line-height: 1.3;
+    margin-bottom: 12px;
+  }
+
+  /* Pipeline */
+  .card-pipeline {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+  }
+  .pipeline-step {
+    font-size: 10px;
+    font-weight: 600;
+    padding: 2px 6px;
+    border-radius: 4px;
+  }
+  .step-active {
+    background: var(--success-bg);
+    color: #065F46;
+  }
+  .step-pending {
+    background: var(--border-light);
+    color: var(--text-light);
+  }
+  .pipeline-dot {
+    font-size: 10px;
+    color: var(--text-light);
+  }
+
+  .card-fecha {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-heading);
+    margin-bottom: 6px;
+  }
+  .badge-estimated {
+    font-size: 10px;
+    font-weight: 500;
+    background: var(--warning-bg);
+    color: #92400E;
+    padding: 1px 6px;
+    border-radius: var(--radius-pill);
+  }
+  .card-notas {
+    font-size: 13px;
+    color: var(--text-muted);
+    line-height: 1.4;
+    margin-bottom: 10px;
+  }
+  .card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 10px;
+    border-top: 1px solid var(--border-light);
+  }
+  .card-updated {
+    font-size: 11px;
+    color: var(--text-light);
+  }
+  .card-links {
+    display: flex;
+    gap: 8px;
+  }
+  .card-link {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--accent-primary);
+    text-decoration: none;
+  }
+  .card-link:hover {
+    text-decoration: underline;
+  }
+
+  /* Loading */
+  .radar-loading {
+    text-align: center;
+    padding: 40px;
+    color: var(--text-muted);
+    grid-column: 1 / -1;
+  }
+  .loading-spinner {
+    width: 32px;
+    height: 32px;
+    border: 3px solid var(--border-light);
+    border-top-color: var(--accent-primary);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+    margin: 0 auto 12px;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  .radar-empty {
+    text-align: center;
+    color: var(--text-muted);
+    padding: 40px;
+    grid-column: 1 / -1;
+  }
+
+  /* CTA */
+  .radar-cta {
+    text-align: center;
+    margin-top: 36px;
+    padding: 28px;
+    background: var(--accent-tint);
+    border-radius: var(--radius-xl);
+  }
+  .radar-cta p {
+    font-size: 15px;
+    color: var(--text-secondary);
+    margin-bottom: 12px;
+  }
+  .radar-cta-button {
+    display: inline-block;
+    background: var(--gradient-cta);
+    color: white;
+    font-weight: 600;
+    font-size: 15px;
+    padding: 12px 28px;
+    border-radius: var(--radius-md);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .radar-cta-button:hover {
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-accent);
+    color: white;
+  }
+</style>

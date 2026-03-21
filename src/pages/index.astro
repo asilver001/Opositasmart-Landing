@@ -2,6 +2,8 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import CTABanner from '../components/CTABanner.astro';
 import BlogCard from '../components/BlogCard.astro';
+import RadarOposiciones from '../components/RadarOposiciones.astro';
+import GuiaInicio from '../components/GuiaInicio.astro';
 import { getCollection } from 'astro:content';
 
 const posts = (await getCollection('blog', ({ data }) => !data.draft))
@@ -130,6 +132,9 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft))
     </div>
   </section>
 
+  <!-- ========== RADAR DE OPOSICIONES ========== -->
+  <RadarOposiciones />
+
   <!-- ========== PROBLEM ========== -->
   <section class="section" aria-labelledby="problem-title">
     <div class="container">
@@ -185,6 +190,28 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft))
           <p>Unos minutos al día. Sin presión artificial ni gamificación tóxica. A tu ritmo.</p>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- ========== GUÍA DE INICIO ========== -->
+  <GuiaInicio />
+
+  <!-- ========== TEST DIAGNÓSTICO CTA ========== -->
+  <section class="section section-white" aria-label="Test diagnóstico">
+    <div class="container" style="text-align: center;">
+      <span class="hero-badge" style="display: inline-block; margin-bottom: 12px;">
+        <span class="badge-dot"></span>
+        Gratis · 5 minutos
+      </span>
+      <h2 style="font-size: clamp(22px, 4vw, 32px); font-weight: 800; color: var(--text-heading); letter-spacing: -0.02em; margin-bottom: 12px;">
+        ¿Listo para saber dónde estás?
+      </h2>
+      <p style="font-size: 16px; color: var(--text-secondary); margin-bottom: 24px; max-width: 500px; margin-left: auto; margin-right: auto;">
+        50 preguntas reales, puntuación oficial con penalización, resultados por tema. Descubre tus puntos fuertes y débiles.
+      </p>
+      <a href="/diagnostico" style="display: inline-block; background: var(--gradient-cta); color: white; font-weight: 700; font-size: 17px; padding: 16px 36px; border-radius: var(--radius-md); transition: transform 0.2s, box-shadow 0.2s; text-decoration: none;">
+        Hacer test diagnóstico →
+      </a>
     </div>
   </section>
 
