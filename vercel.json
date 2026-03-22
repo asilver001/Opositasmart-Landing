@@ -2,11 +2,11 @@
   "rewrites": [
     {
       "source": "/app",
-      "destination": "https://oposiciones-app-nu.vercel.app/app"
+      "destination": "https://oposiciones-app-nu.vercel.app/"
     },
     {
       "source": "/app/:path*",
-      "destination": "https://oposiciones-app-nu.vercel.app/app/:path*"
+      "destination": "https://oposiciones-app-nu.vercel.app/:path*"
     }
   ]
 }
