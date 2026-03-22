@@ -105,98 +105,35 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft))
   <section class="opo-dashboard" id="convocatorias" aria-labelledby="opo-title">
     <div class="opo-dashboard-header">
       <div class="eyebrow">Convocatorias 2025–2026</div>
-      <h2 id="opo-title">Panel de oposiciones en tiempo real</h2>
-      <p>Toda la información que necesitas sobre plazas, fechas y estado de las convocatorias. Actualizado constantemente.</p>
+      <h2 id="opo-title">Radar de Oposiciones en tiempo real</h2>
+      <p>7 convocatorias activas · 3.384 plazas totales. Estado, plazas, fechas y enlaces al BOE. Actualizado constantemente.</p>
     </div>
 
     <div class="opo-stats-row">
       <div class="opo-stat-card">
-        <div class="osc-num">47.382</div>
-        <div class="osc-label">Plazas totales OEP</div>
+        <div class="osc-num">3.384</div>
+        <div class="osc-label">Plazas convocadas</div>
         <div class="osc-bar"><div class="osc-bar-fill" style="width:100%"></div></div>
       </div>
       <div class="opo-stat-card">
-        <div class="osc-num">12.456</div>
-        <div class="osc-label">Plazas convocadas</div>
-        <div class="osc-bar"><div class="osc-bar-fill" style="width:26%"></div></div>
-      </div>
-      <div class="opo-stat-card">
-        <div class="osc-num">8</div>
-        <div class="osc-label">Convocatorias abiertas</div>
+        <div class="osc-num">7</div>
+        <div class="osc-label">Convocatorias activas</div>
         <div class="osc-bar"><div class="osc-bar-fill" style="width:40%"></div></div>
       </div>
       <div class="opo-stat-card">
-        <div class="osc-num">127d</div>
+        <div class="osc-num">83d</div>
         <div class="osc-label">Próximo examen AGE</div>
         <div class="osc-bar"><div class="osc-bar-fill" style="width:65%"></div></div>
       </div>
     </div>
 
-    <div class="opo-filters" role="group" aria-label="Filtrar convocatorias">
-      <button class="opo-chip active">Todos</button>
-      <button class="opo-chip">C1</button>
-      <button class="opo-chip">C2</button>
-      <button class="opo-chip">A1/A2</button>
-      <button class="opo-chip">Estado</button>
-      <button class="opo-chip">CCAA</button>
-      <button class="opo-chip">Local</button>
-    </div>
-
-    <div class="opo-cards-grid">
-      <article class="opo-card">
-        <div class="opo-card-header">
-          <div class="opo-card-title">Auxiliar Administrativo del Estado</div>
-          <span class="opo-badge convocada">Convocada</span>
-        </div>
-        <div class="opo-card-plazas">
-          <span class="plazas-num">2.813</span>
-          <span class="plazas-label">plazas<br>OEP 2024</span>
-        </div>
-        <div class="opo-plazas-bar">
-          <div class="opo-plazas-bar-fill" style="width:85%"></div>
-          <div class="opo-plazas-bar-marker" style="left:85%"></div>
-        </div>
-        <div class="opo-card-meta">
-          <span>Grupo C2 · AGE</span>
-          <span class="opo-card-countdown">⏱ 127 días</span>
-        </div>
-      </article>
-
-      <article class="opo-card">
-        <div class="opo-card-header">
-          <div class="opo-card-title">Administrativo del Estado</div>
-          <span class="opo-badge prevista">Prevista</span>
-        </div>
-        <div class="opo-card-plazas">
-          <span class="plazas-num">1.245</span>
-          <span class="plazas-label">plazas<br>OEP 2024</span>
-        </div>
-        <div class="opo-plazas-bar">
-          <div class="opo-plazas-bar-fill" style="width:45%"></div>
-        </div>
-        <div class="opo-card-meta">
-          <span>Grupo C1 · AGE</span>
-          <span class="opo-card-countdown">⏱ ~Q3 2026</span>
-        </div>
-      </article>
-
-      <article class="opo-card">
-        <div class="opo-card-header">
-          <div class="opo-card-title">Gestión de la Administración Civil</div>
-          <span class="opo-badge en-plazo">En plazo</span>
-        </div>
-        <div class="opo-card-plazas">
-          <span class="plazas-num">890</span>
-          <span class="plazas-label">plazas<br>OEP 2023-24</span>
-        </div>
-        <div class="opo-plazas-bar">
-          <div class="opo-plazas-bar-fill" style="width:60%"></div>
-        </div>
-        <div class="opo-card-meta">
-          <span>Grupo A2 · AGE</span>
-          <span class="opo-card-countdown">⏱ Plazo: 15 abr</span>
-        </div>
-      </article>
+    <div style="text-align: center; margin-top: 24px;">
+      <a href="/radar" class="cta-radar-link">
+        Ver todas las convocatorias →
+      </a>
+      <p style="font-size: 13px; color: var(--text-muted, #6B7280); margin-top: 8px;">
+        Filtros por ámbito y nivel · Compartible en Facebook · Enlaces al BOE
+      </p>
     </div>
   </section>
 
@@ -984,6 +921,24 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft))
     gap: 4px;
     font-weight: 600;
     color: #2D6A4F;
+  }
+
+  .cta-radar-link {
+    display: inline-block;
+    background: var(--gradient-cta, linear-gradient(145deg, #1B4332, #2D6A4F, #3A7D5C));
+    color: white;
+    font-weight: 600;
+    font-size: 16px;
+    padding: 14px 32px;
+    border-radius: 12px;
+    text-decoration: none;
+    box-shadow: 0 8px 28px rgba(27, 67, 50, 0.20);
+    transition: all 0.2s;
+  }
+  .cta-radar-link:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 12px 36px rgba(27, 67, 50, 0.28);
+    color: white;
   }
 
   /* ===== ANTI-ACADEMY ===== */
