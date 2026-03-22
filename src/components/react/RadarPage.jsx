@@ -60,11 +60,17 @@ function shareCard(op) {
   const examPart = op.fecha_examen
     ? `, examen ${op.fecha_examen_estimada ? "estimado" : "confirmado"} ${format(new Date(op.fecha_examen), "d MMM yyyy", { locale: es })}`
     : "";
-  const text = `📊 ${op.nombre} — ${op.plazas} plazas${examPart}\n\nVer estado completo en: oposita-smart.com/radar`;
+  const text = `📊 ${op.nombre} — ${op.plazas} plazas${examPart}\n\nVer estado completo en: opositasmart.com/radar`;
   if (navigator.share) {
-    navigator.share({ text, url: "https://opositasmart-landing.vercel.app/radar" }).catch(() => {});
+    navigator.share({
+      title: `${op.nombre} — Radar de Oposiciones`,
+      text: text,
+      url: "https://www.opositasmart.com/radar"
+    }).catch(() => {});
   } else {
-    navigator.clipboard.writeText(text);
+    navigator.clipboard.writeText(text).then(() => {
+      alert('Texto copiado al portapapeles');
+    }).catch(() => {});
   }
 }
 
