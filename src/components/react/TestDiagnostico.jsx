@@ -331,7 +331,7 @@ export default function TestDiagnostico() {
 
           {/* CTA */}
           <a
-            href="https://oposiciones-app-nu.vercel.app/signup"
+            href="https://www.opositasmart.com/app#/signup"
             style={styles.resultsCta}
           >
             Mejora tus puntos débiles con Oposita Smart →

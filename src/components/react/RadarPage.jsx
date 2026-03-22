@@ -361,7 +361,7 @@ export default function RadarPage() {
             Oposita Smart te ayuda a estudiar con repetición espaciada — el método científico más eficaz
           </p>
           <a
-            href="https://oposiciones-app-nu.vercel.app/welcome"
+            href="https://www.opositasmart.com/app#/welcome"
             style={{
               display: "inline-flex", alignItems: "center", gap: "8px",
               background: "linear-gradient(145deg, #1B4332, #2D6A4F, #3A7D5C)",
