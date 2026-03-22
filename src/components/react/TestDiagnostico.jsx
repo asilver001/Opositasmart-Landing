@@ -331,7 +331,7 @@ export default function TestDiagnostico() {
 
           {/* CTA */}
           <a
-            href="https://www.opositasmart.com/app#/signup"
+            href="https://app.opositasmart.com/#/signup"
             style={styles.resultsCta}
           >
             Mejora tus puntos débiles con Oposita Smart →
