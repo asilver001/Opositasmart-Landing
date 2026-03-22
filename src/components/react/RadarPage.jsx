@@ -191,8 +191,14 @@ function OposicionCard({ op, isMobile }) {
         )}
         <div style={{ display: "flex", alignItems: "center", gap: "8px", fontSize: "13px", color: "#4B5563" }}>
           <Users size={16} style={{ color: "#B5B3AF", flexShrink: 0 }} />
-          <span>{(op.plazas || 0).toLocaleString("es-ES")} plazas</span>
+          <span>{(op.plazas || 0).toLocaleString("es-ES")} plazas{op.tiene_bolsa && ' · Bolsa de trabajo'}</span>
         </div>
+        {op.sede_examen && (
+          <div style={{ display: "flex", alignItems: "center", gap: "8px", fontSize: "13px", color: "#4B5563" }}>
+            <span style={{ color: "#B5B3AF", flexShrink: 0, fontSize: "14px" }}>📍</span>
+            <span>{op.sede_examen}</span>
+          </div>
+        )}
       </div>
 
       {/* Footer */}
@@ -204,19 +210,31 @@ function OposicionCard({ op, isMobile }) {
           <Share2 size={14} />
           Compartir
         </button>
-        {op.enlace_boe ? (
-          <a
-            href={op.enlace_boe}
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{ display: "inline-flex", alignItems: "center", gap: "6px", fontSize: "13px", fontWeight: 600, color: "#2D6A4F", textDecoration: "none" }}
-          >
-            Ver en BOE
-            <ExternalLink size={14} />
-          </a>
-        ) : (
-          <span style={{ fontSize: "12px", color: "#B5B3AF" }}>Pendiente de BOE</span>
-        )}
+        <div style={{ display: "flex", gap: "12px", alignItems: "center" }}>
+          {op.enlace_inscripcion && (
+            <a
+              href={op.enlace_inscripcion}
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ fontSize: "13px", fontWeight: 600, color: "#2D6A4F", textDecoration: "none" }}
+            >
+              Inscribirse
+            </a>
+          )}
+          {op.enlace_boe ? (
+            <a
+              href={op.enlace_boe}
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ display: "inline-flex", alignItems: "center", gap: "6px", fontSize: "13px", fontWeight: 600, color: "#2D6A4F", textDecoration: "none" }}
+            >
+              BOE
+              <ExternalLink size={14} />
+            </a>
+          ) : (
+            <span style={{ fontSize: "12px", color: "#B5B3AF" }}>Pendiente</span>
+          )}
+        </div>
       </div>
     </article>
   );
