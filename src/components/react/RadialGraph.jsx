@@ -518,9 +518,10 @@ function RadialGraphSVG({ width, height, selectedId, onSelectNode }) {
                     strokeWidth={isSelected ? 3 : strokeW}
                     onClick={() => {
                       if (node.type === 'organismo') onSelectNode(isSelected ? null : node.id);
+                      else if (node.type === 'root') onSelectNode(null);
                     }}
                     style={{
-                      cursor: node.type === 'organismo' ? 'pointer' : 'default',
+                      cursor: 'pointer',
                       opacity: connected ? 1 : 0.15,
                       transition: 'opacity 0.4s, fill 0.4s',
                       filter: isSelected ? `drop-shadow(0 0 10px ${COLORS.selected})` : 'none',
