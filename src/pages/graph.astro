@@ -1,13 +1,29 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
+import '../styles/global.css';
 import OrganismosPage from '../components/react/OrganismosPage.jsx';
----
-<BaseLayout title="Radar de Organismos — Mapa interactivo del empleo público | OpositaSmart" description="Explora el ecosistema de organismos públicos que convocan oposiciones en España.">
-  <div id="organismos-root" style="height: 100vh; overflow: hidden;">
-    <OrganismosPage client:only="react" />
-  </div>
-</BaseLayout>
 
-<script>
-  document.body.style.overflow = 'hidden';
-</script>
+const title = "Radar de Organismos — Mapa interactivo del empleo público | OpositaSmart";
+const description = "Explora el ecosistema de organismos públicos que convocan oposiciones en España. Visualiza ministerios, convocatorias activas, plazas y noticias.";
+---
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:url" content="https://www.opositasmart.com/graph" />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="es_ES" />
+  <link rel="canonical" href="https://www.opositasmart.com/graph" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
+  </style>
+</head>
+<body>
+  <OrganismosPage client:only="react" />
+</body>
+</html>
