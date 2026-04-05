@@ -1,0 +1,411 @@
+// ─── Ministerios ─────────────────────────────────────────────────
+export const ministerios = [
+  {
+    id: "hacienda",
+    nombre: "Ministerio de Hacienda",
+    nombreCorto: "Hacienda",
+    organismos: ["aeat", "igae", "catastro"],
+  },
+  {
+    id: "inclusion",
+    nombre: "Ministerio de Inclusión, Seguridad Social y Migraciones",
+    nombreCorto: "Inclusión / SS",
+    organismos: ["tgss", "inss", "sepe"],
+  },
+  {
+    id: "justicia",
+    nombre: "Ministerio de Justicia",
+    nombreCorto: "Justicia",
+    organismos: ["gerencia_justicia", "cgpj"],
+  },
+  {
+    id: "interior",
+    nombre: "Ministerio del Interior",
+    nombreCorto: "Interior",
+    organismos: ["dgt", "policia", "guardia_civil", "inst_penitenciarias"],
+  },
+  {
+    id: "defensa",
+    nombre: "Ministerio de Defensa",
+    nombreCorto: "Defensa",
+    organismos: ["isfas", "ffaa_civil"],
+  },
+  {
+    id: "transformacion",
+    nombre: "Ministerio para la Transformación Digital",
+    nombreCorto: "Trans. Digital",
+    organismos: ["aesia", "redes"],
+  },
+  {
+    id: "educacion",
+    nombre: "Ministerio de Educación, FP y Deportes",
+    nombreCorto: "Educación",
+    organismos: ["uned", "intef"],
+  },
+  {
+    id: "sanidad",
+    nombre: "Ministerio de Sanidad",
+    nombreCorto: "Sanidad",
+    organismos: ["aemps", "ingesa"],
+  },
+  {
+    id: "transportes",
+    nombre: "Ministerio de Transportes y Movilidad Sostenible",
+    nombreCorto: "Transportes",
+    organismos: ["aena", "adif", "enaire"],
+  },
+  {
+    id: "exteriores",
+    nombre: "Ministerio de Asuntos Exteriores",
+    nombreCorto: "Exteriores",
+    organismos: ["aecid", "diplomaticas"],
+  },
+];
+
+// ─── Noticias compartidas ────────────────────────────────────────
+const noticiasGenerales = [
+  { titular: "El Gobierno aprueba la OEP 2025 con más de 40.000 plazas", fuente: "BOE", fecha: "28/03/2025", url: "#" },
+  { titular: "Hacienda anuncia convocatoria extraordinaria de 500 plazas C2", fuente: "Empleo Público", fecha: "15/03/2025", url: "#" },
+  { titular: "Los opositores de Justicia piden más plazas para la próxima OEP", fuente: "El País", fecha: "10/03/2025", url: "#" },
+  { titular: "La TGSS digitaliza su proceso selectivo: exámenes en formato CBT", fuente: "Expansión", fecha: "05/03/2025", url: "#" },
+  { titular: "Instituciones Penitenciarias convoca 900 plazas de Ayudante", fuente: "BOE", fecha: "05/03/2025", url: "#" },
+  { titular: "AEAT moderniza su sistema de gestión con IA", fuente: "Cinco Días", fecha: "20/02/2025", url: "#" },
+  { titular: "El SEPE prepara nueva convocatoria para 2025", fuente: "La Vanguardia", fecha: "15/02/2025", url: "#" },
+  { titular: "La OEP 2024 se ejecutó al 95%: récord histórico", fuente: "Función Pública", fecha: "01/02/2025", url: "#" },
+];
+
+// ─── Organismos ──────────────────────────────────────────────────
+export const organismos = [
+  {
+    id: "aeat",
+    nombre: "Agencia Estatal de Administración Tributaria",
+    siglas: "AEAT",
+    descripcion: "Organismo encargado de la gestión del sistema tributario estatal y aduanero. Recauda impuestos, controla el fraude fiscal y presta asistencia a los contribuyentes.",
+    empleados: 25430,
+    responsable: "Soledad Fernández Doctor",
+    responsableDesde: 2023,
+    ministerioId: "hacienda",
+    convocatorias: [
+      { nombre: "Aux. Administrativo AGE", grupo: "C2", plazas: 500, estado: "abierta", fechaBoe: "15/03/2025" },
+      { nombre: "Técnico de Hacienda", grupo: "A1", plazas: 120, estado: "en_proceso", fechaBoe: "10/01/2025" },
+    ],
+    noticias: [noticiasGenerales[1], noticiasGenerales[5], noticiasGenerales[7]],
+    plazasHistoricas: [
+      { año: 2022, plazas: 380 },
+      { año: 2023, plazas: 420 },
+      { año: 2024, plazas: 450 },
+      { año: 2025, plazas: 500 },
+    ],
+  },
+  {
+    id: "igae",
+    nombre: "Intervención General de la Administración del Estado",
+    siglas: "IGAE",
+    descripcion: "Órgano de control interno de la gestión económico-financiera del sector público estatal.",
+    empleados: 1200,
+    ministerioId: "hacienda",
+    convocatorias: [],
+    noticias: [noticiasGenerales[7]],
+    plazasHistoricas: [],
+  },
+  {
+    id: "catastro",
+    nombre: "Dirección General del Catastro",
+    siglas: "Catastro",
+    descripcion: "Organismo encargado de la formación y mantenimiento del Catastro Inmobiliario, describiendo los bienes inmuebles.",
+    empleados: 3800,
+    ministerioId: "hacienda",
+    convocatorias: [
+      { nombre: "Técnico Aux. Informática", grupo: "C1", plazas: 85, estado: "abierta", fechaBoe: "22/04/2025" },
+    ],
+    noticias: [noticiasGenerales[0]],
+    plazasHistoricas: [],
+  },
+  {
+    id: "tgss",
+    nombre: "Tesorería General de la Seguridad Social",
+    siglas: "TGSS",
+    descripcion: "Servicio común de la Seguridad Social, encargado de la gestión de los recursos económicos y la administración financiera del sistema.",
+    empleados: 12500,
+    responsable: "Carlos Javier García Herraiz",
+    responsableDesde: 2021,
+    ministerioId: "inclusion",
+    convocatorias: [
+      { nombre: "Aux. Administrativo TGSS", grupo: "C2", plazas: 320, estado: "abierta", fechaBoe: "18/02/2025" },
+    ],
+    noticias: [noticiasGenerales[3], noticiasGenerales[0]],
+    plazasHistoricas: [
+      { año: 2022, plazas: 200 },
+      { año: 2023, plazas: 250 },
+      { año: 2024, plazas: 280 },
+      { año: 2025, plazas: 320 },
+    ],
+  },
+  {
+    id: "inss",
+    nombre: "Instituto Nacional de la Seguridad Social",
+    siglas: "INSS",
+    descripcion: "Entidad gestora de la Seguridad Social, encargada del reconocimiento y control de prestaciones económicas.",
+    empleados: 9200,
+    ministerioId: "inclusion",
+    convocatorias: [],
+    noticias: [noticiasGenerales[0]],
+    plazasHistoricas: [],
+  },
+  {
+    id: "sepe",
+    nombre: "Servicio Público de Empleo Estatal",
+    siglas: "SEPE",
+    descripcion: "Organismo autónomo encargado de la gestión de prestaciones por desempleo y políticas activas de empleo.",
+    empleados: 8100,
+    ministerioId: "inclusion",
+    convocatorias: [],
+    noticias: [noticiasGenerales[6]],
+    plazasHistoricas: [],
+  },
+  {
+    id: "gerencia_justicia",
+    nombre: "Gerencia Territorial de Justicia",
+    descripcion: "Órgano encargado de la gestión de medios personales y materiales al servicio de la Administración de Justicia.",
+    empleados: 4500,
+    ministerioId: "justicia",
+    convocatorias: [
+      { nombre: "Administrativo AGE", grupo: "C1", plazas: 200, estado: "en_proceso", fechaBoe: "02/02/2025" },
+    ],
+    noticias: [noticiasGenerales[2]],
+    plazasHistoricas: [],
+  },
+  {
+    id: "cgpj",
+    nombre: "Consejo General del Poder Judicial",
+    siglas: "CGPJ",
+    descripcion: "Órgano de gobierno del Poder Judicial en España, encargado de la selección, formación y perfeccionamiento de jueces y magistrados.",
+    empleados: 2800,
+    ministerioId: "justicia",
+    convocatorias: [],
+    noticias: [noticiasGenerales[2]],
+    plazasHistoricas: [],
+  },
+  {
+    id: "dgt",
+    nombre: "Dirección General de Tráfico",
+    siglas: "DGT",
+    descripcion: "Organismo encargado de la gestión del tráfico y la seguridad vial en España.",
+    empleados: 5600,
+    ministerioId: "interior",
+    convocatorias: [
+      { nombre: "Agente DGT", grupo: "C2", plazas: 150, estado: "resuelta", fechaBoe: "15/09/2024" },
+    ],
+    noticias: [noticiasGenerales[0]],
+    plazasHistoricas: [
+      { año: 2022, plazas: 100 },
+      { año: 2023, plazas: 120 },
+      { año: 2024, plazas: 140 },
+      { año: 2025, plazas: 150 },
+    ],
+  },
+  {
+    id: "policia",
+    nombre: "Policía Nacional",
+    descripcion: "Cuerpo de seguridad del Estado encargado de proteger el libre ejercicio de los derechos y la seguridad ciudadana.",
+    empleados: 70000,
+    ministerioId: "interior",
+    convocatorias: [],
+    noticias: [noticiasGenerales[0]],
+    plazasHistoricas: [],
+  },
+  {
+    id: "guardia_civil",
+    nombre: "Guardia Civil",
+    descripcion: "Instituto armado de naturaleza militar que ejerce funciones de seguridad pública y policía administrativa.",
+    empleados: 80000,
+    ministerioId: "interior",
+    convocatorias: [],
+    noticias: [noticiasGenerales[0]],
+    plazasHistoricas: [],
+  },
+  {
+    id: "inst_penitenciarias",
+    nombre: "Instituciones Penitenciarias",
+    descripcion: "Organismo encargado de la administración penitenciaria, la reeducación y reinserción social de los internos.",
+    empleados: 24000,
+    ministerioId: "interior",
+    convocatorias: [
+      { nombre: "Ayudante Inst. Penitenciarias", grupo: "C1", plazas: 900, estado: "abierta", fechaBoe: "05/03/2025" },
+    ],
+    noticias: [noticiasGenerales[4]],
+    plazasHistoricas: [
+      { año: 2022, plazas: 600 },
+      { año: 2023, plazas: 700 },
+      { año: 2024, plazas: 800 },
+      { año: 2025, plazas: 900 },
+    ],
+  },
+  {
+    id: "isfas",
+    nombre: "Instituto Social de las Fuerzas Armadas",
+    siglas: "ISFAS",
+    descripcion: "Entidad gestora del régimen especial de Seguridad Social de las Fuerzas Armadas.",
+    empleados: 800,
+    ministerioId: "defensa",
+    convocatorias: [],
+    noticias: [],
+    plazasHistoricas: [],
+  },
+  {
+    id: "ffaa_civil",
+    nombre: "Fuerzas Armadas (personal civil)",
+    descripcion: "Personal civil al servicio del Ministerio de Defensa, en funciones administrativas y técnicas.",
+    empleados: 15000,
+    ministerioId: "defensa",
+    convocatorias: [],
+    noticias: [],
+    plazasHistoricas: [],
+  },
+  {
+    id: "aesia",
+    nombre: "Agencia Española de Supervisión de Inteligencia Artificial",
+    siglas: "AESIA",
+    descripcion: "Agencia encargada de supervisar y garantizar el uso responsable de la inteligencia artificial en España.",
+    empleados: 120,
+    ministerioId: "transformacion",
+    convocatorias: [],
+    noticias: [],
+    plazasHistoricas: [],
+  },
+  {
+    id: "redes",
+    nombre: "Red.es",
+    siglas: "Red.es",
+    descripcion: "Entidad pública empresarial adscrita al Ministerio, que impulsa la transformación digital de la sociedad y economía españolas.",
+    empleados: 350,
+    ministerioId: "transformacion",
+    convocatorias: [],
+    noticias: [],
+    plazasHistoricas: [],
+  },
+  {
+    id: "uned",
+    nombre: "Universidad Nacional de Educación a Distancia",
+    siglas: "UNED",
+    descripcion: "Universidad pública que ofrece enseñanza a distancia en todas las etapas educativas.",
+    empleados: 8500,
+    ministerioId: "educacion",
+    convocatorias: [],
+    noticias: [],
+    plazasHistoricas: [],
+  },
+  {
+    id: "intef",
+    nombre: "Instituto Nacional de Tecnologías Educativas y de Formación del Profesorado",
+    siglas: "INTEF",
+    descripcion: "Unidad del Ministerio de Educación responsable de la integración de las TIC en las etapas educativas no universitarias.",
+    empleados: 200,
+    ministerioId: "educacion",
+    convocatorias: [],
+    noticias: [],
+    plazasHistoricas: [],
+  },
+  {
+    id: "aemps",
+    nombre: "Agencia Española de Medicamentos y Productos Sanitarios",
+    siglas: "AEMPS",
+    descripcion: "Agencia encargada de garantizar la calidad, seguridad y eficacia de los medicamentos y productos sanitarios.",
+    empleados: 650,
+    ministerioId: "sanidad",
+    convocatorias: [],
+    noticias: [],
+    plazasHistoricas: [],
+  },
+  {
+    id: "ingesa",
+    nombre: "Instituto Nacional de Gestión Sanitaria",
+    siglas: "INGESA",
+    descripcion: "Organismo que gestiona las prestaciones sanitarias en Ceuta y Melilla.",
+    empleados: 3200,
+    ministerioId: "sanidad",
+    convocatorias: [
+      { nombre: "Aux. INGESA", grupo: "C2", plazas: 75, estado: "en_proceso", fechaBoe: "12/03/2025" },
+    ],
+    noticias: [noticiasGenerales[0]],
+    plazasHistoricas: [],
+  },
+  {
+    id: "aena",
+    nombre: "AENA S.M.E.",
+    siglas: "AENA",
+    descripcion: "Gestor aeroportuario español, opera 46 aeropuertos y 2 helipuertos en España.",
+    empleados: 8500,
+    ministerioId: "transportes",
+    convocatorias: [],
+    noticias: [],
+    plazasHistoricas: [],
+  },
+  {
+    id: "adif",
+    nombre: "Administrador de Infraestructuras Ferroviarias",
+    siglas: "ADIF",
+    descripcion: "Entidad pública encargada de la administración de las infraestructuras ferroviarias de titularidad del Estado.",
+    empleados: 12000,
+    ministerioId: "transportes",
+    convocatorias: [],
+    noticias: [],
+    plazasHistoricas: [],
+  },
+  {
+    id: "enaire",
+    nombre: "ENAIRE",
+    siglas: "ENAIRE",
+    descripcion: "Proveedor de servicios de navegación aérea y de información aeronáutica en España.",
+    empleados: 4200,
+    ministerioId: "transportes",
+    convocatorias: [],
+    noticias: [],
+    plazasHistoricas: [],
+  },
+  {
+    id: "aecid",
+    nombre: "Agencia Española de Cooperación Internacional para el Desarrollo",
+    siglas: "AECID",
+    descripcion: "Agencia estatal que canaliza la política de cooperación internacional para el desarrollo.",
+    empleados: 1200,
+    ministerioId: "exteriores",
+    convocatorias: [],
+    noticias: [],
+    plazasHistoricas: [],
+  },
+  {
+    id: "diplomaticas",
+    nombre: "Representaciones Diplomáticas",
+    descripcion: "Red de embajadas y consulados de España en el extranjero.",
+    empleados: 3500,
+    ministerioId: "exteriores",
+    convocatorias: [],
+    noticias: [],
+    plazasHistoricas: [],
+  },
+];
+
+// ─── Helpers ─────────────────────────────────────────────────────
+export function getOrganismo(id) {
+  return organismos.find((o) => o.id === id);
+}
+
+export function getMinisterio(id) {
+  return ministerios.find((m) => m.id === id);
+}
+
+export function hasConvocatoriaActiva(org) {
+  return org.convocatorias.some((c) => c.estado === "abierta" || c.estado === "en_proceso");
+}
+
+export function ministerioTieneConvocatoria(min) {
+  return min.organismos.some((oid) => {
+    const org = getOrganismo(oid);
+    return org ? hasConvocatoriaActiva(org) : false;
+  });
+}
+
+export function totalPlazasOrganismo(org) {
+  return org.convocatorias.reduce((sum, c) => sum + c.plazas, 0);
+}

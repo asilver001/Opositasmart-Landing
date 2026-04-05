@@ -1,0 +1,13 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import OrganismosPage from '../components/react/OrganismosPage.jsx';
+---
+<BaseLayout title="Radar de Organismos — Mapa interactivo del empleo público | OpositaSmart" description="Explora el ecosistema de organismos públicos que convocan oposiciones en España.">
+  <div id="organismos-root" style="height: 100vh; overflow: hidden;">
+    <OrganismosPage client:only="react" />
+  </div>
+</BaseLayout>
+
+<script>
+  document.body.style.overflow = 'hidden';
+</script>
