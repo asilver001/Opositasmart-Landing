@@ -1,5 +1,4 @@
 ---
-import ThemeToggle from './ThemeToggle.astro';
 const currentPath = Astro.url.pathname;
 ---
 
@@ -11,11 +10,12 @@ const currentPath = Astro.url.pathname;
         <div class="logo-text">Oposita<span>Smart</span></div>
       </a>
       <div class="nav-links">
+        <a href="/radar" class:list={["nav-link", { active: currentPath.startsWith('/radar') }]}>Convocatorias</a>
+        <a href="/graph" class:list={["nav-link", { active: currentPath.startsWith('/graph') }]}>Organismos</a>
         <a href="/blog" class:list={["nav-link", { active: currentPath.startsWith('/blog') }]}>Blog</a>
         <a href="/#metodo" class="nav-link">Método</a>
         <a href="/#faq" class="nav-link">FAQ</a>
-        <ThemeToggle />
-        <a href="/#waitlist" class="nav-cta">Probar gratis</a>
+        <a href="https://app.opositasmart.com/#/welcome" class="nav-cta">Probar gratis</a>
       </div>
     </div>
   </div>
