@@ -404,25 +404,24 @@ function RadialGraphSVG({ width, height, selectedId, onSelectNode }) {
           transformOrigin: '0 0',
         }}>
 
-          {/* Ring guides — CivLab-style dashed circles */}
-          <circle r={RING_RADII[1]} fill="none" stroke={RING_COLORS.ministerio} strokeWidth={1} strokeDasharray="4 2" opacity={0.3} />
-          <circle r={RING_RADII[2]} fill="none" stroke={RING_COLORS.organismo} strokeWidth={1} strokeDasharray="4 2" opacity={0.2} />
-
-          {/* Ring labels — counter-rotate */}
+          {/* Ring labels — positioned at fixed spots that won't clash */}
+          {/* No dashed ring circles — they clutter the graph */}
           <g style={{ transform: `rotate(${-rotDeg}deg)`, transition: 'transform 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94)', transformOrigin: '0 0' }}>
-            <text x={0} y={RING_RADII[1] + 22} textAnchor="middle" fontSize={10} fill={RING_COLORS.ministerio} fontWeight={600} letterSpacing="0.06em" style={{ userSelect: 'none' }}>
+            <text x={RING_RADII[1] + 10} y={-8} textAnchor="start" fontSize={9} fill={RING_COLORS.ministerio} fontWeight={600} letterSpacing="0.06em" opacity={0.4} style={{ userSelect: 'none' }}>
               MINISTERIOS
             </text>
-            <text x={0} y={RING_RADII[2] + 22} textAnchor="middle" fontSize={10} fill={RING_COLORS.organismo} fontWeight={600} letterSpacing="0.06em" style={{ userSelect: 'none' }}>
+            <text x={RING_RADII[2] + 10} y={-8} textAnchor="start" fontSize={9} fill={RING_COLORS.organismo} fontWeight={600} letterSpacing="0.06em" opacity={0.3} style={{ userSelect: 'none' }}>
               ORGANISMOS
             </text>
           </g>
 
-          {/* Links — curved lines from parent to child */}
+          {/* Links — only ministerio→organismo (hide AGE→ministerio connections) */}
           {links.map((link, i) => {
             const src = nodes.find(n => n.id === link.source);
             const tgt = nodes.find(n => n.id === link.target);
             if (!src || !tgt) return null;
+            // Skip root→ministerio links (too much visual noise)
+            if (src.type === 'root') return null;
             const [sx, sy] = polar(src.angle, src.radius);
             const [tx, ty] = polar(tgt.angle, tgt.radius);
             const conn = isConnected(src) && isConnected(tgt);
