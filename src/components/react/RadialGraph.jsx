@@ -404,9 +404,9 @@ function RadialGraphSVG({ width, height, selectedId, onSelectNode }) {
           transformOrigin: '0 0',
         }}>
 
-          {/* Concentric ring guides — subtle dashed circles behind nodes */}
-          <circle r={RING_RADII[1]} fill="none" stroke={COLORS.border} strokeWidth={0.5} strokeDasharray="4 3" opacity={0.4} />
-          <circle r={RING_RADII[2]} fill="none" stroke={COLORS.border} strokeWidth={0.5} strokeDasharray="4 3" opacity={0.3} />
+          {/* Concentric ring guides — visible dashed circles */}
+          <circle r={RING_RADII[1]} fill="none" stroke="#B5B3AF" strokeWidth={1} strokeDasharray="4 2" opacity={0.6} />
+          <circle r={RING_RADII[2]} fill="none" stroke="#B5B3AF" strokeWidth={1} strokeDasharray="4 2" opacity={0.5} />
 
           {/* Ring labels — placed between rings so they don't clash with nodes */}
           <g style={{ transform: `rotate(${-rotDeg}deg)`, transition: 'transform 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94)', transformOrigin: '0 0' }}>
