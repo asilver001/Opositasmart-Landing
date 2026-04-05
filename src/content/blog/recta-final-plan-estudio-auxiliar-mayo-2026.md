@@ -11,7 +11,7 @@ Voy a ser honesto contigo: si estás leyendo esto a principios de abril, probabl
 
 En cualquiera de los dos casos, lo que viene a continuación te va a servir.
 
-He estado hablando con opositores que se presentaron en convocatorias anteriores y hay un patrón que se repite: los que aprueban no son los que más horas meten en las últimas semanas. Son los que mejor organizan esas horas. Y hay una diferencia enorme entre las dos cosas.
+Leyendo foros y grupos de Telegram de opositores que se presentaron en convocatorias anteriores, hay un patrón que se repite: los que aprueban no son los que más horas meten en las últimas semanas. Son los que mejor organizan esas horas. Y hay una diferencia enorme entre las dos cosas.
 
 ## Lo primero: entiende a qué te enfrentas el 23 de mayo
 
@@ -22,7 +22,7 @@ Se divide en dos bloques:
 - **Bloque I** (60 preguntas): 30 de teoría (organización pública, Constitución, leyes administrativas) y 30 psicotécnicos (ortografía, series numéricas, razonamiento verbal)
 - **Bloque II** (50 preguntas): ofimática — Windows 11, Word, Excel, Access, Outlook, todo sobre Microsoft 365
 
-Y aquí viene lo que mucha gente no sabe hasta que es tarde: **cada bloque es eliminatorio**. Necesitas sacar al menos 25 sobre 50 en cada parte. Da igual que claves la teoría si suspendes ofimática, y viceversa. He visto a gente que se preparó fenomenal la parte jurídica y se quedó fuera porque no había tocado Excel en su vida.
+Y aquí viene lo que mucha gente no sabe hasta que es tarde: **cada bloque es eliminatorio**. Necesitas sacar al menos 25 sobre 50 en cada parte. Da igual que claves la teoría si suspendes ofimática, y viceversa. En los foros se leen casos de gente que se preparó fenomenal la parte jurídica y se quedó fuera porque no había tocado Excel en su vida.
 
 El sistema de penalización es -1/3. Tres respuestas mal equivalen a una bien que te quitan. Si no estás razonablemente seguro de una respuesta, déjala en blanco. No es cobardía, es matemáticas.
 
@@ -39,7 +39,7 @@ Mi estimación personal (y subrayo que es eso, una estimación): apunta a **60-6
 
 ## El plan: 7 semanas, semana a semana
 
-Este plan asume que puedes dedicar entre 1 y 2 horas al día. Si puedes más, genial, pero no diseño planes para superhéroes. Diseño planes para gente que trabaja, tiene familia, y llega cansada a casa. Porque eso es lo que son la mayoría de opositores que conozco.
+Este plan asume que puedes dedicar entre 1 y 2 horas al día. Si puedes más, genial, pero no diseño planes para superhéroes. Diseño planes para gente que trabaja, tiene familia, y llega cansada a casa. Porque eso es lo que son la mayoría de opositores, según lo que se lee en los grupos.
 
 ### Semana 1 (7–13 abril): Diagnóstico sin autoengaño
 
@@ -71,11 +71,11 @@ No intentes leerte las leyes enteras. No te va a dar tiempo y, sinceramente, hay
 - **LPAC**: plazos administrativos (art. 21-25), notificaciones electrónicas (art. 40-44), recursos (alzada, reposición, extraordinario de revisión)
 - **LRJSP**: órganos colegiados, abstención y recusación, convenios
 
-Un truco que me contó una opositora que aprobó en 2024: haz fichas (o usa flashcards) solo de los plazos. Cuántos días para recurrir, cuántos para resolver, cuántos para notificar. Es lo que más preguntan y lo que más se confunde.
+Un truco que se repite mucho en los hilos de opositores que aprobaron en 2024: haz fichas (o usa flashcards) solo de los plazos. Cuántos días para recurrir, cuántos para resolver, cuántos para notificar. Es lo que más preguntan y lo que más se confunde.
 
 ### Semana 4 (28 abril – 4 mayo): Psicotécnicos + repaso inteligente
 
-Los psicotécnicos son 30 preguntas, casi un tercio del bloque I. Y sin embargo conozco gente que no los practica porque "o se te dan bien o no". Error.
+Los psicotécnicos son 30 preguntas, casi un tercio del bloque I. Y sin embargo hay gente que no los practica porque "o se te dan bien o no". Error.
 
 Los psicotécnicos se entrenan. Punto. Series numéricas, analogías verbales, ortografía — todo mejora con práctica repetida. El secreto es hacerlos en condiciones reales: con tiempo limitado, sin diccionario, sin calculadora.
 
@@ -145,7 +145,7 @@ Y una cosa que nadie te dice: **el examen es más fácil de lo que parece cuando
 
 ## Esto va de constancia, no de heroicidades
 
-Si has llegado hasta aquí, ya estás haciendo más que la mayoría. Un dato que no es dato oficial pero que he escuchado de varias fuentes: un porcentaje enorme de los inscritos ni siquiera se presenta al examen. De los que se presentan, muchos no han preparado todas las partes.
+Si has llegado hasta aquí, ya estás haciendo más que la mayoría. Un dato que no es oficial pero que se menciona constantemente en foros y academias: un porcentaje enorme de los inscritos ni siquiera se presenta al examen. De los que se presentan, muchos no han preparado todas las partes.
 
 Tú tienes un plan. Tienes 7 semanas. Y tienes 1.700 plazas esperando.
 
