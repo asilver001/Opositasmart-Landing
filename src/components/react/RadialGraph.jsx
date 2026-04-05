@@ -312,6 +312,20 @@ function RadialGraphSVG({ width, height, selectedId, onSelectNode }) {
     };
   }, [treeData]);
 
+  // Compute rotation offset so selected node's parent ministerio is at top
+  const rotationOffset = useMemo(() => {
+    if (!selectedId) return 0;
+    const selNode = nodes.find(n => n.data.id === selectedId);
+    if (!selNode) return 0;
+    // Rotate so the selected node is at the top (12 o'clock = -PI/2 in our coord system)
+    return -selNode.x; // negate the angle to bring it to top
+  }, [selectedId, nodes]);
+
+  // Scale to fit: use the smaller dimension with padding
+  const graphRadius = RING_RADII[2] + 50; // outermost ring + label space
+  const fitScale = Math.min(width, height) / (graphRadius * 2);
+  const scale = Math.min(fitScale, 1); // never scale up, only down
+
   const cx = width / 2;
   const cy = height / 2;
 
@@ -319,7 +333,6 @@ function RadialGraphSVG({ width, height, selectedId, onSelectNode }) {
     if (!selectedId) return true;
     const selNode = nodes.find(n => n.data.id === selectedId);
     if (!selNode) return true;
-    // Check if node is ancestor or descendant of selected
     let cur = node;
     while (cur) { if (cur === selNode) return true; cur = cur.parent; }
     cur = selNode;
@@ -329,25 +342,38 @@ function RadialGraphSVG({ width, height, selectedId, onSelectNode }) {
 
   return (
     <svg width={width} height={height} style={{ background: COLORS.bg }}>
-      <style>{`
-        @keyframes drawLink {
-          from { stroke-dashoffset: var(--len); opacity: 0; }
-          to { stroke-dashoffset: 0; opacity: 1; }
-        }
-      `}</style>
-      <g transform={`translate(${cx},${cy})`}>
+      <g
+        transform={`translate(${cx},${cy}) scale(${scale})`}
+        style={{
+          transition: 'transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1)',
+          transformOrigin: '0 0',
+        }}
+      >
+        {/* Rotation group — animates when selection changes */}
+        <g style={{
+          transform: `rotate(${(rotationOffset * 180) / Math.PI}deg)`,
+          transition: 'transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+          transformOrigin: '0 0',
+        }}>
+
         {/* Concentric ring guides */}
         {[RING_RADII[1], RING_RADII[2]].map((r, i) => (
           <circle key={i} r={r} fill="none" stroke={COLORS.border} strokeWidth={0.5} strokeDasharray="3 6" opacity={0.5} />
         ))}
 
-        {/* Ring labels */}
-        <text x={0} y={-RING_RADII[1] - 8} textAnchor="middle" fontSize={9} fill={COLORS.muted} fontWeight={600} letterSpacing="0.08em">
-          MINISTERIOS
-        </text>
-        <text x={0} y={-RING_RADII[2] - 8} textAnchor="middle" fontSize={9} fill={COLORS.muted} fontWeight={600} letterSpacing="0.08em">
-          ORGANISMOS
-        </text>
+        {/* Ring labels — counter-rotate so they stay horizontal */}
+        <g style={{
+          transform: `rotate(${(-rotationOffset * 180) / Math.PI}deg)`,
+          transition: 'transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+          transformOrigin: '0 0',
+        }}>
+          <text x={0} y={-RING_RADII[1] - 8} textAnchor="middle" fontSize={9} fill={COLORS.muted} fontWeight={600} letterSpacing="0.08em">
+            MINISTERIOS
+          </text>
+          <text x={0} y={-RING_RADII[2] - 8} textAnchor="middle" fontSize={9} fill={COLORS.muted} fontWeight={600} letterSpacing="0.08em">
+            ORGANISMOS
+          </text>
+        </g>
 
         {/* Links */}
         {links.map((link, i) => {
@@ -357,11 +383,11 @@ function RadialGraphSVG({ width, height, selectedId, onSelectNode }) {
               key={i}
               d={linkPaths[i]}
               fill="none"
-              stroke={conn ? 'rgba(45,106,79,0.2)' : 'rgba(228,225,219,0.3)'}
-              strokeWidth={conn ? 1.5 : 0.7}
+              stroke={conn ? 'rgba(45,106,79,0.25)' : 'rgba(228,225,219,0.3)'}
+              strokeWidth={conn ? 2 : 0.7}
               style={{
-                opacity: selectedId ? (conn ? 0.7 : 0.08) : 0.35,
-                transition: 'opacity 0.3s, stroke 0.3s',
+                opacity: selectedId ? (conn ? 0.8 : 0.06) : 0.35,
+                transition: 'opacity 0.4s, stroke 0.4s, stroke-width 0.4s',
               }}
             />
           );
@@ -376,7 +402,7 @@ function RadialGraphSVG({ width, height, selectedId, onSelectNode }) {
           const isSelected = d.id === selectedId;
 
           // Color logic
-          let fill = COLORS.border; // default: no convocatoria
+          let fill = COLORS.border;
           let stroke = '#D4D0C8';
           let textColor = COLORS.muted;
 
@@ -394,22 +420,24 @@ function RadialGraphSVG({ width, height, selectedId, onSelectNode }) {
           }
 
           const delay = node.depth * 200 + i * 15;
+          // Larger click area: 20px min for touch targets
+          const hitRadius = Math.max(size + 12, 20);
 
           return (
             <AnimatedNode key={d.id} x={x} y={y} delay={delay}>
               {/* Selection ring */}
               {isSelected && (
-                <circle r={size + 5} fill="none" stroke={COLORS.brown} strokeWidth={2.5} opacity={0.4} />
+                <circle r={size + 6} fill="none" stroke={COLORS.brown} strokeWidth={3} opacity={0.5} />
               )}
 
-              {/* Hover area */}
+              {/* Hit area — large invisible circle for easy clicking */}
               <circle
-                r={size + 4}
+                r={hitRadius}
                 fill="transparent"
-                style={{ cursor: d.type === 'organismo' ? 'pointer' : d.type === 'ministerio' ? 'pointer' : 'default' }}
+                style={{ cursor: d.type !== 'root' ? 'pointer' : 'default' }}
                 onClick={() => {
                   if (d.type === 'organismo') onSelectNode(isSelected ? null : d.id);
-                  else if (d.type === 'ministerio') onSelectNode(null); // deselect
+                  else if (d.type === 'ministerio') onSelectNode(null);
                 }}
               />
 
@@ -420,28 +448,34 @@ function RadialGraphSVG({ width, height, selectedId, onSelectNode }) {
                 stroke={stroke}
                 strokeWidth={isSelected ? 3 : 1.5}
                 style={{
-                  opacity: connected ? 1 : 0.2,
-                  transition: 'opacity 0.3s, fill 0.3s',
-                  filter: isSelected ? `drop-shadow(0 0 8px ${COLORS.brown})` : 'none',
+                  opacity: connected ? 1 : 0.15,
+                  transition: 'opacity 0.4s, fill 0.4s',
+                  filter: isSelected ? `drop-shadow(0 0 10px ${COLORS.brown})` : 'none',
                 }}
               />
 
-              {/* Label */}
-              <text
-                dy={d.type === 'root' ? '0.35em' : '0.35em'}
-                textAnchor="middle"
-                fontSize={d.type === 'root' ? 13 : d.type === 'ministerio' ? 8 : 7}
-                fontWeight={d.type === 'root' ? 800 : 600}
-                fill={connected ? textColor : COLORS.gray}
-                style={{
-                  pointerEvents: 'none', userSelect: 'none',
-                  opacity: connected ? 1 : 0.3,
-                  transition: 'opacity 0.3s',
-                  fontFamily: 'Inter, system-ui, sans-serif',
-                }}
-              >
-                {d.name}
-              </text>
+              {/* Label — counter-rotate to stay horizontal */}
+              <g style={{
+                transform: `rotate(${(-rotationOffset * 180) / Math.PI}deg)`,
+                transition: 'transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+                transformOrigin: '0 0',
+              }}>
+                <text
+                  dy="0.35em"
+                  textAnchor="middle"
+                  fontSize={d.type === 'root' ? 13 : d.type === 'ministerio' ? 9 : 7}
+                  fontWeight={d.type === 'root' ? 800 : 600}
+                  fill={connected ? textColor : COLORS.gray}
+                  style={{
+                    pointerEvents: 'none', userSelect: 'none',
+                    opacity: connected ? 1 : 0.2,
+                    transition: 'opacity 0.4s',
+                    fontFamily: 'Inter, system-ui, sans-serif',
+                  }}
+                >
+                  {d.name}
+                </text>
+              </g>
 
               {/* External label for organismos (below node) */}
               {d.type === 'organismo' && d.plazas > 0 && (
@@ -459,7 +493,9 @@ function RadialGraphSVG({ width, height, selectedId, onSelectNode }) {
             </AnimatedNode>
           );
         })}
-      </g>
+
+        </g>{/* end rotation group */}
+      </g>{/* end translate/scale group */}
     </svg>
   );
 }
