@@ -14,8 +14,16 @@ import {
 // ─── Constants ───────────────────────────────────────────────────
 const CTA_URL = 'https://app.opositasmart.com/#/welcome';
 
-const RING_RADII = { 0: 0, 1: 160, 2: 320 };
-const NODE_SIZES = { root: 36, ministerio: 24, organismo: 16 };
+const RING_RADII = { 0: 0, 1: 150, 2: 310 };
+const NODE_SIZES = { root: 34, ministerio: 22, organismo: 14 };
+
+// CivLab-inspired: each ring has its own color
+const RING_COLORS = {
+  root: '#1A1A1A',
+  ministerio: '#2D6A4F',    // forest green
+  organismo: '#8B6E4F',     // warm brown
+  active: '#40916C',        // lighter green for active convocatorias
+};
 
 const COLORS = {
   bg: '#FAFAF7',
@@ -31,6 +39,7 @@ const COLORS = {
   amber: '#D97706',
   gray: '#9CA3AF',
   ring: 'rgba(45, 106, 79, 0.08)',
+  selected: '#D97706',       // amber for selection (CivLab uses coral)
 };
 
 const ESTADO_COLORS = {
@@ -285,217 +294,252 @@ function SidePanel({ organismo, onClose, isMobile }) {
   );
 }
 
+// ─── CivLab-style: uniform distribution on rings ─────────────────
+function buildRadialNodes() {
+  const nodes = [];
+  const links = [];
+
+  // Root node (AGE)
+  nodes.push({ id: 'age', name: 'AGE', type: 'root', angle: 0, radius: 0 });
+
+  // Ministerios — equally spaced on ring 1
+  const minCount = ministerios.length;
+  ministerios.forEach((min, i) => {
+    const angle = (i / minCount) * 2 * Math.PI;
+    nodes.push({ id: min.id, name: min.nombreCorto, type: 'ministerio', angle, radius: RING_RADII[1] });
+    links.push({ source: 'age', target: min.id });
+
+    // Organismos for this ministerio
+    const orgList = min.organismos.map(oid => organismos.find(o => o.id === oid)).filter(Boolean);
+    orgList.forEach((org, j) => {
+      // Spread organismos around their parent ministerio's angle
+      const spread = (Math.PI * 0.6) / minCount; // angular spread per ministerio
+      const orgAngle = angle + (j - (orgList.length - 1) / 2) * (spread / Math.max(orgList.length - 1, 1));
+      nodes.push({
+        id: org.id, name: org.siglas || org.nombre.split(' ').slice(0, 2).join(' '),
+        fullName: org.nombre, type: 'organismo', angle: orgAngle, radius: RING_RADII[2],
+        hasConvocatoria: hasConvocatoriaActiva(org), plazas: totalPlazasOrganismo(org),
+        orgData: org, parentMinId: min.id,
+      });
+      links.push({ source: min.id, target: org.id });
+    });
+  });
+
+  return { nodes, links };
+}
+
+// ─── Diamond shape for ministerios (CivLab uses rotated rects) ───
+function Diamond({ size, fill, stroke, strokeWidth, opacity, selected }) {
+  const s = size;
+  return (
+    <rect
+      x={-s} y={-s} width={s * 2} height={s * 2} rx={4} ry={4}
+      fill={fill} stroke={stroke} strokeWidth={strokeWidth}
+      transform="rotate(45)"
+      style={{
+        opacity,
+        transition: 'opacity 0.4s, fill 0.4s',
+        filter: selected ? `drop-shadow(0 0 10px ${COLORS.selected})` : 'none',
+      }}
+    />
+  );
+}
+
 // ─── Radial Graph SVG ────────────────────────────────────────────
 function RadialGraphSVG({ width, height, selectedId, onSelectNode }) {
-  const treeData = useMemo(() => buildTreeData(), []);
+  const { nodes, links } = useMemo(() => buildRadialNodes(), []);
 
-  const { nodes, links, linkPaths } = useMemo(() => {
-    const root = hierarchy(treeData);
-
-    tree()
-      .size([2 * Math.PI, RING_RADII[2]])
-      .separation((a, b) => (a.parent === b.parent ? 1 : 1.5) / a.depth)
-      (root);
-
-    // Snap to concentric rings
-    root.each(node => {
-      node.y = RING_RADII[node.depth] || RING_RADII[2];
-    });
-
-    const radialLinkGen = linkRadial().angle(d => d.x).radius(d => d.y);
-    const lnks = root.links();
-
-    return {
-      nodes: root.descendants(),
-      links: lnks,
-      linkPaths: lnks.map(l => radialLinkGen(l)),
-    };
-  }, [treeData]);
-
-  // Compute rotation offset so selected node's parent ministerio is at top
+  // Compute rotation so selected node is at top
   const rotationOffset = useMemo(() => {
     if (!selectedId) return 0;
-    const selNode = nodes.find(n => n.data.id === selectedId);
-    if (!selNode) return 0;
-    // Rotate so the selected node is at the top (12 o'clock = -PI/2 in our coord system)
-    return -selNode.x; // negate the angle to bring it to top
+    const sel = nodes.find(n => n.id === selectedId);
+    return sel ? -sel.angle : 0;
   }, [selectedId, nodes]);
 
-  // Scale to fit: use the smaller dimension with padding
-  const graphRadius = RING_RADII[2] + 50; // outermost ring + label space
+  // Scale to fit
+  const graphRadius = RING_RADII[2] + 60;
   const fitScale = Math.min(width, height) / (graphRadius * 2);
-  const scale = Math.min(fitScale, 1); // never scale up, only down
-
+  const scale = Math.min(fitScale, 1);
   const cx = width / 2;
   const cy = height / 2;
 
   const isConnected = useCallback((node) => {
     if (!selectedId) return true;
-    const selNode = nodes.find(n => n.data.id === selectedId);
-    if (!selNode) return true;
-    let cur = node;
-    while (cur) { if (cur === selNode) return true; cur = cur.parent; }
-    cur = selNode;
-    while (cur) { if (cur === node) return true; cur = cur.parent; }
+    if (node.id === selectedId) return true;
+    // Check parent link
+    const sel = nodes.find(n => n.id === selectedId);
+    if (!sel) return true;
+    if (sel.parentMinId === node.id) return true; // selected org's ministerio
+    if (node.parentMinId === sel.parentMinId && node.type === 'organismo') return true; // sibling org
+    if (node.type === 'root') return true;
     return false;
   }, [selectedId, nodes]);
 
+  const rotDeg = (rotationOffset * 180) / Math.PI;
+
   return (
-    <svg width={width} height={height} style={{ background: COLORS.bg }}>
-      <g
-        transform={`translate(${cx},${cy}) scale(${scale})`}
-        style={{
-          transition: 'transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1)',
-          transformOrigin: '0 0',
-        }}
-      >
-        {/* Rotation group — animates when selection changes */}
+    <svg width={width} height={height} viewBox={`0 0 ${width} ${height}`} style={{ background: COLORS.bg }}>
+      <g transform={`translate(${cx},${cy}) scale(${scale})`}>
+        {/* Rotation group */}
         <g style={{
-          transform: `rotate(${(rotationOffset * 180) / Math.PI}deg)`,
-          transition: 'transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+          transform: `rotate(${rotDeg}deg)`,
+          transition: 'transform 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
           transformOrigin: '0 0',
         }}>
 
-        {/* Concentric ring guides */}
-        {[RING_RADII[1], RING_RADII[2]].map((r, i) => (
-          <circle key={i} r={r} fill="none" stroke={COLORS.border} strokeWidth={0.5} strokeDasharray="3 6" opacity={0.5} />
-        ))}
+          {/* Ring guides — CivLab-style dashed circles */}
+          <circle r={RING_RADII[1]} fill="none" stroke={RING_COLORS.ministerio} strokeWidth={1} strokeDasharray="4 2" opacity={0.3} />
+          <circle r={RING_RADII[2]} fill="none" stroke={RING_COLORS.organismo} strokeWidth={1} strokeDasharray="4 2" opacity={0.2} />
 
-        {/* Ring labels — counter-rotate so they stay horizontal */}
-        <g style={{
-          transform: `rotate(${(-rotationOffset * 180) / Math.PI}deg)`,
-          transition: 'transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
-          transformOrigin: '0 0',
-        }}>
-          <text x={0} y={-RING_RADII[1] - 8} textAnchor="middle" fontSize={9} fill={COLORS.muted} fontWeight={600} letterSpacing="0.08em">
-            MINISTERIOS
-          </text>
-          <text x={0} y={-RING_RADII[2] - 8} textAnchor="middle" fontSize={9} fill={COLORS.muted} fontWeight={600} letterSpacing="0.08em">
-            ORGANISMOS
-          </text>
-        </g>
+          {/* Ring labels — counter-rotate */}
+          <g style={{ transform: `rotate(${-rotDeg}deg)`, transition: 'transform 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94)', transformOrigin: '0 0' }}>
+            <text x={0} y={RING_RADII[1] + 22} textAnchor="middle" fontSize={10} fill={RING_COLORS.ministerio} fontWeight={600} letterSpacing="0.06em" style={{ userSelect: 'none' }}>
+              MINISTERIOS
+            </text>
+            <text x={0} y={RING_RADII[2] + 22} textAnchor="middle" fontSize={10} fill={RING_COLORS.organismo} fontWeight={600} letterSpacing="0.06em" style={{ userSelect: 'none' }}>
+              ORGANISMOS
+            </text>
+          </g>
 
-        {/* Links */}
-        {links.map((link, i) => {
-          const conn = isConnected(link.source) && isConnected(link.target);
-          return (
-            <path
-              key={i}
-              d={linkPaths[i]}
-              fill="none"
-              stroke={conn ? 'rgba(45,106,79,0.25)' : 'rgba(228,225,219,0.3)'}
-              strokeWidth={conn ? 2 : 0.7}
-              style={{
-                opacity: selectedId ? (conn ? 0.8 : 0.06) : 0.35,
-                transition: 'opacity 0.4s, stroke 0.4s, stroke-width 0.4s',
-              }}
-            />
-          );
-        })}
-
-        {/* Nodes */}
-        {nodes.map((node, i) => {
-          const [x, y] = polar(node.x, node.y);
-          const d = node.data;
-          const size = NODE_SIZES[d.type];
-          const connected = isConnected(node);
-          const isSelected = d.id === selectedId;
-
-          // Color logic
-          let fill = COLORS.border;
-          let stroke = '#D4D0C8';
-          let textColor = COLORS.muted;
-
-          if (d.type === 'root') {
-            fill = COLORS.dark; stroke = COLORS.dark; textColor = COLORS.white;
-          } else if (d.type === 'ministerio') {
-            fill = COLORS.green; stroke = '#1B4332'; textColor = COLORS.white;
-          } else if (d.hasConvocatoria) {
-            fill = COLORS.greenLight; stroke = COLORS.green; textColor = COLORS.white;
-          }
-
-          if (isSelected) {
-            stroke = COLORS.brown; fill = d.type === 'root' ? COLORS.dark : COLORS.brown;
-            textColor = COLORS.white;
-          }
-
-          const delay = node.depth * 200 + i * 15;
-          // Larger click area: 20px min for touch targets
-          const hitRadius = Math.max(size + 12, 20);
-
-          return (
-            <AnimatedNode key={d.id} x={x} y={y} delay={delay}>
-              {/* Selection ring */}
-              {isSelected && (
-                <circle r={size + 6} fill="none" stroke={COLORS.brown} strokeWidth={3} opacity={0.5} />
-              )}
-
-              {/* Hit area — large invisible circle for easy clicking */}
-              <circle
-                r={hitRadius}
-                fill="transparent"
-                style={{ cursor: d.type !== 'root' ? 'pointer' : 'default' }}
-                onClick={() => {
-                  if (d.type === 'organismo') onSelectNode(isSelected ? null : d.id);
-                  else if (d.type === 'ministerio') onSelectNode(null);
-                }}
+          {/* Links — curved lines from parent to child */}
+          {links.map((link, i) => {
+            const src = nodes.find(n => n.id === link.source);
+            const tgt = nodes.find(n => n.id === link.target);
+            if (!src || !tgt) return null;
+            const [sx, sy] = polar(src.angle, src.radius);
+            const [tx, ty] = polar(tgt.angle, tgt.radius);
+            const conn = isConnected(src) && isConnected(tgt);
+            // Curved path via midpoint
+            const mr = (src.radius + tgt.radius) / 2;
+            const ma = (src.angle + tgt.angle) / 2;
+            const [mx, my] = polar(ma, mr * 0.85);
+            return (
+              <path
+                key={i}
+                d={`M${sx},${sy} Q${mx},${my} ${tx},${ty}`}
+                fill="none"
+                stroke={conn ? RING_COLORS.ministerio : COLORS.border}
+                strokeWidth={conn ? 1.5 : 0.5}
+                opacity={selectedId ? (conn ? 0.5 : 0.06) : 0.2}
+                style={{ transition: 'opacity 0.4s, stroke 0.4s' }}
               />
+            );
+          })}
 
-              {/* Node circle */}
-              <circle
-                r={size}
-                fill={fill}
-                stroke={stroke}
-                strokeWidth={isSelected ? 3 : 1.5}
-                style={{
-                  opacity: connected ? 1 : 0.15,
-                  transition: 'opacity 0.4s, fill 0.4s',
-                  filter: isSelected ? `drop-shadow(0 0 10px ${COLORS.brown})` : 'none',
-                }}
-              />
+          {/* Nodes */}
+          {nodes.map((node, i) => {
+            const [x, y] = polar(node.angle, node.radius);
+            const size = NODE_SIZES[node.type];
+            const connected = isConnected(node);
+            const isSelected = node.id === selectedId;
+            const hitRadius = Math.max(size + 14, 22);
+            const delay = (node.type === 'root' ? 0 : node.type === 'ministerio' ? 1 : 2) * 200 + i * 20;
 
-              {/* Label — counter-rotate to stay horizontal */}
-              <g style={{
-                transform: `rotate(${(-rotationOffset * 180) / Math.PI}deg)`,
-                transition: 'transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
-                transformOrigin: '0 0',
-              }}>
-                <text
-                  dy="0.35em"
-                  textAnchor="middle"
-                  fontSize={d.type === 'root' ? 13 : d.type === 'ministerio' ? 9 : 7}
-                  fontWeight={d.type === 'root' ? 800 : 600}
-                  fill={connected ? textColor : COLORS.gray}
-                  style={{
-                    pointerEvents: 'none', userSelect: 'none',
-                    opacity: connected ? 1 : 0.2,
-                    transition: 'opacity 0.4s',
-                    fontFamily: 'Inter, system-ui, sans-serif',
+            // CivLab-style: white fill, colored stroke
+            let fill = COLORS.white;
+            let stroke = COLORS.border;
+            let labelColor = COLORS.muted;
+
+            if (node.type === 'root') {
+              fill = COLORS.dark; stroke = COLORS.dark; labelColor = COLORS.white;
+            } else if (node.type === 'ministerio') {
+              stroke = RING_COLORS.ministerio;
+              labelColor = RING_COLORS.ministerio;
+            } else if (node.hasConvocatoria) {
+              stroke = RING_COLORS.active;
+              labelColor = RING_COLORS.active;
+            } else {
+              stroke = RING_COLORS.organismo;
+              labelColor = RING_COLORS.organismo;
+            }
+
+            if (isSelected) {
+              fill = COLORS.selected;
+              stroke = COLORS.selected;
+              labelColor = COLORS.white;
+            }
+
+            return (
+              <AnimatedNode key={node.id} x={x} y={y} delay={delay}>
+                {/* Selection glow */}
+                {isSelected && <circle r={size + 8} fill={COLORS.selected} opacity={0.15} />}
+
+                {/* Hit area */}
+                <circle
+                  r={hitRadius}
+                  fill="transparent"
+                  style={{ cursor: node.type !== 'root' ? 'pointer' : 'default' }}
+                  onClick={() => {
+                    if (node.type === 'organismo') onSelectNode(isSelected ? null : node.id);
+                    else if (node.type === 'ministerio') onSelectNode(null);
                   }}
-                >
-                  {d.name}
-                </text>
-              </g>
+                />
 
-              {/* External label for organismos (below node) */}
-              {d.type === 'organismo' && d.plazas > 0 && (
-                <text
-                  dy={size + 12}
-                  textAnchor="middle"
-                  fontSize={7}
-                  fontWeight={500}
-                  fill={connected ? COLORS.green : COLORS.gray}
-                  style={{ pointerEvents: 'none', opacity: connected ? 0.7 : 0.15, transition: 'opacity 0.3s' }}
-                >
-                  {d.plazas} plazas
-                </text>
-              )}
-            </AnimatedNode>
-          );
-        })}
+                {/* Node shape — different per level (CivLab pattern) */}
+                {node.type === 'ministerio' ? (
+                  <Diamond
+                    size={size * 0.7}
+                    fill={fill}
+                    stroke={stroke}
+                    strokeWidth={isSelected ? 3 : 1.5}
+                    opacity={connected ? 1 : 0.15}
+                    selected={isSelected}
+                  />
+                ) : (
+                  <circle
+                    r={size}
+                    fill={fill}
+                    stroke={stroke}
+                    strokeWidth={isSelected ? 3 : 1.5}
+                    style={{
+                      opacity: connected ? 1 : 0.15,
+                      transition: 'opacity 0.4s, fill 0.4s',
+                      filter: isSelected ? `drop-shadow(0 0 10px ${COLORS.selected})` : 'none',
+                    }}
+                  />
+                )}
 
-        </g>{/* end rotation group */}
-      </g>{/* end translate/scale group */}
+                {/* Label — counter-rotate to stay horizontal */}
+                <g style={{
+                  transform: `rotate(${-rotDeg}deg)`,
+                  transition: 'transform 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+                  transformOrigin: '0 0',
+                }}>
+                  {node.type === 'root' ? (
+                    <text
+                      dy="0.35em"
+                      textAnchor="middle"
+                      fontSize={14}
+                      fontWeight={800}
+                      fill={labelColor}
+                      style={{ pointerEvents: 'none', userSelect: 'none', fontFamily: 'Inter, system-ui, sans-serif' }}
+                    >
+                      {node.name}
+                    </text>
+                  ) : (
+                    <text
+                      dy={node.type === 'ministerio' ? size + 16 : size + 12}
+                      textAnchor="middle"
+                      fontSize={node.type === 'ministerio' ? 9 : 7}
+                      fontWeight={600}
+                      fill={connected ? labelColor : COLORS.gray}
+                      style={{
+                        pointerEvents: 'none', userSelect: 'none',
+                        opacity: connected ? 0.85 : 0.15,
+                        transition: 'opacity 0.4s',
+                        fontFamily: 'Inter, system-ui, sans-serif',
+                      }}
+                    >
+                      {node.name}
+                    </text>
+                  )}
+                </g>
+              </AnimatedNode>
+            );
+          })}
+
+        </g>{/* end rotation */}
+      </g>{/* end translate/scale */}
     </svg>
   );
 }
@@ -572,22 +616,30 @@ export default function RadialGraphPage() {
           {/* Legend */}
           <div style={{
             position: 'absolute', bottom: 16, right: 16,
-            background: 'rgba(255,255,255,0.9)', backdropFilter: 'blur(4px)',
+            background: 'rgba(255,255,255,0.92)', backdropFilter: 'blur(4px)',
             border: `1px solid ${COLORS.border}`, borderRadius: 10,
             padding: '12px 16px', display: 'flex', flexDirection: 'column', gap: 8,
           }}>
-            {[
-              { color: COLORS.dark, label: 'AGE (central)' },
-              { color: COLORS.green, label: 'Ministerio' },
-              { color: COLORS.greenLight, label: 'Conv. activa' },
-              { color: COLORS.border, label: 'Sin convocatoria' },
-              { color: COLORS.brown, label: 'Seleccionado' },
-            ].map(({ color, label }) => (
-              <div key={label} style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                <span style={{ width: 12, height: 12, borderRadius: '50%', background: color, flexShrink: 0 }} />
-                <span style={{ fontSize: 11, color: COLORS.muted }}>{label}</span>
-              </div>
-            ))}
+            <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+              <span style={{ width: 14, height: 14, borderRadius: '50%', background: COLORS.dark, flexShrink: 0 }} />
+              <span style={{ fontSize: 11, color: COLORS.muted }}>AGE (central)</span>
+            </div>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+              <span style={{ width: 12, height: 12, border: `2px solid ${RING_COLORS.ministerio}`, background: COLORS.white, transform: 'rotate(45deg)', borderRadius: 2, flexShrink: 0 }} />
+              <span style={{ fontSize: 11, color: COLORS.muted }}>Ministerio</span>
+            </div>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+              <span style={{ width: 12, height: 12, borderRadius: '50%', border: `2px solid ${RING_COLORS.active}`, background: COLORS.white, flexShrink: 0 }} />
+              <span style={{ fontSize: 11, color: COLORS.muted }}>Conv. activa</span>
+            </div>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+              <span style={{ width: 12, height: 12, borderRadius: '50%', border: `2px solid ${RING_COLORS.organismo}`, background: COLORS.white, flexShrink: 0 }} />
+              <span style={{ fontSize: 11, color: COLORS.muted }}>Sin convocatoria</span>
+            </div>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+              <span style={{ width: 12, height: 12, borderRadius: '50%', background: COLORS.selected, flexShrink: 0 }} />
+              <span style={{ fontSize: 11, color: COLORS.muted }}>Seleccionado</span>
+            </div>
           </div>
         </div>
       </div>
