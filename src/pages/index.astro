@@ -14,7 +14,7 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft))
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Instrument+Sans:wght@400;600&display=swap" rel="stylesheet">
-    <meta name="keywords" content="oposiciones auxiliar administrativo 2026, test oposiciones AGE, preparar oposiciones online, app oposiciones, oposiciones estado 2026, temario auxiliar administrativo">
+    <meta name="keywords" content="oposiciones auxiliar administrativo 2026, test oposiciones AGE, preparar oposiciones online, app oposiciones, oposiciones estado 2026, temario auxiliar administrativo, convocatorias oposiciones 2026, plazas auxiliar administrativo, organismos publicos oposiciones, radar oposiciones">
     <script type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
       "@type": "SoftwareApplication",
@@ -28,6 +28,48 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft))
         "price": "0",
         "priceCurrency": "EUR",
         "description": "Acceso fundador gratuito durante la beta"
+      }
+    })} />
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "¿Cuándo es el examen de Auxiliar Administrativo del Estado 2026?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "La fecha estimada del primer ejercicio de Auxiliar Administrativo AGE es junio de 2026. Se han convocado 522 plazas (OEP 2024). Consulta el estado actualizado en nuestro Radar de Oposiciones."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Cuántas plazas de oposiciones administrativas hay convocadas en 2026?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Actualmente hay más de 3.384 plazas convocadas entre Auxiliar AGE (522), Administrativo AGE (390), Seguridad Social (1.556), Comunidad de Madrid (645) y otras CCAA."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Qué organismos públicos convocan oposiciones administrativas?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Los principales organismos son AEAT, TGSS, INSS, SEPE, DGT y Gerencia Territorial de Justicia, entre otros. Explora el mapa interactivo de 19 organismos en 10 ministerios en nuestro Radar de Organismos."
+          }
+        }
+      ]
+    })} />
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Oposita Smart",
+      "url": "https://www.opositasmart.com",
+      "description": "Prepara tu oposición de Auxiliar Administrativo del Estado con ciencia cognitiva y repetición espaciada.",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://www.opositasmart.com/graph?org={search_term_string}",
+        "query-input": "required name=search_term_string"
       }
     })} />
   </Fragment>
@@ -101,12 +143,26 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft))
     </div>
   </div>
 
-  <!-- ========== CONVOCATORIAS DASHBOARD ========== -->
+  <!-- ========== RADAR DE OPOSICIONES ========== -->
   <section class="opo-dashboard" id="convocatorias" aria-labelledby="opo-title">
     <div class="opo-dashboard-header">
-      <div class="eyebrow">Convocatorias 2025–2026</div>
-      <h2 id="opo-title">Radar de Oposiciones en tiempo real</h2>
-      <p>7 convocatorias activas · 3.384 plazas totales. Estado, plazas, fechas y enlaces al BOE. Actualizado constantemente.</p>
+      <div class="eyebrow">Recursos gratuitos</div>
+      <h2 id="opo-title">Radar de Oposiciones</h2>
+      <p>Todo lo que necesitas saber sobre convocatorias y organismos públicos. Actualizado constantemente.</p>
+    </div>
+
+    <!-- Tab navigation -->
+    <div class="radar-tabs" role="tablist">
+      <a href="/radar" class="radar-tab" role="tab">
+        <span class="radar-tab-icon">📋</span>
+        <span class="radar-tab-title">Convocatorias</span>
+        <span class="radar-tab-desc">7 activas · 3.384 plazas · Estado, fechas y BOE</span>
+      </a>
+      <a href="/graph" class="radar-tab" role="tab">
+        <span class="radar-tab-icon">🔗</span>
+        <span class="radar-tab-title">Mapa de Organismos</span>
+        <span class="radar-tab-desc">19 organismos · 10 ministerios · Grafo interactivo</span>
+      </a>
     </div>
 
     <div class="opo-stats-row">
@@ -121,19 +177,20 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft))
         <div class="osc-bar"><div class="osc-bar-fill" style="width:40%"></div></div>
       </div>
       <div class="opo-stat-card">
-        <div class="osc-num">83d</div>
-        <div class="osc-label">Próximo examen AGE</div>
-        <div class="osc-bar"><div class="osc-bar-fill" style="width:65%"></div></div>
+        <div class="osc-num">19</div>
+        <div class="osc-label">Organismos mapeados</div>
+        <div class="osc-bar"><div class="osc-bar-fill" style="width:55%"></div></div>
       </div>
     </div>
 
     <div style="text-align: center; margin-top: 24px;">
       <a href="/radar" class="cta-radar-link">
-        Ver todas las convocatorias →
+        Ver convocatorias →
       </a>
-      <p style="font-size: 13px; color: var(--text-muted, #6B7280); margin-top: 8px;">
-        Filtros por ámbito y nivel · Compartible en Facebook · Enlaces al BOE
-      </p>
+      <span style="display: inline-block; margin: 0 12px; color: var(--text-light, #9CA3AF);">·</span>
+      <a href="/graph" class="cta-radar-link">
+        Explorar organismos →
+      </a>
     </div>
   </section>
 
@@ -923,22 +980,64 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft))
     color: #2D6A4F;
   }
 
+  /* Radar tab cards */
+  .radar-tabs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    max-width: 720px;
+    margin: 0 auto 28px;
+  }
+  .radar-tab {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 24px 20px;
+    background: white;
+    border: 1px solid rgba(0,0,0,0.06);
+    border-radius: 16px;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+  .radar-tab:hover {
+    border-color: var(--accent-primary, #2D6A4F);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+    transform: translateY(-2px);
+  }
+  .radar-tab-icon {
+    font-size: 28px;
+    margin-bottom: 8px;
+  }
+  .radar-tab-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--text-heading, #111827);
+    margin-bottom: 4px;
+  }
+  .radar-tab-desc {
+    font-size: 13px;
+    color: var(--text-muted, #6B7280);
+    line-height: 1.4;
+  }
+
   .cta-radar-link {
     display: inline-block;
-    background: var(--gradient-cta, linear-gradient(145deg, #1B4332, #2D6A4F, #3A7D5C));
-    color: white;
+    color: var(--accent-primary, #2D6A4F);
     font-weight: 600;
-    font-size: 16px;
-    padding: 14px 32px;
-    border-radius: 12px;
+    font-size: 15px;
     text-decoration: none;
-    box-shadow: 0 8px 28px rgba(27, 67, 50, 0.20);
     transition: all 0.2s;
   }
   .cta-radar-link:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 12px 36px rgba(27, 67, 50, 0.28);
-    color: white;
+    text-decoration: underline;
+    color: var(--accent-deep, #1B4332);
+  }
+
+  @media (max-width: 480px) {
+    .radar-tabs {
+      grid-template-columns: 1fr;
+    }
   }
 
   /* ===== ANTI-ACADEMY ===== */
