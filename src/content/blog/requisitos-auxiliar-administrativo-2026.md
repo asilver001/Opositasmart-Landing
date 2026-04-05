@@ -1,13 +1,13 @@
 ---
 title: "Requisitos para ser Auxiliar Administrativo del Estado 2026: lo que nadie te cuenta"
-description: "Todo lo que necesitas para presentarte a auxiliar administrativo AGE 2026, explicado sin rodeos por alguien que conoce el proceso por dentro."
+description: "Todo lo que necesitas para presentarte a auxiliar administrativo AGE 2026, explicado sin rodeos y con datos actualizados de la convocatoria."
 date: 2026-03-15
 category: convocatorias
 emoji: "📋"
 readingTime: "7 min lectura"
 ---
 
-La oposición de **auxiliar administrativo del estado 2026** es, sin exagerar, la puerta de entrada más accesible a la función pública en España. He visto a personas de los perfiles más dispares aprobarla: desde recién licenciados hasta gente que llevaba años fuera del mercado laboral. Lo que tienen en común no es el nivel de estudios, sino haber entendido bien cómo funciona el proceso antes de ponerse a estudiar.
+La oposición de **auxiliar administrativo del estado 2026** es, sin exagerar, la puerta de entrada más accesible a la función pública en España. En los foros se leen historias de personas de los perfiles más dispares que la han aprobado: desde recién licenciados hasta gente que llevaba años fuera del mercado laboral. Lo que tienen en común no es el nivel de estudios, sino haber entendido bien cómo funciona el proceso antes de ponerse a estudiar.
 
 Así que déjame explicarte lo que realmente importa.
 
@@ -27,13 +27,13 @@ Lo que importa es la relación entre plazas y opositores presentados. En convoca
 
 ## El examen visto desde dentro
 
-Te voy a contar algo que aprendí estudiando convocatorias anteriores: el primer ejercicio es eliminatorio y es donde cae la mayoría.
+Algo que queda claro al revisar convocatorias anteriores: el examen es eliminatorio y es donde cae la mayoría.
 
-Son **60 preguntas tipo test** (más 5 de reserva) con **60 minutos** para responderlas. Cada respuesta correcta suma 1 punto; cada incorrecta resta 0,33 (el famoso "tercio"). Las no contestadas no penalizan. Con esa matemática, la estrategia de "marcar todo a lo loco" sale cara.
+Son **110 preguntas tipo test** (100 puntuables + 10 de reserva) en **90 minutos**, divididas en dos bloques. El Bloque I tiene 60 preguntas: 30 de teoría y 30 psicotécnicos. El Bloque II tiene 50 preguntas de ofimática (Windows 11, Word, Excel, Access, Outlook — todo sobre Microsoft 365). Cada respuesta incorrecta resta 1/3 de punto. Las no contestadas no penalizan. Y ojo: **cada bloque es eliminatorio** — necesitas al menos 25/50 en cada parte.
 
-Mi consejo, después de ver cómo muchos preparadores enfocan esto: si tienes duda real entre dos opciones, a veces vale la pena dejar la pregunta en blanco. Si tienes dudas entre tres o cuatro, casi nunca vale la pena arriesgarse. Esto no lo dice casi nadie en los manuales, pero los números lo respaldan.
+Con esa matemática, la estrategia de "marcar todo a lo loco" sale cara. La recomendación que más se repite entre preparadores: si puedes descartar al menos 2 opciones de 4, responde. Si no, déjala en blanco. No es cobardía, es probabilidad.
 
-El segundo ejercicio es práctico: procesador de textos y hoja de cálculo. Word y Excel, básicamente. Lo que se valora es velocidad y corrección. Aquí no hace falta ser un experto, pero sí manejar con soltura tablas, formatos, fórmulas básicas de suma y porcentaje. He visto gente que dominaba perfectamente el temario teórico perder puntos aquí por no haber practicado lo suficiente con el teclado.
+En los foros se leen casos de gente que dominaba la parte jurídica pero se quedó fuera por no haber practicado ofimática. El Bloque II no requiere ser un experto, pero sí manejar con soltura atajos de teclado, formatos y fórmulas básicas.
 
 ## El temario: 28 temas, pero no todos pesan igual
 
@@ -52,11 +52,11 @@ Ahora bien, no todos los temas tienen el mismo peso en el examen. Basándonos en
 
 El sueldo base de un Auxiliar Administrativo del Estado ronda los **1.400-1.600€ netos al mes**, cobrado en 14 pagas. El bruto está alrededor de los 19.000-21.000€ anuales dependiendo del destino y los complementos específicos del puesto.
 
-Eso puede sonar modesto si lo comparas con determinados sectores privados. Pero hay que sumar lo que los titulares no mencionan: el horario es generalmente de mañana (de 7:30 a 15:00 en muchos ministerios), las pagas de junio y diciembre son completas, acumulas trienios cada tres años de antigüedad, y la estabilidad laboral es total. No hay EREs, no hay incertidumbre de renovación de contrato. En mi experiencia hablando con opositores que finalmente aprobaron, muchos dicen que el dato que más les importó al final no fue el salario bruto sino esa combinación de horario y estabilidad.
+Eso puede sonar modesto si lo comparas con determinados sectores privados. Pero hay que sumar lo que los titulares no mencionan: el horario es generalmente de mañana (de 7:30 a 15:00 en muchos ministerios), las pagas de junio y diciembre son completas, acumulas trienios cada tres años de antigüedad, y la estabilidad laboral es total. No hay EREs, no hay incertidumbre de renovación de contrato. Leyendo testimonios de opositores que finalmente aprobaron, muchos coinciden en que el dato que más les importó al final no fue el salario bruto sino esa combinación de horario y estabilidad.
 
 ## Cómo prepararte sin volverte loco en el intento
 
-El error más común que he visto es la "preparación en ráfaga": semanas de intensidad brutal seguidas de abandono total. No funciona, y el temario de 28 temas necesita repetición distribuida en el tiempo para que quede fijado.
+El error más común que se repite en los foros es la "preparación en ráfaga": semanas de intensidad brutal seguidas de abandono total. No funciona, y el temario de 28 temas necesita repetición distribuida en el tiempo para que quede fijado.
 
 Lo que sí funciona es estudiar poco cada día, pero de forma constante. Treinta o cuarenta minutos diarios durante varios meses superan con creces a los maratones de fin de semana. El algoritmo FSRS (el mismo que usa Oposita Smart para programar tus repasos) se basa exactamente en esto: te devuelve cada pregunta justo cuando estás a punto de olvidarla, no antes ni después.
 

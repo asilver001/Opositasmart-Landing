@@ -9,7 +9,7 @@ readingTime: "8 min lectura"
 
 ## Organizar el estudio para oposiciones es más difícil que la propia oposición
 
-Lo he visto decenas de veces. Alguien empieza con toda la energía del mundo, se hace un Excel brutal con el temario dividido por semanas, jura que va a estudiar tres horas al día, y a las cuatro semanas... ha desaparecido del grupo de WhatsApp.
+Es una historia que se repite constantemente en los grupos de opositores. Alguien empieza con toda la energía del mundo, se hace un Excel brutal con el temario dividido por semanas, jura que va a estudiar tres horas al día, y a las cuatro semanas... ha desaparecido del grupo de WhatsApp.
 
 No es falta de voluntad. Es que el plan era irrealista desde el minuto uno.
 
@@ -19,17 +19,17 @@ Organizar el estudio para oposiciones no va de ser muy disciplinado. Va de dise�
 
 Estudiar en bloques de tres horas los fines de semana y casi nada entre semana. Es el enfoque universitario, y para oposiciones funciona fatal.
 
-No hay datos oficiales sobre tasas de abandono, pero la mayoría de preparadores coinciden en que más de la mitad de los opositores abandona antes de presentarse. Y cuando pregunto a los que abandonaron, la historia suele ser la misma: empezaron fuerte, llegó una semana mala, perdieron el ritmo y nunca volvieron a retomarlo.
+No hay datos oficiales sobre tasas de abandono, pero la mayoría de preparadores coinciden en que más de la mitad de los opositores abandona antes de presentarse. Y cuando lees las historias de los que abandonaron, el patrón suele ser el mismo: empezaron fuerte, llegó una semana mala, perdieron el ritmo y nunca volvieron a retomarlo.
 
 El problema no era la semana mala. Era que el plan no tenía margen para las semanas malas.
 
 ## Menos horas, más días
 
-He trabajado con opositores que estudiaban nueve horas a la semana en tres bloques y con otros que hacían veinte minutos cada día. Los segundos, en general, llegan mejor preparados al examen. Y lo que es más importante: llegan.
+En los foros se ven dos perfiles: opositores que estudian nueve horas a la semana en tres bloques y otros que hacen veinte minutos cada día. Los segundos, según lo que cuentan, llegan mejor preparados al examen. Y lo que es más importante: llegan.
 
 La razón no es mágica. Cuando distribuyes el estudio en sesiones cortas y frecuentes, el cerebro tiene tiempo de consolidar lo aprendido entre sesión y sesión. Los maratones de estudio te dan la sensación de haber trabajado mucho, pero buena parte de eso se evapora antes del fin de semana.
 
-Conozco a Ana, que preparó Auxiliar AGE mientras trabajaba a jornada completa y con una niña pequeña. Me dijo que no podía permitirse más de media hora al día. En vez de ver eso como un problema, lo convirtió en su método: veinte minutos de preguntas tipo test cada noche, sin falta. Tardó nueve meses, pero aprobó. Su compañera de trabajo, que intentó el enfoque de "los sábados me encierro a estudiar", llegó al examen con los primeros temas bien y los últimos sin tocar.
+Un caso que leí en un foro de opositores: una chica que preparó Auxiliar AGE mientras trabajaba a jornada completa y con una niña pequeña. No podía permitirse más de media hora al día. En vez de ver eso como un problema, lo convirtió en su método: veinte minutos de preguntas tipo test cada noche, sin falta. Tardó nueve meses, pero aprobó. Otra persona del mismo hilo, que intentó el enfoque de "los sábados me encierro a estudiar", llegó al examen con los primeros temas bien y los últimos sin tocar.
 
 ## "Pero veinte minutos es muy poco"
 
@@ -41,7 +41,7 @@ El mínimo sostenible es tu seguro contra los días malos. Y los días malos van
 
 ## "No tengo tiempo"
 
-Esto me lo dicen mucho. Y casi siempre, cuando miramos juntos una semana típica, el tiempo aparece. No en bloques grandes, sino en huecos pequeños: el trayecto al trabajo, la hora de comer, los veinte minutos antes de dormir.
+Es la excusa más común. Y casi siempre, cuando analizas una semana típica con honestidad, el tiempo aparece. No en bloques grandes, sino en huecos pequeños: el trayecto al trabajo, la hora de comer, los veinte minutos antes de dormir.
 
 No estoy diciendo que sea fácil. Estoy diciendo que si esperas a tener tiempo libre para ponerte a estudiar, probablemente nunca te pongas.
 
@@ -67,13 +67,13 @@ Esto no significa ignorar el resto del temario. Significa ser estratégico con l
 
 ## Primero entender, luego practicar, luego repasar
 
-El proceso que mejor funciona, y del que me convencí después de ver fallar a mucha gente que solo memorizaba, es este:
+El proceso que mejor funciona, según la investigación en ciencia del aprendizaje y lo que confirman los opositores que aprueban, es este:
 
 Lee el tema una vez para entenderlo. No para aprenderlo, solo para hacerte una idea de qué va. Luego haz un pequeño resumen con tus palabras, aunque sea en un papel, aunque sea feo. Ese proceso de transformar la información a tu propio lenguaje vale más que releer el texto diez veces.
 
 Después de eso, empieza a hacer preguntas tipo test sobre ese tema. Muchas preguntas, y no pasa nada si te equivocas, de hecho mejor que te equivoques ahora que en el examen. Cuando repases una semana después, dos semanas después, un mes después, el sistema te irá diciendo qué necesitas repasar y qué ya tienes consolidado.
 
-Yo uso Oposita Smart para esto con opositores que asesoro: el sistema programa automáticamente los repasos según cómo te han ido las preguntas, así no tienes que decidir tú qué repasar cada día (que es una de las cosas que más tiempo consume y más ansiedad genera).
+Para esto es exactamente para lo que creamos Oposita Smart: el sistema programa automáticamente los repasos según cómo te han ido las preguntas, así no tienes que decidir tú qué repasar cada día (que es una de las cosas que más tiempo consume y más ansiedad genera).
 
 ## Cuánto tiempo vas a necesitar, en serio
 
@@ -81,7 +81,7 @@ Aquí viene lo que no te suele contar nadie: depende mucho de tu punto de partid
 
 Si ya tienes conocimientos previos de derecho administrativo o has preparado una oposición similar antes, puede ser menos. Si el método que usas no es eficiente (muchas horas leyendo, poca práctica), necesitarás más tiempo para el mismo resultado.
 
-Lo que no tiene sentido es intentar hacerlo en dos meses machacando. He visto a gente hacerlo y llegar al examen exhaustas, con los últimos temas mal preparados y sin capacidad de concentración en el momento crítico.
+Lo que no tiene sentido es intentar hacerlo en dos meses machacando. En los grupos se leen historias de gente que lo intentó y llegó al examen exhausta, con los últimos temas mal preparados y sin capacidad de concentración en el momento crítico.
 
 ## Una cosa que cambia todo
 

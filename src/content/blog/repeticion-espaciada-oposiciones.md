@@ -7,7 +7,7 @@ emoji: "🧠"
 readingTime: "8 min lectura"
 ---
 
-Si alguna vez has llegado al último mes antes del examen y has sentido que los primeros temas se te habían evaporado de la cabeza, sabes exactamente de qué voy a hablar. La **repetición espaciada en oposiciones** no es una moda ni un truco de productividad — es el único método que, al menos en mi experiencia y en la de varios opositores que conozco, de verdad mantiene el temario fresco durante meses.
+Si alguna vez has llegado al último mes antes del examen y has sentido que los primeros temas se te habían evaporado de la cabeza, sabes exactamente de qué voy a hablar. La **repetición espaciada en oposiciones** no es una moda ni un truco de productividad — es el único método que, según la investigación en ciencia cognitiva y lo que cuentan opositores en foros y Telegram, de verdad mantiene el temario fresco durante meses.
 
 Pero empecemos por el principio.
 
@@ -45,7 +45,7 @@ No hace falta entender las matemáticas. Solo saber que, cuando la app te dice q
 
 ## Cómo se siente estudiar con repetición espaciada
 
-Antes de usar este método, mi rutina era la de siempre: leer el tema, subrayar, hacer esquema, releer. A veces fichas. La sensación era de control — "me sé esto" — pero ese control se evaporaba en semanas.
+La rutina clásica del opositor es conocida: leer el tema, subrayar, hacer esquema, releer. A veces fichas. La sensación es de control — "me sé esto" — pero ese control se evapora en semanas.
 
 Con repetición espaciada, las primeras semanas son raras. Tienes la sensación de que no avanzas porque estás repasando cosas de hace días en vez de aprender temas nuevos. Eso descoloca.
 
@@ -59,11 +59,11 @@ Algunas cosas concretas que marcan la diferencia:
 
 **Transforma el temario en preguntas, no en apuntes.** Leer activa la ilusión de comprensión. Responder preguntas obliga al cerebro a recuperar la información, y eso es lo que crea memoria duradera. Es lo que en psicología del aprendizaje se llama "efecto testing" — y es real.
 
-**Sesiones cortas y constantes ganan a maratones puntuales.** Veinte minutos al día, todos los días, produce más retención que tres horas el sábado. Esto lo he comprobado en mis propias carnes y lo confirman todos los opositores que conozco que han llegado a usar el método en serio. El cerebro consolida mientras duermes, y necesita ese ciclo repetido.
+**Sesiones cortas y constantes ganan a maratones puntuales.** Veinte minutos al día, todos los días, produce más retención que tres horas el sábado. Esto lo respalda la investigación en psicología del aprendizaje y lo confirman opositores que han usado el método en serio. El cerebro consolida mientras duermes, y necesita ese ciclo repetido.
 
 **Cuando fallas una pregunta, no te frustres — es información.** Cada fallo le dice al algoritmo que esa pregunta necesita más atención. El error no es el problema; ignorarlo sí lo es. Así que lo ideal es responder honestamente, aunque duela, en vez de marcar "lo sabía" cuando no era del todo cierto.
 
-**No trates de hacer trampa con las autoevaluaciones.** He visto a gente marcar "fácil" sistemáticamente para que las preguntas no vuelvan pronto. El resultado es obvio: el examen te pilla sin haberlo repasado de verdad. El sistema solo funciona si eres honesto con él.
+**No trates de hacer trampa con las autoevaluaciones.** Hay gente que marca "fácil" sistemáticamente para que las preguntas no vuelvan pronto. El resultado es obvio: el examen te pilla sin haberlo repasado de verdad. El sistema solo funciona si eres honesto con él.
 
 ## ¿Cuándo se notan los resultados?
 
