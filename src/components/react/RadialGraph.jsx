@@ -152,7 +152,7 @@ function AnimatedLink({ d, delay, connected, selected }) {
 }
 
 // ─── Side Panel ──────────────────────────────────────────────────
-function SidePanel({ organismo, onClose, isMobile }) {
+function SidePanel({ organismo, onClose, isMobile, onShare, copied }) {
   const [tab, setTab] = useState('convocatorias');
 
   if (!organismo) {
@@ -198,6 +198,21 @@ function SidePanel({ organismo, onClose, isMobile }) {
           <Users size={14} />
           {organismo.empleados.toLocaleString('es-ES')} empleados
         </span>
+        {onShare && (
+          <button
+            onClick={() => onShare(organismo)}
+            style={{
+              display: 'inline-flex', alignItems: 'center', gap: 6,
+              background: 'none', border: `1px solid ${COLORS.border}`, borderRadius: 6,
+              padding: '4px 10px', fontSize: 12, fontWeight: 500, color: COLORS.muted,
+              cursor: 'pointer', fontFamily: 'inherit', marginLeft: 8,
+              transition: 'all 0.15s',
+            }}
+          >
+            <ExternalLink size={12} />
+            {copied ? 'Copiado!' : 'Compartir'}
+          </button>
+        )}
       </div>
 
       {/* Tabs */}
@@ -576,10 +591,44 @@ function RadialGraphSVG({ width, height, selectedId, onSelectNode }) {
 // ─── Main Page Component ─────────────────────────────────────────
 export default function RadialGraphPage() {
   const isMobile = useIsMobile();
-  const [selectedId, setSelectedId] = useState(null);
   const [dims, setDims] = useState({ w: 800, h: 600 });
   const containerRef = useRef(null);
   const [drawerOpen, setDrawerOpen] = useState(false);
+  const [copied, setCopied] = useState(false);
+
+  // Read initial selection from URL hash (?org=aeat)
+  const [selectedId, setSelectedId] = useState(() => {
+    if (typeof window === 'undefined') return null;
+    const params = new URLSearchParams(window.location.search);
+    return params.get('org') || null;
+  });
+
+  // Sync selection to URL
+  const handleSelectNode = useCallback((id) => {
+    setSelectedId(id);
+    if (typeof window === 'undefined') return;
+    const url = new URL(window.location.href);
+    if (id) {
+      url.searchParams.set('org', id);
+    } else {
+      url.searchParams.delete('org');
+    }
+    window.history.replaceState({}, '', url.toString());
+  }, []);
+
+  // Share link helper
+  const shareOrganismo = useCallback((org) => {
+    const url = `https://www.opositasmart.com/graph?org=${org.id}`;
+    const text = `${org.nombre} — Radar de Organismos | OpositaSmart`;
+    if (navigator.share) {
+      navigator.share({ title: text, url }).catch(() => {});
+    } else {
+      navigator.clipboard.writeText(url).then(() => {
+        setCopied(true);
+        setTimeout(() => setCopied(false), 2000);
+      }).catch(() => {});
+    }
+  }, []);
 
   const selectedOrg = selectedId ? getOrganismo(selectedId) : null;
 
@@ -629,7 +678,7 @@ export default function RadialGraphPage() {
             width: 380, flexShrink: 0, borderRight: `1px solid ${COLORS.border}`,
             overflow: 'hidden', display: 'flex', flexDirection: 'column',
           }}>
-            <SidePanel organismo={selectedOrg} isMobile={false} />
+            <SidePanel organismo={selectedOrg} isMobile={false} onShare={shareOrganismo} copied={copied} />
           </div>
         )}
 
@@ -639,7 +688,7 @@ export default function RadialGraphPage() {
             width={dims.w}
             height={dims.h}
             selectedId={selectedId}
-            onSelectNode={setSelectedId}
+            onSelectNode={handleSelectNode}
           />
 
           {/* Legend */}
@@ -690,8 +739,10 @@ export default function RadialGraphPage() {
           }}>
             <SidePanel
               organismo={selectedOrg}
-              onClose={() => { setDrawerOpen(false); setSelectedId(null); }}
+              onClose={() => { setDrawerOpen(false); handleSelectNode(null); }}
               isMobile={true}
+              onShare={shareOrganismo}
+              copied={copied}
             />
           </div>
         </>
