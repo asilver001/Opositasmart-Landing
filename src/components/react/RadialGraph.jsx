@@ -17,12 +17,12 @@ const CTA_URL = 'https://app.opositasmart.com/#/welcome';
 const RING_RADII = { 0: 0, 1: 150, 2: 310 };
 const NODE_SIZES = { root: 34, ministerio: 22, organismo: 14 };
 
-// CivLab-inspired: each ring has its own color
+// Design system greens for rings (like CivLab uses different colors per ring)
 const RING_COLORS = {
   root: '#1A1A1A',
-  ministerio: '#2D6A4F',    // forest green
-  organismo: '#8B6E4F',     // warm brown
-  active: '#40916C',        // lighter green for active convocatorias
+  ministerio: '#1B4332',    // green-deep
+  organismo: '#3A7D5C',     // green-medium
+  active: '#52B788',        // green-accent (conv. activa)
 };
 
 const COLORS = {
@@ -329,14 +329,16 @@ function buildRadialNodes() {
 }
 
 // ─── Diamond shape for ministerios (CivLab uses rotated rects) ───
-function Diamond({ size, fill, stroke, strokeWidth, opacity, selected }) {
+function Diamond({ size, fill, stroke, strokeWidth, opacity, selected, onClick }) {
   const s = size;
   return (
     <rect
       x={-s} y={-s} width={s * 2} height={s * 2} rx={4} ry={4}
-      fill={fill} stroke={stroke} strokeWidth={strokeWidth}
+      fill={fill} fillOpacity={1} stroke={stroke} strokeWidth={strokeWidth}
       transform="rotate(45)"
+      onClick={onClick}
       style={{
+        cursor: 'pointer',
         opacity,
         transition: 'opacity 0.4s, fill 0.4s',
         filter: selected ? `drop-shadow(0 0 10px ${COLORS.selected})` : 'none',
@@ -464,34 +466,29 @@ function RadialGraphSVG({ width, height, selectedId, onSelectNode }) {
                 {/* Selection glow */}
                 {isSelected && <circle r={size + 8} fill={COLORS.selected} opacity={0.15} />}
 
-                {/* Hit area */}
-                <circle
-                  r={hitRadius}
-                  fill="transparent"
-                  style={{ cursor: node.type !== 'root' ? 'pointer' : 'default' }}
-                  onClick={() => {
-                    if (node.type === 'organismo') onSelectNode(isSelected ? null : node.id);
-                    else if (node.type === 'ministerio') onSelectNode(null);
-                  }}
-                />
-
-                {/* Node shape — different per level (CivLab pattern) */}
+                {/* Node shape — onClick directly on shape (CivLab pattern) */}
                 {node.type === 'ministerio' ? (
                   <Diamond
-                    size={size * 0.7}
+                    size={size * 0.75}
                     fill={fill}
                     stroke={stroke}
                     strokeWidth={isSelected ? 3 : 1.5}
                     opacity={connected ? 1 : 0.15}
                     selected={isSelected}
+                    onClick={() => onSelectNode(null)}
                   />
                 ) : (
                   <circle
-                    r={size}
+                    r={node.type === 'root' ? size : size}
                     fill={fill}
+                    fillOpacity={1}
                     stroke={stroke}
                     strokeWidth={isSelected ? 3 : 1.5}
+                    onClick={() => {
+                      if (node.type === 'organismo') onSelectNode(isSelected ? null : node.id);
+                    }}
                     style={{
+                      cursor: node.type === 'organismo' ? 'pointer' : 'default',
                       opacity: connected ? 1 : 0.15,
                       transition: 'opacity 0.4s, fill 0.4s',
                       filter: isSelected ? `drop-shadow(0 0 10px ${COLORS.selected})` : 'none',
