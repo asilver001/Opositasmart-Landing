@@ -623,7 +623,7 @@ export default function RadialGraphPage() {
 
   // Share link helper
   const shareOrganismo = useCallback((org) => {
-    const url = `https://www.opositasmart.com/graph?org=${org.id}`;
+    const url = `https://www.opositasmart.com/organismos?org=${org.id}`;
     const text = `${org.nombre} — Radar de Organismos | OpositaSmart`;
     if (navigator.share) {
       navigator.share({ title: text, url }).catch(() => {});
