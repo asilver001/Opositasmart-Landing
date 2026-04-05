@@ -404,13 +404,18 @@ function RadialGraphSVG({ width, height, selectedId, onSelectNode }) {
           transformOrigin: '0 0',
         }}>
 
-          {/* Ring labels — positioned at fixed spots that won't clash */}
-          {/* No dashed ring circles — they clutter the graph */}
+          {/* Concentric ring guides — subtle dashed circles behind nodes */}
+          <circle r={RING_RADII[1]} fill="none" stroke={COLORS.border} strokeWidth={0.5} strokeDasharray="4 3" opacity={0.4} />
+          <circle r={RING_RADII[2]} fill="none" stroke={COLORS.border} strokeWidth={0.5} strokeDasharray="4 3" opacity={0.3} />
+
+          {/* Ring labels — placed between rings so they don't clash with nodes */}
           <g style={{ transform: `rotate(${-rotDeg}deg)`, transition: 'transform 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94)', transformOrigin: '0 0' }}>
-            <text x={RING_RADII[1] + 10} y={-8} textAnchor="start" fontSize={9} fill={RING_COLORS.ministerio} fontWeight={600} letterSpacing="0.06em" opacity={0.4} style={{ userSelect: 'none' }}>
+            {/* MINISTERIOS label: halfway between center and ministerio ring, offset right */}
+            <text x={RING_RADII[1] / 2 + 20} y={4} textAnchor="start" fontSize={8} fill={COLORS.muted} fontWeight={600} letterSpacing="0.08em" opacity={0.35} style={{ userSelect: 'none' }}>
               MINISTERIOS
             </text>
-            <text x={RING_RADII[2] + 10} y={-8} textAnchor="start" fontSize={9} fill={RING_COLORS.organismo} fontWeight={600} letterSpacing="0.06em" opacity={0.3} style={{ userSelect: 'none' }}>
+            {/* ORGANISMOS label: halfway between ministerio and organismo rings, offset right */}
+            <text x={(RING_RADII[1] + RING_RADII[2]) / 2 + 10} y={4} textAnchor="start" fontSize={8} fill={COLORS.muted} fontWeight={600} letterSpacing="0.08em" opacity={0.25} style={{ userSelect: 'none' }}>
               ORGANISMOS
             </text>
           </g>
