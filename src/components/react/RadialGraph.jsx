@@ -437,10 +437,11 @@ function RadialGraphSVG({ width, height, selectedId, onSelectNode }) {
             const hitRadius = Math.max(size + 14, 22);
             const delay = (node.type === 'root' ? 0 : node.type === 'ministerio' ? 1 : 2) * 200 + i * 20;
 
-            // CivLab-style: white fill, colored stroke
+            // Color logic: active organismos get green fill (not just stroke)
             let fill = COLORS.white;
             let stroke = COLORS.border;
             let labelColor = COLORS.muted;
+            let strokeW = 1.5;
 
             if (node.type === 'root') {
               fill = COLORS.dark; stroke = COLORS.dark; labelColor = COLORS.white;
@@ -448,8 +449,11 @@ function RadialGraphSVG({ width, height, selectedId, onSelectNode }) {
               stroke = RING_COLORS.ministerio;
               labelColor = RING_COLORS.ministerio;
             } else if (node.hasConvocatoria) {
-              stroke = RING_COLORS.active;
-              labelColor = RING_COLORS.active;
+              // Active: green-tinted fill + thicker green stroke (very visible)
+              fill = '#D1FAE5';  // greenTint bg
+              stroke = '#2D6A4F'; // green primary
+              strokeW = 2.5;
+              labelColor = '#065F46'; // dark green text
             } else {
               stroke = RING_COLORS.organismo;
               labelColor = RING_COLORS.organismo;
@@ -460,6 +464,15 @@ function RadialGraphSVG({ width, height, selectedId, onSelectNode }) {
               stroke = COLORS.selected;
               labelColor = COLORS.white;
             }
+
+            // Smart label position: place label radially outward from center
+            // to avoid overlapping with other nodes
+            const labelAngle = node.angle - Math.PI / 2; // angle from center
+            const labelOutward = node.type === 'ministerio' ? size + 18 : size + 14;
+            const labelDx = Math.cos(labelAngle) * labelOutward;
+            const labelDy = Math.sin(labelAngle) * labelOutward;
+            // Only use radial placement for organismos; ministerios keep below
+            const useRadialLabel = node.type === 'organismo';
 
             return (
               <AnimatedNode key={node.id} x={x} y={y} delay={delay}>
@@ -472,18 +485,18 @@ function RadialGraphSVG({ width, height, selectedId, onSelectNode }) {
                     size={size * 0.75}
                     fill={fill}
                     stroke={stroke}
-                    strokeWidth={isSelected ? 3 : 1.5}
+                    strokeWidth={isSelected ? 3 : strokeW}
                     opacity={connected ? 1 : 0.15}
                     selected={isSelected}
                     onClick={() => onSelectNode(null)}
                   />
                 ) : (
                   <circle
-                    r={node.type === 'root' ? size : size}
+                    r={size}
                     fill={fill}
                     fillOpacity={1}
                     stroke={stroke}
-                    strokeWidth={isSelected ? 3 : 1.5}
+                    strokeWidth={isSelected ? 3 : strokeW}
                     onClick={() => {
                       if (node.type === 'organismo') onSelectNode(isSelected ? null : node.id);
                     }}
@@ -496,7 +509,7 @@ function RadialGraphSVG({ width, height, selectedId, onSelectNode }) {
                   />
                 )}
 
-                {/* Label — counter-rotate to stay horizontal */}
+                {/* Label — counter-rotate to stay horizontal, positioned radially */}
                 <g style={{
                   transform: `rotate(${-rotDeg}deg)`,
                   transition: 'transform 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
@@ -513,11 +526,30 @@ function RadialGraphSVG({ width, height, selectedId, onSelectNode }) {
                     >
                       {node.name}
                     </text>
-                  ) : (
+                  ) : useRadialLabel ? (
+                    /* Organismo labels: position radially outward to avoid overlaps */
                     <text
-                      dy={node.type === 'ministerio' ? size + 16 : size + 12}
+                      dx={labelDx}
+                      dy={labelDy + 4}
+                      textAnchor={Math.abs(labelDx) < 5 ? 'middle' : labelDx > 0 ? 'start' : 'end'}
+                      fontSize={8}
+                      fontWeight={600}
+                      fill={connected ? labelColor : COLORS.gray}
+                      style={{
+                        pointerEvents: 'none', userSelect: 'none',
+                        opacity: connected ? 0.85 : 0.12,
+                        transition: 'opacity 0.4s',
+                        fontFamily: 'Inter, system-ui, sans-serif',
+                      }}
+                    >
+                      {node.name}
+                    </text>
+                  ) : (
+                    /* Ministerio labels: below the diamond */
+                    <text
+                      dy={size + 16}
                       textAnchor="middle"
-                      fontSize={node.type === 'ministerio' ? 9 : 7}
+                      fontSize={9}
                       fontWeight={600}
                       fill={connected ? labelColor : COLORS.gray}
                       style={{
@@ -626,7 +658,7 @@ export default function RadialGraphPage() {
               <span style={{ fontSize: 11, color: COLORS.muted }}>Ministerio</span>
             </div>
             <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-              <span style={{ width: 12, height: 12, borderRadius: '50%', border: `2px solid ${RING_COLORS.active}`, background: COLORS.white, flexShrink: 0 }} />
+              <span style={{ width: 12, height: 12, borderRadius: '50%', border: '2px solid #2D6A4F', background: '#D1FAE5', flexShrink: 0 }} />
               <span style={{ fontSize: 11, color: COLORS.muted }}>Conv. activa</span>
             </div>
             <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
