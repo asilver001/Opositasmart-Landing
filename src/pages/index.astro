@@ -91,7 +91,7 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft))
       </div>
       <div class="hero-visual" aria-hidden="true">
         <div class="floating-readiness">
-          <div class="fr-label">Tu preparación</div>
+          <div class="fr-label">Ejemplo de panel</div>
           <div class="fr-value">73%</div>
           <div class="fr-bar"><div class="fr-bar-fill"></div></div>
         </div>
@@ -393,6 +393,78 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft))
       </div>
     </section>
   )}
+
+  <!-- ========== TELEGRAM ========== -->
+  <section class="telegram-section" aria-labelledby="telegram-title">
+    <div class="section-inner telegram-inner">
+      <div class="telegram-icon" aria-hidden="true">
+        <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71L12.6 16.3l-1.99 1.93c-.23.23-.42.42-.83.42z"/>
+        </svg>
+      </div>
+      <div class="telegram-content">
+        <h2 id="telegram-title" class="telegram-h2">Un quiz cada día. Gratis. En Telegram.</h2>
+        <p class="telegram-desc">Únete al canal y recibe cada mañana una pregunta tipo test del temario oficial AGE. Con respuesta correcta, explicación y referencia legal. Sin spam.</p>
+        <a href="https://t.me/opositasmart" class="telegram-btn" target="_blank" rel="noopener">
+          Unirme al canal →
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    .telegram-section {
+      padding: 64px 24px;
+      background: linear-gradient(135deg, #0088cc 0%, #229ED9 100%);
+      color: white;
+    }
+    .telegram-inner {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .telegram-icon {
+      flex-shrink: 0;
+      width: 80px;
+      height: 80px;
+      border-radius: 20px;
+      background: rgba(255,255,255,0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+    }
+    .telegram-content { flex: 1; }
+    .telegram-h2 {
+      font-size: 28px;
+      line-height: 1.2;
+      margin: 0 0 12px;
+      letter-spacing: -0.02em;
+    }
+    .telegram-desc {
+      font-size: 16px;
+      line-height: 1.5;
+      opacity: 0.95;
+      margin: 0 0 20px;
+    }
+    .telegram-btn {
+      display: inline-block;
+      background: white;
+      color: #0088cc;
+      padding: 14px 28px;
+      border-radius: 12px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: transform 0.15s;
+    }
+    .telegram-btn:hover { transform: translateY(-2px); }
+    @media (max-width: 640px) {
+      .telegram-inner { flex-direction: column; text-align: center; gap: 20px; }
+      .telegram-h2 { font-size: 24px; }
+    }
+  </style>
 
   <!-- ========== FAQ ========== -->
   <section class="faq-section" id="faq" aria-labelledby="faq-title">
